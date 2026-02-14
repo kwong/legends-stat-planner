@@ -498,6 +498,6 @@
     </main>
 
     <footer class="max-w-6xl mx-auto mt-12 text-center text-slate-600 text-sm">
-        <p>Values based on Legends: Age of Chaos manual.</p>
+        <p>Made with ❤️ by Kariya</p>
     </footer>
 </div>
