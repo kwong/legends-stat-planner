@@ -33,6 +33,50 @@ const LEVEL_1_BASE = 15; // 3 * 5
 const PTS_PER_LEVEL = 2;
 const STATS = ['STR', 'INT', 'WIS', 'CON', 'DEX'];
 
+/** EXP cost per stat point by class */
+const PRIMARY_STATS = {
+    priest: ['WIS', 'INT'],
+    wizard: ['WIS', 'INT'],
+    rogue: ['STR', 'DEX'],
+    warrior: ['STR', 'CON'],
+    monk: ['STR', 'INT', 'CON']
+};
+const PRIMARY_COST = 2_000_000;
+const NON_PRIMARY_COST = 10_000_000;
+
+function statCost(stat, heroClass) {
+    const primary = PRIMARY_STATS[heroClass?.toLowerCase()] || [];
+    return primary.includes(stat) ? PRIMARY_COST : NON_PRIMARY_COST;
+}
+
+/**
+ * Given per-stat deficits and available points, compute the minimum
+ * EXP cost of [missing stats, points to spend].
+ * Strategy: spend points on most expensive deficit stats first so as to
+ * minimise the EXP cost of stats we cannot cover.
+ */
+function expScore(deficits, availablePoints, heroClass) {
+    const statsByCost = [...STATS].sort((a, b) => statCost(b, heroClass) - statCost(a, heroClass));
+    let remaining = availablePoints;
+    let missingExp = 0;
+    let spentExp = 0;
+    const rem = { ...deficits };
+
+    for (const stat of statsByCost) {
+        const d = rem[stat] || 0;
+        if (d > 0 && remaining > 0) {
+            const spend = Math.min(d, remaining);
+            spentExp += spend * statCost(stat, heroClass);
+            remaining -= spend;
+            rem[stat] = d - spend;
+        }
+    }
+    for (const stat of STATS) {
+        missingExp += (rem[stat] || 0) * statCost(stat, heroClass);
+    }
+    return [missingExp, spentExp];
+}
+
 /**
  * Validates if the allocated stats match the level availability.
  * Formula: Sum(BaseStats) + AvailablePoints == (Level - 1) * 2 + 15
@@ -168,34 +212,39 @@ export function optimize(currentBaseStats, desiredStats, availableItems, availab
         return totalDeficit(stats, desiredStats);
     };
 
-    // Score a deficit value: returns [missing, pointsSpent] for lexicographic comparison.
-    // Primary: minimise truly missing stats (deficit that can't be covered by available points).
-    // Secondary: minimise stat points consumed (fewer points = better).
-    const score = (d) => [Math.max(0, d - availablePoints), Math.min(d, availablePoints)];
-    const isBetter = (dNew, dBest) => {
-        const [mNew, pNew] = score(dNew);
-        const [mBest, pBest] = score(dBest);
-        return mNew < mBest || (mNew === mBest && pNew < pBest);
+    // Compute per-stat deficits for a given stats object
+    const perStatDeficit = (stats) => {
+        const d = {};
+        for (const stat of STATS) {
+            const diff = desiredStats[stat] - stats[stat];
+            d[stat] = diff > 0 ? diff : 0;
+        }
+        return d;
     };
 
+    // Compare two sets of per-stat deficits using EXP-weighted scoring.
+    // Returns true if defA is strictly better than defB.
+    const isBetter = (defA, defB) => {
+        const [mA, pA] = expScore(defA, availablePoints, heroClass);
+        const [mB, pB] = expScore(defB, availablePoints, heroClass);
+        return mA < mB || (mA === mB && pA < pB);
+    };
+
+
     // --- Phase 1: Greedy initialisation ---
-    // Fill each slot sequentially with the item that most reduces the score.
     const chosenItems = new Array(numSlots).fill(null);
     const runningStats = { ...lockedStats };
 
     for (let si = 0; si < numSlots; si++) {
         let bestItem = null;
-        let bestDeficit = totalDeficit(runningStats, desiredStats); // baseline: empty slot
+        let bestDef = perStatDeficit(runningStats);
 
         for (const item of openSlots[si]) {
-            let d = 0;
-            for (const stat of STATS) {
-                const have = runningStats[stat] + (item.stats[stat] || 0);
-                const need = desiredStats[stat];
-                if (have < need) d += need - have;
-            }
-            if (isBetter(d, bestDeficit)) {
-                bestDeficit = d;
+            const withItem = { ...runningStats };
+            for (const stat of STATS) withItem[stat] += (item.stats[stat] || 0);
+            const d = perStatDeficit(withItem);
+            if (isBetter(d, bestDef)) {
+                bestDef = d;
                 bestItem = item;
             }
         }
@@ -206,15 +255,12 @@ export function optimize(currentBaseStats, desiredStats, availableItems, availab
         }
     }
 
-    // --- Phase 2: Coordinate descent (iterative refinement) ---
-    // Re-optimise one slot at a time, holding all others fixed.
-    // Each pass can only lower or maintain total deficit → guaranteed convergence.
+    // --- Phase 2: Coordinate descent ---
     const MAX_ITER = 10;
     for (let iter = 0; iter < MAX_ITER; iter++) {
         let improved = false;
 
         for (let si = 0; si < numSlots; si++) {
-            // Stats from locked items + every OTHER open slot
             const statsOthers = { ...lockedStats };
             for (let j = 0; j < numSlots; j++) {
                 if (j !== si && chosenItems[j]) {
@@ -222,19 +268,15 @@ export function optimize(currentBaseStats, desiredStats, availableItems, availab
                 }
             }
 
-            // Best option: start with empty slot as baseline
-            let bestDeficit = totalDeficit(statsOthers, desiredStats);
             let bestItem = null;
+            let bestDef = perStatDeficit(statsOthers); // baseline: empty slot
 
             for (const item of openSlots[si]) {
-                let d = 0;
-                for (const stat of STATS) {
-                    const have = statsOthers[stat] + (item.stats[stat] || 0);
-                    const need = desiredStats[stat];
-                    if (have < need) d += need - have;
-                }
-                if (isBetter(d, bestDeficit)) {
-                    bestDeficit = d;
+                const withItem = { ...statsOthers };
+                for (const stat of STATS) withItem[stat] += (item.stats[stat] || 0);
+                const d = perStatDeficit(withItem);
+                if (isBetter(d, bestDef)) {
+                    bestDef = d;
                     bestItem = item;
                 }
             }
@@ -245,7 +287,7 @@ export function optimize(currentBaseStats, desiredStats, availableItems, availab
             }
         }
 
-        if (!improved) break; // converged
+        if (!improved) break;
     }
 
     // Assemble final equipped items and compute final stats
@@ -265,7 +307,9 @@ export function optimize(currentBaseStats, desiredStats, availableItems, availab
     let pointsToSpend = availablePoints;
     let success = true;
 
-    for (const stat of STATS) {
+    // Allocate available points — spend on most expensive stats first to minimise EXP cost
+    const statsByCost = [...STATS].sort((a, b) => statCost(b, heroClass) - statCost(a, heroClass));
+    for (const stat of statsByCost) {
         const need = finalDeficits[stat];
         if (need > 0) {
             if (pointsToSpend >= need) {
