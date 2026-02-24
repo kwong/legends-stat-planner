@@ -339,13 +339,18 @@
                     {:else}
                         <span class="text-orange-400 font-bold">
                             {#if level >= 99}
-                                WARNING - Must be > {(level - 1) * 2 + 15}
+                                {#if !isMaster}
+                                    Stats exceed non-master cap (211pts) — check <span class="text-amber-400">Master</span> if applicable
+                                {:else}
+                                    Sum must be ≥ 211
+                                {/if}
                             {:else}
-                                WARNING - Sum must equal {(level - 1) * 2 + 15}
+                                Sum must equal {(level - 1) * 2 + 15}
                             {/if}
                         </span>
                     {/if}
                 </div>
+
             </div>
 
 
