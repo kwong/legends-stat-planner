@@ -427,17 +427,10 @@
 
                                         <!-- Item name + metadata -->
                                         <div class="flex-1 min-w-0">
-                                            <div class="flex items-center gap-1.5 flex-wrap">
-                                                <span class="font-medium text-white text-sm leading-snug">{item.name}</span>
-                                                {#if item.isLocked}
-                                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-3 h-3 text-amber-500 flex-shrink-0" title="Locked">
-                                                      <path fill-rule="evenodd" d="M10 1a4.5 4.5 0 00-4.5 4.5V9H5a2 2 0 00-2 2v6a2 2 0 002 2h10a2 2 0 002-2v-6a2 2 0 00-2-2h-.5V5.5A4.5 4.5 0 0010 1zm3 8V5.5a3 3 0 10-6 0V9h6z" clip-rule="evenodd" />
-                                                    </svg>
-                                                {/if}
-                                            </div>
+                                            <span class="font-medium text-white text-sm leading-snug">{item.name}</span>
                                             <!-- Stat pills + level row -->
                                             <div class="flex items-center flex-wrap gap-1 mt-1">
-                                                <span class="text-[10px] text-slate-500 mr-1">Lv{item.level || 1}</span>
+                                                <span class="text-[10px] text-slate-500 mr-1">{item.level === 'Master' ? 'Master' : `Lv${item.level || 1}`}</span>
                                                 {#each Object.entries(item.stats) as [k, v]}
                                                     {#if v !== 0}
                                                         <span class="inline-flex items-center text-[11px] font-mono px-1.5 py-0.5 rounded {v > 0 ? 'bg-emerald-900/40 text-emerald-300' : 'bg-red-900/40 text-red-300'}">
@@ -482,7 +475,7 @@
 
                         <!-- Points Allocation -->
                         <div>
-                            <h3 class="text-sm font-medium text-slate-400 mb-2 uppercase tracking-wider">Stat Points Allocated</h3>
+                            <h3 class="text-sm font-medium text-slate-400 mb-2 uppercase tracking-wider">Available Stat Points Allocated</h3>
                             <div class="grid grid-cols-5 xl:grid-cols-1 gap-2">
                                 {#each Object.entries(result.pointsAllocated) as [stat, pts]}
                                     <div class="bg-slate-700 p-2 rounded xl:flex xl:items-center xl:justify-between text-center xl:text-left">
@@ -496,7 +489,7 @@
                         {#if !result.success}
                             <!-- Missing Stats -->
                             <div>
-                                <h3 class="text-sm font-medium text-slate-400 mb-2 uppercase tracking-wider">Still Needed</h3>
+                                <h3 class="text-sm font-medium text-slate-400 mb-2 uppercase tracking-wider">Missing Stat Points</h3>
                                 <div class="grid grid-cols-5 xl:grid-cols-1 gap-2 mb-3">
                                     {#each Object.entries(result.missingStats) as [stat, pts]}
                                         <div class="bg-slate-700 p-2 rounded xl:flex xl:items-center xl:justify-between text-center xl:text-left {pts > 0 ? 'border border-red-900/50' : ''}">
@@ -512,7 +505,7 @@
                                 </div>
                                 {#if isMaster}
                                     <div class="bg-red-950/40 border border-red-800/40 rounded p-3 flex items-center justify-between">
-                                        <span class="text-xs text-slate-400">EXP needed</span>
+                                        <span class="text-xs text-slate-400">EXP needed to buy</span>
                                         <span class="font-bold text-red-400 text-sm">{(Object.entries(result.missingStats).reduce((sum, [stat, pts]) => sum + pts * statCost(stat, heroClass), 0) / 1_000_000).toLocaleString()}M</span>
                                     </div>
                                 {:else}
