@@ -73,13 +73,13 @@
 
     
     // Reactively validate
-    let isValid = $derived(validateStats(level, currentStats, availablePoints));
+    let isValid = $derived(validateStats(level, currentStats, availablePoints, isMaster));
 
     function handleCalculate() { // Renamed from handleOptimize
         const stats = { STR: currentStats.STR, INT: currentStats.INT, WIS: currentStats.WIS, CON: currentStats.CON, DEX: currentStats.DEX };
         
         // Basic Client-side Validation for input
-        if (!validateStats(level, stats, availablePoints)) {
+        if (!validateStats(level, stats, availablePoints, isMaster)) {
              // We can still try to optimize but maybe warn? 
              // actually validateStats returns true if valid.
              // If false, it means stats don't match level.

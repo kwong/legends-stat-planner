@@ -84,14 +84,17 @@ function expScore(deficits, availablePoints, heroClass) {
  * @param {number} availablePoints
  * @returns {boolean}
  */
-export function validateStats(level, baseStats, availablePoints) {
+export function validateStats(level, baseStats, availablePoints, isMaster = false) {
     const totalAllocated = Object.values(baseStats).reduce((a, b) => a + b, 0);
-    const expectedTotal = (level - 1) * PTS_PER_LEVEL + LEVEL_1_BASE;
+    // The maximum stat points a non-master can have at level 99
+    const masterCap = LEVEL_1_BASE + 98 * PTS_PER_LEVEL; // 211
 
     if (level >= 99) {
-        return (totalAllocated + availablePoints) > expectedTotal;
+        const total = totalAllocated + availablePoints;
+        return isMaster ? total >= masterCap : total === masterCap;
     }
 
+    const expectedTotal = (level - 1) * PTS_PER_LEVEL + LEVEL_1_BASE;
     return (totalAllocated + availablePoints) === expectedTotal;
 }
 
