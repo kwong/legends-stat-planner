@@ -1,5 +1,5 @@
 <script>
-    import { optimize, validateStats, statCost } from '$lib/logic/optimizer';
+    import { optimize, validateStats, statCost, statMaxValue } from '$lib/logic/optimizer';
     import itemData from '$lib/data/items.json';
     import { onMount } from 'svelte';
 
@@ -73,13 +73,13 @@
 
     
     // Reactively validate
-    let isValid = $derived(validateStats(level, currentStats, availablePoints, isMaster));
+    let isValid = $derived(validateStats(level, currentStats, availablePoints, isMaster, heroClass));
 
     function handleCalculate() { // Renamed from handleOptimize
         const stats = { STR: currentStats.STR, INT: currentStats.INT, WIS: currentStats.WIS, CON: currentStats.CON, DEX: currentStats.DEX };
         
         // Basic Client-side Validation for input
-        if (!validateStats(level, stats, availablePoints, isMaster)) {
+        if (!validateStats(level, stats, availablePoints, isMaster, heroClass)) {
              // We can still try to optimize but maybe warn? 
              // actually validateStats returns true if valid.
              // If false, it means stats don't match level.
@@ -322,7 +322,7 @@
                     {#each Object.keys(currentStats) as stat}
                         <div class="flex flex-col">
                             <label class="text-xs text-slate-500 mb-1" for={`curr-${stat}`}>{stat}</label>
-                            <input type="number" id={`curr-${stat}`} class="bg-slate-700 border-slate-600 text-white rounded p-1 w-full text-center text-sm" bind:value={currentStats[stat]} min="3" />
+                            <input type="number" id={`curr-${stat}`} class="bg-slate-700 border-slate-600 text-white rounded p-1 w-full text-center text-sm" bind:value={currentStats[stat]} min="3" max={statMaxValue(stat, heroClass)} />
                         </div>
                     {/each}
                  </div>
@@ -339,7 +339,10 @@
                         <span class="text-green-400 font-bold">OK</span>
                     {:else}
                         <span class="text-orange-400 font-bold">
-                            {#if level >= 99}
+                            {#if Object.entries(currentStats).some(([s, v]) => v > statMaxValue(s, heroClass))}
+                                {@const badStat = Object.entries(currentStats).find(([s, v]) => v > statMaxValue(s, heroClass))}
+                                {badStat[0]} exceeds cap ({statMaxValue(badStat[0], heroClass)} max)
+                            {:else if level >= 99}
                                 {#if !isMaster}
                                     Stats exceed non-master cap (211pts) — check <span class="text-amber-400">Master</span> if applicable
                                 {:else}

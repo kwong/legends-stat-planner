@@ -31,6 +31,8 @@
 
 const LEVEL_1_BASE = 15; // 3 * 5
 const PTS_PER_LEVEL = 2;
+const MAX_PRIMARY_STAT = 140;    // primary stats cap
+const MAX_NONPRIMARY_STAT = 60;  // non-primary stats cap
 const STATS = ['STR', 'INT', 'WIS', 'CON', 'DEX'];
 
 /** EXP cost per stat point by class */
@@ -47,6 +49,12 @@ const NON_PRIMARY_COST = 10_000_000;
 export function statCost(stat, heroClass) {
     const primary = PRIMARY_STATS[heroClass?.toLowerCase()] || [];
     return primary.includes(stat) ? PRIMARY_COST : NON_PRIMARY_COST;
+}
+
+/** Returns the maximum allowed base value for a stat given the class */
+export function statMaxValue(stat, heroClass) {
+    const primary = PRIMARY_STATS[heroClass?.toLowerCase()] || [];
+    return primary.includes(stat) ? MAX_PRIMARY_STAT : MAX_NONPRIMARY_STAT;
 }
 
 /**
@@ -84,7 +92,10 @@ function expScore(deficits, availablePoints, heroClass) {
  * @param {number} availablePoints
  * @returns {boolean}
  */
-export function validateStats(level, baseStats, availablePoints, isMaster = false) {
+export function validateStats(level, baseStats, availablePoints, isMaster = false, heroClass = '') {
+    // Per-stat cap: primary stats ≤ 140, non-primary ≤ 60
+    if (Object.entries(baseStats).some(([stat, v]) => v > statMaxValue(stat, heroClass))) return false;
+
     const totalAllocated = Object.values(baseStats).reduce((a, b) => a + b, 0);
     // The maximum stat points a non-master can have at level 99
     const masterCap = LEVEL_1_BASE + 98 * PTS_PER_LEVEL; // 211
