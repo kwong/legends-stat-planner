@@ -168,8 +168,18 @@ export function optimize(currentBaseStats, desiredStats, availableItems, availab
         return totalDeficit(stats, desiredStats);
     };
 
+    // Score a deficit value: returns [missing, pointsSpent] for lexicographic comparison.
+    // Primary: minimise truly missing stats (deficit that can't be covered by available points).
+    // Secondary: minimise stat points consumed (fewer points = better).
+    const score = (d) => [Math.max(0, d - availablePoints), Math.min(d, availablePoints)];
+    const isBetter = (dNew, dBest) => {
+        const [mNew, pNew] = score(dNew);
+        const [mBest, pBest] = score(dBest);
+        return mNew < mBest || (mNew === mBest && pNew < pBest);
+    };
+
     // --- Phase 1: Greedy initialisation ---
-    // Fill each slot sequentially with the item that most reduces remaining deficit.
+    // Fill each slot sequentially with the item that most reduces the score.
     const chosenItems = new Array(numSlots).fill(null);
     const runningStats = { ...lockedStats };
 
@@ -178,14 +188,13 @@ export function optimize(currentBaseStats, desiredStats, availableItems, availab
         let bestDeficit = totalDeficit(runningStats, desiredStats); // baseline: empty slot
 
         for (const item of openSlots[si]) {
-            // Compute deficit if we add this item
             let d = 0;
             for (const stat of STATS) {
                 const have = runningStats[stat] + (item.stats[stat] || 0);
                 const need = desiredStats[stat];
                 if (have < need) d += need - have;
             }
-            if (d < bestDeficit) {
+            if (isBetter(d, bestDeficit)) {
                 bestDeficit = d;
                 bestItem = item;
             }
@@ -224,7 +233,7 @@ export function optimize(currentBaseStats, desiredStats, availableItems, availab
                     const need = desiredStats[stat];
                     if (have < need) d += need - have;
                 }
-                if (d < bestDeficit) {
+                if (isBetter(d, bestDeficit)) {
                     bestDeficit = d;
                     bestItem = item;
                 }
