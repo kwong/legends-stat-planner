@@ -52,7 +52,9 @@ export function validateStats(level, baseStats, availablePoints) {
 }
 
 /**
- * Compute the total stat deficit against desiredStats given a base stats object.
+ * Compute the total stat deficit against desiredStats given a stats object.
+ * Negative item stats are absorbed by surplus (stats already above target)
+ * before creating new deficit — so Stone Cross -5 INT is free if INT > target+5.
  * @param {Stats} stats
  * @param {Stats} desired
  * @returns {number}
@@ -67,7 +69,7 @@ function totalDeficit(stats, desired) {
 }
 
 /**
- * Compute per-stat deficits.
+ * Compute per-stat deficits (clamped at 0; surplus is not penalised).
  */
 function getDeficits(stats, desired) {
     const d = {};
@@ -78,6 +80,20 @@ function getDeficits(stats, desired) {
         total += d[k];
     }
     return { deficits: d, total };
+}
+
+/**
+ * Compute deficit if `item` is added to `baseStats`.
+ * Correctly handles negative item stats — they consume surplus before adding deficit.
+ */
+function deficitWithItem(baseStats, item, desired) {
+    let total = 0;
+    for (const k of STATS) {
+        const have = baseStats[k] + (item.stats[k] || 0);
+        const diff = desired[k] - have;
+        if (diff > 0) total += diff;
+    }
+    return total;
 }
 
 /**
