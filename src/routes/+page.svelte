@@ -213,11 +213,12 @@
     // Filtered items for picker
     let pickerItems = $derived(
         isPickerOpen 
-        ? itemData.items.filter(i => 
-            i.type === pickerSlotType && 
-            (i.class === 'all' || i.class === heroClass) &&
-            i.name.toLowerCase().includes(pickerSearch.toLowerCase())
-          )
+        ? itemData.items.filter(i => {
+            const classMatch = i.class.toLowerCase() === 'all' || i.class.toLowerCase() === heroClass.toLowerCase();
+            const levelMatch = level >= (i.level || 1);
+            return i.type === pickerSlotType && classMatch && levelMatch &&
+                   i.name.toLowerCase().includes(pickerSearch.toLowerCase());
+          })
         : []
     );
 
@@ -247,12 +248,17 @@
                     onclick={() => confirmSwap(item)}
                 >
                     <span class="font-medium text-slate-200 group-hover:text-white">{item.name}</span>
-                    <div class="text-xs text-slate-400">
-                         {#each Object.entries(item.stats) as [k, v]}
-                            {#if v !== 0}
-                                <span class="ml-2 {v > 0 ? 'text-emerald-400' : 'text-red-400'}">{k}:{v > 0 ? '+' : ''}{v}</span>
-                            {/if}
-                        {/each}
+                    <div class="flex flex-col items-end">
+                        <div class="text-xs text-slate-400">
+                             {#each Object.entries(item.stats) as [k, v]}
+                                {#if v !== 0}
+                                    <span class="ml-2 {v > 0 ? 'text-emerald-400' : 'text-red-400'}">{k}:{v > 0 ? '+' : ''}{v}</span>
+                                {/if}
+                            {/each}
+                        </div>
+                        <div class="text-[10px] text-slate-500 mt-1 uppercase tracking-wider">
+                            Level {item.level || 1} • {item.class}
+                        </div>
                     </div>
                 </button>
             {/each}
@@ -397,6 +403,7 @@
                                     <thead>
                                         <tr class="text-gray-400 border-b border-gray-600">
                                             <th class="py-2 px-2">Slot</th>
+                                            <th class="py-2 px-2">Level</th>
                                             <th class="py-2 px-2">Item</th>
                                             <th class="py-2 px-2">Stats</th>
                                             <th class="py-2 px-2 w-20"></th>
@@ -415,6 +422,7 @@
                                                         </span>
                                                     {/if}
                                                 </td>
+                                                <td class="py-3 px-2 text-sm text-slate-400">{item.level || 1}</td>
                                                 <td class="py-3 px-2 font-medium text-white">{item.name}</td>
                                                 <td class="py-3 px-2 text-sm text-gray-300">
                                                     {#each Object.entries(item.stats) as [k, v]}
@@ -466,9 +474,40 @@
                         </div>
                     </div>
 
+                    {#if !result.success}
+                        <div>
+                            <h3 class="text-lg font-medium text-slate-300 mb-3">Additional Stat Points Required</h3>
+                            <div class="grid grid-cols-5 gap-2">
+                                {#each Object.entries(result.missingStats) as [stat, pts]}
+                                    <div class="bg-slate-700 p-2 rounded text-center {pts > 0 ? 'border border-red-900/50' : ''}">
+                                        <div class="text-xs text-slate-400">{stat}</div>
+                                        <div class="text-xl font-bold {pts > 0 ? 'text-red-400' : 'text-slate-500'}">+{pts}</div>
+                                    </div>
+                                {/each}
+                            </div>
+                        </div>
+                    {:else}
+                        <div class="bg-emerald-900/30 border border-emerald-500/50 p-4 rounded text-center">
+                            <span class="text-emerald-400 font-medium">Target stats achieved! No additional stat points required.</span>
+                        </div>
+                    {/if}
+
                     <!-- Final Stats -->
                     <div class="bg-slate-900 p-4 rounded border border-slate-700">
-                         <h3 class="text-sm font-medium text-slate-400 mb-2 uppercase tracking-wider">Final Total Stats</h3>
+                         <h3 class="text-sm font-medium text-slate-400 mb-2 uppercase tracking-wider">Final stat points</h3>
+                         <div class="flex justify-between text-sm">
+                            {#each Object.entries(result.finalBaseStats) as [stat, val]}
+                                <div class="text-center">
+                                    <span class="block text-slate-500 text-xs">{stat}</span>
+                                    <span class="font-bold text-white">{val}</span>
+                                </div>
+                            {/each}
+                         </div>
+                    </div>
+
+                    <!-- Final Total Stats (with items) -->
+                    <div class="bg-slate-900 p-4 rounded border border-slate-700">
+                         <h3 class="text-sm font-medium text-slate-400 mb-2 uppercase tracking-wider">Final stat points (with items)</h3>
                          <div class="flex justify-between text-sm">
                             {#each Object.entries(result.finalStats) as [stat, val]}
                                 <div class="text-center">
@@ -479,25 +518,9 @@
                          </div>
                     </div>
 
-                    <!-- Warnings -->
-                    {#if result.warnings.length > 0}
-                        <div class="bg-red-900/30 border border-red-500/50 p-4 rounded">
-                            <h4 class="text-red-400 font-bold text-sm mb-2">Warnings</h4>
-                            <ul class="list-disc list-inside text-xs text-red-200">
-                                {#each result.warnings as warn}
-                                    <li>{warn}</li>
-                                {/each}
-                            </ul>
-                        </div>
-                    {/if}
-
                 </div>
             {/if}
         </section>
 
     </main>
-
-    <footer class="max-w-6xl mx-auto mt-12 text-center text-slate-600 text-sm">
-        <p>Made with ❤️ by Kariya</p>
-    </footer>
 </div>

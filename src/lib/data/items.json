@@ -1,2224 +1,2929 @@
 {
-    "items": [
-        {
-            "name": "Mythril Boots",
-            "type": "boot",
-            "class": "all",
-            "stats": {
-                "STR": 0,
-                "INT": 0,
-                "WIS": 1,
-                "CON": 0,
-                "DEX": 10
-            }
-        },
-        {
-            "name": "Hy-Brasyl Boots",
-            "type": "boot",
-            "class": "all",
-            "stats": {
-                "STR": 1,
-                "INT": 0,
-                "WIS": 0,
-                "CON": 0,
-                "DEX": 10
-            }
-        },
-        {
-            "name": "Hy-Brasyl Belt",
-            "type": "belt",
-            "class": "all",
-            "stats": {
-                "STR": 0,
-                "INT": 0,
-                "WIS": 1,
-                "CON": 1,
-                "DEX": 0
-            }
-        },
-        {
-            "name": "Enchanted Magus Hades",
-            "type": "weapon",
-            "class": "wizard",
-            "stats": {
-                "STR": 0,
-                "INT": 2,
-                "WIS": 2,
-                "CON": 0,
-                "DEX": 0
-            }
-        },
-        {
-            "name": "Enchanted Magus Saber",
-            "type": "weapon",
-            "class": "wizard",
-            "stats": {
-                "STR": 0,
-                "INT": 2,
-                "WIS": 2,
-                "CON": 0,
-                "DEX": 0
-            }
-        },
-        {
-            "name": "Blessed Two-Handed Hy-Brasyl Escalon",
-            "type": "weapon",
-            "class": "warrior",
-            "stats": {
-                "STR": 1,
-                "INT": 0,
-                "WIS": 1,
-                "CON": 0,
-                "DEX": 0
-            }
-        },
-        {
-            "name": "Cursed Two-Handed Hy-Brasyl Escalon",
-            "type": "weapon",
-            "class": "warrior",
-            "stats": {
-                "STR": 1,
-                "INT": 1,
-                "WIS": 0,
-                "CON": 0,
-                "DEX": 0
-            }
-        },
-        {
-            "name": "Enchanted Hy-Brasyl Escalon",
-            "type": "weapon",
-            "class": "warrior",
-            "stats": {
-                "STR": 2,
-                "INT": 0,
-                "WIS": 2,
-                "CON": 0,
-                "DEX": 0
-            }
-        },
-        {
-            "name": "Enchanted Two-Handed Hy-Brasyl Escalon",
-            "type": "weapon",
-            "class": "warrior",
-            "stats": {
-                "STR": 2,
-                "INT": 0,
-                "WIS": 0,
-                "CON": 0,
-                "DEX": 2
-            }
-        },
-        {
-            "name": "Mystic Two-Handed Hy-Brasyl Escalon",
-            "type": "weapon",
-            "class": "warrior",
-            "stats": {
-                "STR": 1,
-                "INT": 1,
-                "WIS": 0,
-                "CON": 0,
-                "DEX": 0
-            }
-        },
-        {
-            "name": "Rat King's Dagger",
-            "type": "weapon",
-            "class": "rogue",
-            "stats": {
-                "STR": 1,
-                "INT": 0,
-                "WIS": 0,
-                "CON": 0,
-                "DEX": 2
-            }
-        },
-        {
-            "name": "Blessed Hy-Brasyl Azoth",
-            "type": "weapon",
-            "class": "rogue",
-            "stats": {
-                "STR": 0,
-                "INT": 0,
-                "WIS": 1,
-                "CON": 0,
-                "DEX": 1
-            }
-        },
-        {
-            "name": "Cursed Hy-Brasyl Azoth",
-            "type": "weapon",
-            "class": "rogue",
-            "stats": {
-                "STR": 0,
-                "INT": 1,
-                "WIS": 0,
-                "CON": 0,
-                "DEX": 1
-            }
-        },
-        {
-            "name": "Enchanted Hy-Brasyl Azoth",
-            "type": "weapon",
-            "class": "rogue",
-            "stats": {
-                "STR": 2,
-                "INT": 0,
-                "WIS": 0,
-                "CON": 0,
-                "DEX": 2
-            }
-        },
-        {
-            "name": "Mystic Hy-Brasyl Azoth",
-            "type": "weapon",
-            "class": "rogue",
-            "stats": {
-                "STR": 0,
-                "INT": 1,
-                "WIS": 0,
-                "CON": 0,
-                "DEX": 1
-            }
-        },
-        {
-            "name": "Beryl Earrings",
-            "type": "earring",
-            "class": "all",
-            "stats": {
-                "STR": 0,
-                "INT": 1,
-                "WIS": 0,
-                "CON": 0,
-                "DEX": 0
-            }
-        },
-        {
-            "name": "Coral Earrings",
-            "type": "earring",
-            "class": "all",
-            "stats": {
-                "STR": 0,
-                "INT": 2,
-                "WIS": 0,
-                "CON": 0,
-                "DEX": 0
-            }
-        },
-        {
-            "name": "Gold Earrings",
-            "type": "earring",
-            "class": "all",
-            "stats": {
-                "STR": 2,
-                "INT": 0,
-                "WIS": 0,
-                "CON": 0,
-                "DEX": 0
-            }
-        },
-        {
-            "name": "Silver Earrings",
-            "type": "earring",
-            "class": "all",
-            "stats": {
-                "STR": 1,
-                "INT": 0,
-                "WIS": 0,
-                "CON": 0,
-                "DEX": 0
-            }
-        },
-        {
-            "name": "Ruby Earrings",
-            "type": "earring",
-            "class": "all",
-            "stats": {
-                "STR": 1,
-                "INT": 0,
-                "WIS": 0,
-                "CON": 1,
-                "DEX": 0
-            }
-        },
-        {
-            "name": "Basic Pearl Earrings",
-            "type": "earring",
-            "class": "all",
-            "stats": {
-                "STR": 0,
-                "INT": 1,
-                "WIS": 1,
-                "CON": 0,
-                "DEX": 0
-            }
-        },
-        {
-            "name": "Crystal Fantasy Earrings",
-            "type": "earring",
-            "class": "all",
-            "stats": {
-                "STR": 1,
-                "INT": 1,
-                "WIS": 1,
-                "CON": 1,
-                "DEX": 1
-            }
-        },
-        {
-            "name": "Cail Leather Gauntlet",
-            "type": "gauntlet",
-            "class": "all",
-            "stats": {
-                "STR": 0,
-                "INT": 0,
-                "WIS": 0,
-                "CON": 1,
-                "DEX": 0
-            }
-        },
-        {
-            "name": "Cail Iron Gauntlet",
-            "type": "gauntlet",
-            "class": "all",
-            "stats": {
-                "STR": 0,
-                "INT": 0,
-                "WIS": 0,
-                "CON": 1,
-                "DEX": 0
-            }
-        },
-        {
-            "name": "Cail Mythril Gauntlet",
-            "type": "gauntlet",
-            "class": "all",
-            "stats": {
-                "STR": 0,
-                "INT": 0,
-                "WIS": 0,
-                "CON": 1,
-                "DEX": 0
-            }
-        },
-        {
-            "name": "Cail Hy-brasyl Gauntlet",
-            "type": "gauntlet",
-            "class": "all",
-            "stats": {
-                "STR": 0,
-                "INT": 0,
-                "WIS": 0,
-                "CON": 1,
-                "DEX": 0
-            }
-        },
-        {
-            "name": "Cail Leather Greaves",
-            "type": "greaves",
-            "class": "all",
-            "stats": {
-                "STR": 0,
-                "INT": 0,
-                "WIS": 0,
-                "CON": 1,
-                "DEX": 0
-            }
-        },
-        {
-            "name": "Cail Iron Greaves",
-            "type": "greaves",
-            "class": "all",
-            "stats": {
-                "STR": 0,
-                "INT": 0,
-                "WIS": 0,
-                "CON": 1,
-                "DEX": 0
-            }
-        },
-        {
-            "name": "Cail Mythril Greaves",
-            "type": "greaves",
-            "class": "all",
-            "stats": {
-                "STR": 0,
-                "INT": 0,
-                "WIS": 0,
-                "CON": 1,
-                "DEX": 0
-            }
-        },
-        {
-            "name": "Cail Hy-brasyl Greaves",
-            "type": "greaves",
-            "class": "all",
-            "stats": {
-                "STR": 0,
-                "INT": 0,
-                "WIS": 0,
-                "CON": 1,
-                "DEX": 0
-            }
-        },
-        {
-            "name": "Cail Leather Shield",
-            "type": "shield",
-            "class": "all",
-            "stats": {
-                "STR": 0,
-                "INT": 0,
-                "WIS": 0,
-                "CON": 1,
-                "DEX": 0
-            }
-        },
-        {
-            "name": "Cail Iron Shield",
-            "type": "shield",
-            "class": "all",
-            "stats": {
-                "STR": 0,
-                "INT": 0,
-                "WIS": 0,
-                "CON": 1,
-                "DEX": 0
-            }
-        },
-        {
-            "name": "Cail Mythril Shield",
-            "type": "shield",
-            "class": "all",
-            "stats": {
-                "STR": 0,
-                "INT": 0,
-                "WIS": 0,
-                "CON": 1,
-                "DEX": 0
-            }
-        },
-        {
-            "name": "Cail Hy-brasyl Shield",
-            "type": "shield",
-            "class": "all",
-            "stats": {
-                "STR": 0,
-                "INT": 0,
-                "WIS": 0,
-                "CON": 1,
-                "DEX": 0
-            }
-        },
-        {
-            "name": "Cail Boots",
-            "type": "boot",
-            "class": "all",
-            "stats": {
-                "STR": 0,
-                "INT": 0,
-                "WIS": 0,
-                "CON": 1,
-                "DEX": 0
-            }
-        },
-        {
-            "name": "Cail Cured Boots",
-            "type": "boot",
-            "class": "all",
-            "stats": {
-                "STR": 0,
-                "INT": 0,
-                "WIS": 0,
-                "CON": 1,
-                "DEX": 1
-            }
-        },
-        {
-            "name": "Cail Shagreen Boots",
-            "type": "boot",
-            "class": "all",
-            "stats": {
-                "STR": 0,
-                "INT": 0,
-                "WIS": 0,
-                "CON": 1,
-                "DEX": 2
-            }
-        },
-        {
-            "name": "Cail Cordovan Boots",
-            "type": "boot",
-            "class": "all",
-            "stats": {
-                "STR": 0,
-                "INT": 0,
-                "WIS": 0,
-                "CON": 1,
-                "DEX": 3
-            }
-        },
-        {
-            "name": "Cail Saffian Boots",
-            "type": "boot",
-            "class": "all",
-            "stats": {
-                "STR": 0,
-                "INT": 0,
-                "WIS": 0,
-                "CON": 1,
-                "DEX": 4
-            }
-        },
-        {
-            "name": "Cail Magma Boots",
-            "type": "boot",
-            "class": "all",
-            "stats": {
-                "STR": 0,
-                "INT": 0,
-                "WIS": 0,
-                "CON": 1,
-                "DEX": 5
-            }
-        },
-        {
-            "name": "Cail Enchanted Boots",
-            "type": "boot",
-            "class": "all",
-            "stats": {
-                "STR": 0,
-                "INT": 0,
-                "WIS": 0,
-                "CON": 1,
-                "DEX": 6
-            }
-        },
-        {
-            "name": "Cail Silver Earring",
-            "type": "earring",
-            "class": "all",
-            "stats": {
-                "STR": 1,
-                "INT": 0,
-                "WIS": 0,
-                "CON": 1,
-                "DEX": 0
-            }
-        },
-        {
-            "name": "Cail Gold Earring",
-            "type": "earring",
-            "class": "all",
-            "stats": {
-                "STR": 2,
-                "INT": 0,
-                "WIS": 0,
-                "CON": 1,
-                "DEX": 0
-            }
-        },
-        {
-            "name": "Cail Ruby Earring",
-            "type": "earring",
-            "class": "all",
-            "stats": {
-                "STR": 0,
-                "INT": 1,
-                "WIS": 1,
-                "CON": 1,
-                "DEX": 0
-            }
-        },
-        {
-            "name": "Cail Coral Earring",
-            "type": "earring",
-            "class": "all",
-            "stats": {
-                "STR": 0,
-                "INT": 2,
-                "WIS": 0,
-                "CON": 1,
-                "DEX": 0
-            }
-        },
-        {
-            "name": "Cail Beryl Earring",
-            "type": "earring",
-            "class": "all",
-            "stats": {
-                "STR": 0,
-                "INT": 1,
-                "WIS": 0,
-                "CON": 1,
-                "DEX": 0
-            }
-        },
-        {
-            "name": "Luathas Leather Gauntlet",
-            "type": "gauntlet",
-            "class": "all",
-            "stats": {
-                "STR": 0,
-                "INT": 1,
-                "WIS": 0,
-                "CON": 0,
-                "DEX": 0
-            }
-        },
-        {
-            "name": "Luathas Iron Gauntlet",
-            "type": "gauntlet",
-            "class": "all",
-            "stats": {
-                "STR": 0,
-                "INT": 1,
-                "WIS": 0,
-                "CON": 0,
-                "DEX": 0
-            }
-        },
-        {
-            "name": "Luathas Mythril Gauntlet",
-            "type": "gauntlet",
-            "class": "all",
-            "stats": {
-                "STR": 0,
-                "INT": 1,
-                "WIS": 0,
-                "CON": 0,
-                "DEX": 0
-            }
-        },
-        {
-            "name": "Luathas Hy-brasyl Gauntlet",
-            "type": "gauntlet",
-            "class": "all",
-            "stats": {
-                "STR": 0,
-                "INT": 1,
-                "WIS": 0,
-                "CON": 0,
-                "DEX": 0
-            }
-        },
-        {
-            "name": "Luathas Leather Greaves",
-            "type": "greaves",
-            "class": "all",
-            "stats": {
-                "STR": 0,
-                "INT": 1,
-                "WIS": 0,
-                "CON": 0,
-                "DEX": 0
-            }
-        },
-        {
-            "name": "Luathas Iron Greaves",
-            "type": "greaves",
-            "class": "all",
-            "stats": {
-                "STR": 0,
-                "INT": 1,
-                "WIS": 0,
-                "CON": 0,
-                "DEX": 0
-            }
-        },
-        {
-            "name": "Luathas Mythril Greaves",
-            "type": "greaves",
-            "class": "all",
-            "stats": {
-                "STR": 0,
-                "INT": 1,
-                "WIS": 0,
-                "CON": 0,
-                "DEX": 0
-            }
-        },
-        {
-            "name": "Luathas Hy-brasyl Greaves",
-            "type": "greaves",
-            "class": "all",
-            "stats": {
-                "STR": 0,
-                "INT": 1,
-                "WIS": 0,
-                "CON": 0,
-                "DEX": 0
-            }
-        },
-        {
-            "name": "Luathas Leather Shield",
-            "type": "shield",
-            "class": "all",
-            "stats": {
-                "STR": 0,
-                "INT": 1,
-                "WIS": 0,
-                "CON": 0,
-                "DEX": 0
-            }
-        },
-        {
-            "name": "Luathas Iron Shield",
-            "type": "shield",
-            "class": "all",
-            "stats": {
-                "STR": 0,
-                "INT": 1,
-                "WIS": 0,
-                "CON": 0,
-                "DEX": 0
-            }
-        },
-        {
-            "name": "Luathas Mythril Shield",
-            "type": "shield",
-            "class": "all",
-            "stats": {
-                "STR": 0,
-                "INT": 1,
-                "WIS": 0,
-                "CON": 0,
-                "DEX": 0
-            }
-        },
-        {
-            "name": "Luathas Hy-brasyl Shield",
-            "type": "shield",
-            "class": "all",
-            "stats": {
-                "STR": 0,
-                "INT": 1,
-                "WIS": 0,
-                "CON": 0,
-                "DEX": 0
-            }
-        },
-        {
-            "name": "Luathas Boots",
-            "type": "boot",
-            "class": "all",
-            "stats": {
-                "STR": 0,
-                "INT": 1,
-                "WIS": 0,
-                "CON": 0,
-                "DEX": 0
-            }
-        },
-        {
-            "name": "Luathas Cured Boots",
-            "type": "boot",
-            "class": "all",
-            "stats": {
-                "STR": 0,
-                "INT": 1,
-                "WIS": 0,
-                "CON": 0,
-                "DEX": 1
-            }
-        },
-        {
-            "name": "Luathas Shagreen Boots",
-            "type": "boot",
-            "class": "all",
-            "stats": {
-                "STR": 0,
-                "INT": 1,
-                "WIS": 0,
-                "CON": 0,
-                "DEX": 2
-            }
-        },
-        {
-            "name": "Luathas Cordovan Boots",
-            "type": "boot",
-            "class": "all",
-            "stats": {
-                "STR": 0,
-                "INT": 1,
-                "WIS": 0,
-                "CON": 0,
-                "DEX": 3
-            }
-        },
-        {
-            "name": "Luathas Saffian Boots",
-            "type": "boot",
-            "class": "all",
-            "stats": {
-                "STR": 0,
-                "INT": 1,
-                "WIS": 0,
-                "CON": 0,
-                "DEX": 4
-            }
-        },
-        {
-            "name": "Luathas Magma Boots",
-            "type": "boot",
-            "class": "all",
-            "stats": {
-                "STR": 0,
-                "INT": 1,
-                "WIS": 0,
-                "CON": 0,
-                "DEX": 5
-            }
-        },
-        {
-            "name": "Luathas Enchanted Boots",
-            "type": "boot",
-            "class": "all",
-            "stats": {
-                "STR": 0,
-                "INT": 1,
-                "WIS": 0,
-                "CON": 0,
-                "DEX": 6
-            }
-        },
-        {
-            "name": "Luathas Silver Earring",
-            "type": "earring",
-            "class": "all",
-            "stats": {
-                "STR": 1,
-                "INT": 1,
-                "WIS": 0,
-                "CON": 0,
-                "DEX": 0
-            }
-        },
-        {
-            "name": "Luathas Gold Earring",
-            "type": "earring",
-            "class": "all",
-            "stats": {
-                "STR": 2,
-                "INT": 1,
-                "WIS": 0,
-                "CON": 0,
-                "DEX": 0
-            }
-        },
-        {
-            "name": "Luathas Ruby Earring",
-            "type": "earring",
-            "class": "all",
-            "stats": {
-                "STR": 0,
-                "INT": 2,
-                "WIS": 1,
-                "CON": 0,
-                "DEX": 0
-            }
-        },
-        {
-            "name": "Luathas Coral Earring",
-            "type": "earring",
-            "class": "all",
-            "stats": {
-                "STR": 0,
-                "INT": 3,
-                "WIS": 0,
-                "CON": 0,
-                "DEX": 0
-            }
-        },
-        {
-            "name": "Luathas Beryl Earring",
-            "type": "earring",
-            "class": "all",
-            "stats": {
-                "STR": 0,
-                "INT": 2,
-                "WIS": 0,
-                "CON": 0,
-                "DEX": 0
-            }
-        },
-        {
-            "name": "Glioca Leather Gauntlet",
-            "type": "gauntlet",
-            "class": "all",
-            "stats": {
-                "STR": 0,
-                "INT": 0,
-                "WIS": 1,
-                "CON": 0,
-                "DEX": 0
-            }
-        },
-        {
-            "name": "Glioca Iron Gauntlet",
-            "type": "gauntlet",
-            "class": "all",
-            "stats": {
-                "STR": 0,
-                "INT": 0,
-                "WIS": 1,
-                "CON": 0,
-                "DEX": 0
-            }
-        },
-        {
-            "name": "Glioca Mythril Gauntlet",
-            "type": "gauntlet",
-            "class": "all",
-            "stats": {
-                "STR": 0,
-                "INT": 0,
-                "WIS": 1,
-                "CON": 0,
-                "DEX": 0
-            }
-        },
-        {
-            "name": "Glioca Hy-brasyl Gauntlet",
-            "type": "gauntlet",
-            "class": "all",
-            "stats": {
-                "STR": 0,
-                "INT": 0,
-                "WIS": 1,
-                "CON": 0,
-                "DEX": 0
-            }
-        },
-        {
-            "name": "Glioca Leather Greaves",
-            "type": "greaves",
-            "class": "all",
-            "stats": {
-                "STR": 0,
-                "INT": 0,
-                "WIS": 1,
-                "CON": 0,
-                "DEX": 0
-            }
-        },
-        {
-            "name": "Glioca Iron Greaves",
-            "type": "greaves",
-            "class": "all",
-            "stats": {
-                "STR": 0,
-                "INT": 0,
-                "WIS": 1,
-                "CON": 0,
-                "DEX": 0
-            }
-        },
-        {
-            "name": "Glioca Mythril Greaves",
-            "type": "greaves",
-            "class": "all",
-            "stats": {
-                "STR": 0,
-                "INT": 0,
-                "WIS": 1,
-                "CON": 0,
-                "DEX": 0
-            }
-        },
-        {
-            "name": "Glioca Hy-brasyl Greaves",
-            "type": "greaves",
-            "class": "all",
-            "stats": {
-                "STR": 0,
-                "INT": 0,
-                "WIS": 1,
-                "CON": 0,
-                "DEX": 0
-            }
-        },
-        {
-            "name": "Glioca Leather Shield",
-            "type": "shield",
-            "class": "all",
-            "stats": {
-                "STR": 0,
-                "INT": 0,
-                "WIS": 1,
-                "CON": 0,
-                "DEX": 0
-            }
-        },
-        {
-            "name": "Glioca Iron Shield",
-            "type": "shield",
-            "class": "all",
-            "stats": {
-                "STR": 0,
-                "INT": 0,
-                "WIS": 1,
-                "CON": 0,
-                "DEX": 0
-            }
-        },
-        {
-            "name": "Glioca Mythril Shield",
-            "type": "shield",
-            "class": "all",
-            "stats": {
-                "STR": 0,
-                "INT": 0,
-                "WIS": 1,
-                "CON": 0,
-                "DEX": 0
-            }
-        },
-        {
-            "name": "Glioca Hy-brasyl Shield",
-            "type": "shield",
-            "class": "all",
-            "stats": {
-                "STR": 0,
-                "INT": 0,
-                "WIS": 1,
-                "CON": 0,
-                "DEX": 0
-            }
-        },
-        {
-            "name": "Glioca Boots",
-            "type": "boot",
-            "class": "all",
-            "stats": {
-                "STR": 0,
-                "INT": 0,
-                "WIS": 1,
-                "CON": 0,
-                "DEX": 0
-            }
-        },
-        {
-            "name": "Glioca Cured Boots",
-            "type": "boot",
-            "class": "all",
-            "stats": {
-                "STR": 0,
-                "INT": 0,
-                "WIS": 1,
-                "CON": 0,
-                "DEX": 1
-            }
-        },
-        {
-            "name": "Glioca Shagreen Boots",
-            "type": "boot",
-            "class": "all",
-            "stats": {
-                "STR": 0,
-                "INT": 0,
-                "WIS": 1,
-                "CON": 0,
-                "DEX": 2
-            }
-        },
-        {
-            "name": "Glioca Cordovan Boots",
-            "type": "boot",
-            "class": "all",
-            "stats": {
-                "STR": 0,
-                "INT": 0,
-                "WIS": 1,
-                "CON": 0,
-                "DEX": 3
-            }
-        },
-        {
-            "name": "Glioca Saffian Boots",
-            "type": "boot",
-            "class": "all",
-            "stats": {
-                "STR": 0,
-                "INT": 0,
-                "WIS": 1,
-                "CON": 0,
-                "DEX": 4
-            }
-        },
-        {
-            "name": "Glioca Magma Boots",
-            "type": "boot",
-            "class": "all",
-            "stats": {
-                "STR": 0,
-                "INT": 0,
-                "WIS": 1,
-                "CON": 0,
-                "DEX": 5
-            }
-        },
-        {
-            "name": "Glioca Enchanted Boots",
-            "type": "boot",
-            "class": "all",
-            "stats": {
-                "STR": 0,
-                "INT": 0,
-                "WIS": 1,
-                "CON": 0,
-                "DEX": 6
-            }
-        },
-        {
-            "name": "Glioca Silver Earring",
-            "type": "earring",
-            "class": "all",
-            "stats": {
-                "STR": 1,
-                "INT": 0,
-                "WIS": 1,
-                "CON": 0,
-                "DEX": 0
-            }
-        },
-        {
-            "name": "Glioca Gold Earring",
-            "type": "earring",
-            "class": "all",
-            "stats": {
-                "STR": 2,
-                "INT": 0,
-                "WIS": 1,
-                "CON": 0,
-                "DEX": 0
-            }
-        },
-        {
-            "name": "Glioca Ruby Earring",
-            "type": "earring",
-            "class": "all",
-            "stats": {
-                "STR": 0,
-                "INT": 1,
-                "WIS": 2,
-                "CON": 0,
-                "DEX": 0
-            }
-        },
-        {
-            "name": "Glioca Coral Earring",
-            "type": "earring",
-            "class": "all",
-            "stats": {
-                "STR": 0,
-                "INT": 2,
-                "WIS": 1,
-                "CON": 0,
-                "DEX": 0
-            }
-        },
-        {
-            "name": "Glioca Beryl Earring",
-            "type": "earring",
-            "class": "all",
-            "stats": {
-                "STR": 0,
-                "INT": 1,
-                "WIS": 1,
-                "CON": 0,
-                "DEX": 0
-            }
-        },
-        {
-            "name": "Ceannlaidir Leather Gauntlet",
-            "type": "gauntlet",
-            "class": "all",
-            "stats": {
-                "STR": 1,
-                "INT": 0,
-                "WIS": 0,
-                "CON": 0,
-                "DEX": 0
-            }
-        },
-        {
-            "name": "Ceannlaidir Iron Gauntlet",
-            "type": "gauntlet",
-            "class": "all",
-            "stats": {
-                "STR": 1,
-                "INT": 0,
-                "WIS": 0,
-                "CON": 0,
-                "DEX": 0
-            }
-        },
-        {
-            "name": "Ceannlaidir Mythril Gauntlet",
-            "type": "gauntlet",
-            "class": "all",
-            "stats": {
-                "STR": 1,
-                "INT": 0,
-                "WIS": 0,
-                "CON": 0,
-                "DEX": 0
-            }
-        },
-        {
-            "name": "Ceannlaidir Hy-brasyl Gauntlet",
-            "type": "gauntlet",
-            "class": "all",
-            "stats": {
-                "STR": 1,
-                "INT": 0,
-                "WIS": 0,
-                "CON": 0,
-                "DEX": 0
-            }
-        },
-        {
-            "name": "Ceannlaidir Leather Greaves",
-            "type": "greaves",
-            "class": "all",
-            "stats": {
-                "STR": 1,
-                "INT": 0,
-                "WIS": 0,
-                "CON": 0,
-                "DEX": 0
-            }
-        },
-        {
-            "name": "Ceannlaidir Iron Greaves",
-            "type": "greaves",
-            "class": "all",
-            "stats": {
-                "STR": 1,
-                "INT": 0,
-                "WIS": 0,
-                "CON": 0,
-                "DEX": 0
-            }
-        },
-        {
-            "name": "Ceannlaidir Mythril Greaves",
-            "type": "greaves",
-            "class": "all",
-            "stats": {
-                "STR": 1,
-                "INT": 0,
-                "WIS": 0,
-                "CON": 0,
-                "DEX": 0
-            }
-        },
-        {
-            "name": "Ceannlaidir Hy-brasyl Greaves",
-            "type": "greaves",
-            "class": "all",
-            "stats": {
-                "STR": 1,
-                "INT": 0,
-                "WIS": 0,
-                "CON": 0,
-                "DEX": 0
-            }
-        },
-        {
-            "name": "Ceannlaidir Leather Shield",
-            "type": "shield",
-            "class": "all",
-            "stats": {
-                "STR": 1,
-                "INT": 0,
-                "WIS": 0,
-                "CON": 0,
-                "DEX": 0
-            }
-        },
-        {
-            "name": "Ceannlaidir Iron Shield",
-            "type": "shield",
-            "class": "all",
-            "stats": {
-                "STR": 1,
-                "INT": 0,
-                "WIS": 0,
-                "CON": 0,
-                "DEX": 0
-            }
-        },
-        {
-            "name": "Ceannlaidir Mythril Shield",
-            "type": "shield",
-            "class": "all",
-            "stats": {
-                "STR": 1,
-                "INT": 0,
-                "WIS": 0,
-                "CON": 0,
-                "DEX": 0
-            }
-        },
-        {
-            "name": "Ceannlaidir Hy-brasyl Shield",
-            "type": "shield",
-            "class": "all",
-            "stats": {
-                "STR": 1,
-                "INT": 0,
-                "WIS": 0,
-                "CON": 0,
-                "DEX": 0
-            }
-        },
-        {
-            "name": "Ceannlaidir Boots",
-            "type": "boot",
-            "class": "all",
-            "stats": {
-                "STR": 1,
-                "INT": 0,
-                "WIS": 0,
-                "CON": 0,
-                "DEX": 0
-            }
-        },
-        {
-            "name": "Ceannlaidir Cured Boots",
-            "type": "boot",
-            "class": "all",
-            "stats": {
-                "STR": 1,
-                "INT": 0,
-                "WIS": 0,
-                "CON": 0,
-                "DEX": 1
-            }
-        },
-        {
-            "name": "Ceannlaidir Shagreen Boots",
-            "type": "boot",
-            "class": "all",
-            "stats": {
-                "STR": 1,
-                "INT": 0,
-                "WIS": 0,
-                "CON": 0,
-                "DEX": 2
-            }
-        },
-        {
-            "name": "Ceannlaidir Cordovan Boots",
-            "type": "boot",
-            "class": "all",
-            "stats": {
-                "STR": 1,
-                "INT": 0,
-                "WIS": 0,
-                "CON": 0,
-                "DEX": 3
-            }
-        },
-        {
-            "name": "Ceannlaidir Saffian Boots",
-            "type": "boot",
-            "class": "all",
-            "stats": {
-                "STR": 1,
-                "INT": 0,
-                "WIS": 0,
-                "CON": 0,
-                "DEX": 4
-            }
-        },
-        {
-            "name": "Ceannlaidir Magma Boots",
-            "type": "boot",
-            "class": "all",
-            "stats": {
-                "STR": 1,
-                "INT": 0,
-                "WIS": 0,
-                "CON": 0,
-                "DEX": 5
-            }
-        },
-        {
-            "name": "Ceannlaidir Enchanted Boots",
-            "type": "boot",
-            "class": "all",
-            "stats": {
-                "STR": 1,
-                "INT": 0,
-                "WIS": 0,
-                "CON": 0,
-                "DEX": 6
-            }
-        },
-        {
-            "name": "Ceannlaidir Silver Earring",
-            "type": "earring",
-            "class": "all",
-            "stats": {
-                "STR": 2,
-                "INT": 0,
-                "WIS": 0,
-                "CON": 0,
-                "DEX": 0
-            }
-        },
-        {
-            "name": "Ceannlaidir Gold Earring",
-            "type": "earring",
-            "class": "all",
-            "stats": {
-                "STR": 3,
-                "INT": 0,
-                "WIS": 0,
-                "CON": 0,
-                "DEX": 0
-            }
-        },
-        {
-            "name": "Ceannlaidir Ruby Earring",
-            "type": "earring",
-            "class": "all",
-            "stats": {
-                "STR": 1,
-                "INT": 1,
-                "WIS": 1,
-                "CON": 0,
-                "DEX": 0
-            }
-        },
-        {
-            "name": "Ceannlaidir Coral Earring",
-            "type": "earring",
-            "class": "all",
-            "stats": {
-                "STR": 1,
-                "INT": 2,
-                "WIS": 0,
-                "CON": 0,
-                "DEX": 0
-            }
-        },
-        {
-            "name": "Ceannlaidir Beryl Earring",
-            "type": "earring",
-            "class": "all",
-            "stats": {
-                "STR": 1,
-                "INT": 1,
-                "WIS": 0,
-                "CON": 0,
-                "DEX": 0
-            }
-        },
-        {
-            "name": "Fiosachd Leather Gauntlet",
-            "type": "gauntlet",
-            "class": "all",
-            "stats": {
-                "STR": 0,
-                "INT": 0,
-                "WIS": 0,
-                "CON": 0,
-                "DEX": 1
-            }
-        },
-        {
-            "name": "Fiosachd Iron Gauntlet",
-            "type": "gauntlet",
-            "class": "all",
-            "stats": {
-                "STR": 0,
-                "INT": 0,
-                "WIS": 0,
-                "CON": 0,
-                "DEX": 1
-            }
-        },
-        {
-            "name": "Fiosachd Mythril Gauntlet",
-            "type": "gauntlet",
-            "class": "all",
-            "stats": {
-                "STR": 0,
-                "INT": 0,
-                "WIS": 0,
-                "CON": 0,
-                "DEX": 1
-            }
-        },
-        {
-            "name": "Fiosachd Hy-brasyl Gauntlet",
-            "type": "gauntlet",
-            "class": "all",
-            "stats": {
-                "STR": 0,
-                "INT": 0,
-                "WIS": 0,
-                "CON": 0,
-                "DEX": 1
-            }
-        },
-        {
-            "name": "Fiosachd Leather Greaves",
-            "type": "greaves",
-            "class": "all",
-            "stats": {
-                "STR": 0,
-                "INT": 0,
-                "WIS": 0,
-                "CON": 0,
-                "DEX": 1
-            }
-        },
-        {
-            "name": "Fiosachd Iron Greaves",
-            "type": "greaves",
-            "class": "all",
-            "stats": {
-                "STR": 0,
-                "INT": 0,
-                "WIS": 0,
-                "CON": 0,
-                "DEX": 1
-            }
-        },
-        {
-            "name": "Fiosachd Mythril Greaves",
-            "type": "greaves",
-            "class": "all",
-            "stats": {
-                "STR": 0,
-                "INT": 0,
-                "WIS": 0,
-                "CON": 0,
-                "DEX": 1
-            }
-        },
-        {
-            "name": "Fiosachd Hy-brasyl Greaves",
-            "type": "greaves",
-            "class": "all",
-            "stats": {
-                "STR": 0,
-                "INT": 0,
-                "WIS": 0,
-                "CON": 0,
-                "DEX": 1
-            }
-        },
-        {
-            "name": "Fiosachd Leather Shield",
-            "type": "shield",
-            "class": "all",
-            "stats": {
-                "STR": 0,
-                "INT": 0,
-                "WIS": 0,
-                "CON": 0,
-                "DEX": 1
-            }
-        },
-        {
-            "name": "Fiosachd Iron Shield",
-            "type": "shield",
-            "class": "all",
-            "stats": {
-                "STR": 0,
-                "INT": 0,
-                "WIS": 0,
-                "CON": 0,
-                "DEX": 1
-            }
-        },
-        {
-            "name": "Fiosachd Mythril Shield",
-            "type": "shield",
-            "class": "all",
-            "stats": {
-                "STR": 0,
-                "INT": 0,
-                "WIS": 0,
-                "CON": 0,
-                "DEX": 1
-            }
-        },
-        {
-            "name": "Fiosachd Hy-brasyl Shield",
-            "type": "shield",
-            "class": "all",
-            "stats": {
-                "STR": 0,
-                "INT": 0,
-                "WIS": 0,
-                "CON": 0,
-                "DEX": 1
-            }
-        },
-        {
-            "name": "Fiosachd Boots",
-            "type": "boot",
-            "class": "all",
-            "stats": {
-                "STR": 0,
-                "INT": 0,
-                "WIS": 0,
-                "CON": 0,
-                "DEX": 1
-            }
-        },
-        {
-            "name": "Fiosachd Cured Boots",
-            "type": "boot",
-            "class": "all",
-            "stats": {
-                "STR": 0,
-                "INT": 0,
-                "WIS": 0,
-                "CON": 0,
-                "DEX": 2
-            }
-        },
-        {
-            "name": "Fiosachd Shagreen Boots",
-            "type": "boot",
-            "class": "all",
-            "stats": {
-                "STR": 0,
-                "INT": 0,
-                "WIS": 0,
-                "CON": 0,
-                "DEX": 3
-            }
-        },
-        {
-            "name": "Fiosachd Cordovan Boots",
-            "type": "boot",
-            "class": "all",
-            "stats": {
-                "STR": 0,
-                "INT": 0,
-                "WIS": 0,
-                "CON": 0,
-                "DEX": 4
-            }
-        },
-        {
-            "name": "Fiosachd Saffian Boots",
-            "type": "boot",
-            "class": "all",
-            "stats": {
-                "STR": 0,
-                "INT": 0,
-                "WIS": 0,
-                "CON": 0,
-                "DEX": 5
-            }
-        },
-        {
-            "name": "Fiosachd Magma Boots",
-            "type": "boot",
-            "class": "all",
-            "stats": {
-                "STR": 0,
-                "INT": 0,
-                "WIS": 0,
-                "CON": 0,
-                "DEX": 6
-            }
-        },
-        {
-            "name": "Fiosachd Enchanted Boots",
-            "type": "boot",
-            "class": "all",
-            "stats": {
-                "STR": 0,
-                "INT": 0,
-                "WIS": 0,
-                "CON": 0,
-                "DEX": 7
-            }
-        },
-        {
-            "name": "Fiosachd Silver Earring",
-            "type": "earring",
-            "class": "all",
-            "stats": {
-                "STR": 1,
-                "INT": 0,
-                "WIS": 0,
-                "CON": 0,
-                "DEX": 1
-            }
-        },
-        {
-            "name": "Fiosachd Gold Earring",
-            "type": "earring",
-            "class": "all",
-            "stats": {
-                "STR": 2,
-                "INT": 0,
-                "WIS": 0,
-                "CON": 0,
-                "DEX": 1
-            }
-        },
-        {
-            "name": "Fiosachd Ruby Earring",
-            "type": "earring",
-            "class": "all",
-            "stats": {
-                "STR": 0,
-                "INT": 1,
-                "WIS": 1,
-                "CON": 0,
-                "DEX": 1
-            }
-        },
-        {
-            "name": "Fiosachd Coral Earring",
-            "type": "earring",
-            "class": "all",
-            "stats": {
-                "STR": 0,
-                "INT": 2,
-                "WIS": 0,
-                "CON": 0,
-                "DEX": 1
-            }
-        },
-        {
-            "name": "Fiosachd Beryl Earring",
-            "type": "earring",
-            "class": "all",
-            "stats": {
-                "STR": 0,
-                "INT": 1,
-                "WIS": 0,
-                "CON": 0,
-                "DEX": 1
-            }
-        },
-        {
-            "name": "Cail Ruby Ring",
-            "type": "ring",
-            "class": "all",
-            "stats": {
-                "STR": 0,
-                "INT": 0,
-                "WIS": 0,
-                "CON": 1,
-                "DEX": 0
-            }
-        },
-        {
-            "name": "Cail Lapis Ring",
-            "type": "ring",
-            "class": "all",
-            "stats": {
-                "STR": 0,
-                "INT": 0,
-                "WIS": 0,
-                "CON": 1,
-                "DEX": 0
-            }
-        },
-        {
-            "name": "Cail Grave Ring",
-            "type": "ring",
-            "class": "all",
-            "stats": {
-                "STR": 0,
-                "INT": 0,
-                "WIS": 0,
-                "CON": 1,
-                "DEX": 0
-            }
-        },
-        {
-            "name": "Cail Amethyst Ring",
-            "type": "ring",
-            "class": "all",
-            "stats": {
-                "STR": 0,
-                "INT": 0,
-                "WIS": 0,
-                "CON": 1,
-                "DEX": 0
-            }
-        },
-        {
-            "name": "Cail Jade Ring",
-            "type": "ring",
-            "class": "all",
-            "stats": {
-                "STR": 0,
-                "INT": 0,
-                "WIS": 0,
-                "CON": 1,
-                "DEX": 0
-            }
-        },
-        {
-            "name": "Luathas Ruby Ring",
-            "type": "ring",
-            "class": "all",
-            "stats": {
-                "STR": 0,
-                "INT": 1,
-                "WIS": 0,
-                "CON": 0,
-                "DEX": 0
-            }
-        },
-        {
-            "name": "Luathas Lapis Ring",
-            "type": "ring",
-            "class": "all",
-            "stats": {
-                "STR": 0,
-                "INT": 1,
-                "WIS": 0,
-                "CON": 0,
-                "DEX": 0
-            }
-        },
-        {
-            "name": "Luathas Grave Ring",
-            "type": "ring",
-            "class": "all",
-            "stats": {
-                "STR": 0,
-                "INT": 1,
-                "WIS": 0,
-                "CON": 0,
-                "DEX": 0
-            }
-        },
-        {
-            "name": "Luathas Amethyst Ring",
-            "type": "ring",
-            "class": "all",
-            "stats": {
-                "STR": 0,
-                "INT": 1,
-                "WIS": 0,
-                "CON": 0,
-                "DEX": 0
-            }
-        },
-        {
-            "name": "Luathas Jade Ring",
-            "type": "ring",
-            "class": "all",
-            "stats": {
-                "STR": 0,
-                "INT": 1,
-                "WIS": 0,
-                "CON": 0,
-                "DEX": 0
-            }
-        },
-        {
-            "name": "Glioca Ruby Ring",
-            "type": "ring",
-            "class": "all",
-            "stats": {
-                "STR": 0,
-                "INT": 0,
-                "WIS": 1,
-                "CON": 0,
-                "DEX": 0
-            }
-        },
-        {
-            "name": "Glioca Lapis Ring",
-            "type": "ring",
-            "class": "all",
-            "stats": {
-                "STR": 0,
-                "INT": 0,
-                "WIS": 1,
-                "CON": 0,
-                "DEX": 0
-            }
-        },
-        {
-            "name": "Glioca Grave Ring",
-            "type": "ring",
-            "class": "all",
-            "stats": {
-                "STR": 0,
-                "INT": 0,
-                "WIS": 1,
-                "CON": 0,
-                "DEX": 0
-            }
-        },
-        {
-            "name": "Glioca Amethyst Ring",
-            "type": "ring",
-            "class": "all",
-            "stats": {
-                "STR": 0,
-                "INT": 0,
-                "WIS": 1,
-                "CON": 0,
-                "DEX": 0
-            }
-        },
-        {
-            "name": "Glioca Jade Ring",
-            "type": "ring",
-            "class": "all",
-            "stats": {
-                "STR": 0,
-                "INT": 0,
-                "WIS": 1,
-                "CON": 0,
-                "DEX": 0
-            }
-        },
-        {
-            "name": "Ceannlaidir Ruby Ring",
-            "type": "ring",
-            "class": "all",
-            "stats": {
-                "STR": 1,
-                "INT": 0,
-                "WIS": 0,
-                "CON": 0,
-                "DEX": 0
-            }
-        },
-        {
-            "name": "Ceannlaidir Lapis Ring",
-            "type": "ring",
-            "class": "all",
-            "stats": {
-                "STR": 1,
-                "INT": 0,
-                "WIS": 0,
-                "CON": 0,
-                "DEX": 0
-            }
-        },
-        {
-            "name": "Ceannlaidir Grave Ring",
-            "type": "ring",
-            "class": "all",
-            "stats": {
-                "STR": 1,
-                "INT": 0,
-                "WIS": 0,
-                "CON": 0,
-                "DEX": 0
-            }
-        },
-        {
-            "name": "Ceannlaidir Amethyst Ring",
-            "type": "ring",
-            "class": "all",
-            "stats": {
-                "STR": 1,
-                "INT": 0,
-                "WIS": 0,
-                "CON": 0,
-                "DEX": 0
-            }
-        },
-        {
-            "name": "Ceannlaidir Jade Ring",
-            "type": "ring",
-            "class": "all",
-            "stats": {
-                "STR": 1,
-                "INT": 0,
-                "WIS": 0,
-                "CON": 0,
-                "DEX": 0
-            }
-        },
-        {
-            "name": "Fiosachd Ruby Ring",
-            "type": "ring",
-            "class": "all",
-            "stats": {
-                "STR": 0,
-                "INT": 0,
-                "WIS": 0,
-                "CON": 0,
-                "DEX": 1
-            }
-        },
-        {
-            "name": "Fiosachd Lapis Ring",
-            "type": "ring",
-            "class": "all",
-            "stats": {
-                "STR": 0,
-                "INT": 0,
-                "WIS": 0,
-                "CON": 0,
-                "DEX": 1
-            }
-        },
-        {
-            "name": "Fiosachd Grave Ring",
-            "type": "ring",
-            "class": "all",
-            "stats": {
-                "STR": 0,
-                "INT": 0,
-                "WIS": 0,
-                "CON": 0,
-                "DEX": 1
-            }
-        },
-        {
-            "name": "Fiosachd Amethyst Ring",
-            "type": "ring",
-            "class": "all",
-            "stats": {
-                "STR": 0,
-                "INT": 0,
-                "WIS": 0,
-                "CON": 0,
-                "DEX": 1
-            }
-        },
-        {
-            "name": "Fiosachd Jade Ring",
-            "type": "ring",
-            "class": "all",
-            "stats": {
-                "STR": 0,
-                "INT": 0,
-                "WIS": 0,
-                "CON": 0,
-                "DEX": 1
-            }
-        },
-        {
-            "name": "Mythril Belt",
-            "type": "belt",
-            "class": "all",
-            "stats": {
-                "STR": 0,
-                "INT": 0,
-                "WIS": 0,
-                "CON": 1,
-                "DEX": 0
-            }
-        },
-        {
-            "name": "Leather Belt",
-            "type": "belt",
-            "class": "all",
-            "stats": {
-                "STR": 0,
-                "INT": 0,
-                "WIS": 1,
-                "CON": 0,
-                "DEX": 0
-            }
-        },
-        {
-            "name": "Carnun Plate",
-            "type": "armor",
-            "class": "warrior",
-            "stats": {
-                "STR": 4,
-                "INT": 0,
-                "WIS": -5,
-                "CON": 0,
-                "DEX": 0
-            }
-        },
-        {
-            "name": "Holy Disciple Gown",
-            "type": "armor",
-            "class": "priest",
-            "stats": {
-                "STR": 0,
-                "INT": 0,
-                "WIS": 4,
-                "CON": -5,
-                "DEX": 0
-            }
-        },
-        {
-            "name": "Holy Disciple Robes",
-            "type": "armor",
-            "class": "priest",
-            "stats": {
-                "STR": 0,
-                "INT": 0,
-                "WIS": 4,
-                "CON": -5,
-                "DEX": 0
-            }
-        },
-        {
-            "name": "Magus Disciple Gown",
-            "type": "armor",
-            "class": "wizard",
-            "stats": {
-                "STR": 0,
-                "INT": 4,
-                "WIS": 0,
-                "CON": -5,
-                "DEX": 0
-            }
-        },
-        {
-            "name": "Magus Disciple Robes",
-            "type": "armor",
-            "class": "wizard",
-            "stats": {
-                "STR": 0,
-                "INT": 4,
-                "WIS": 0,
-                "CON": -5,
-                "DEX": 0
-            }
-        },
-        {
-            "name": "Marauder Hide",
-            "type": "armor",
-            "class": "rogue",
-            "stats": {
-                "STR": 0,
-                "INT": -5,
-                "WIS": 0,
-                "CON": 0,
-                "DEX": 4
-            }
-        },
-        {
-            "name": "Pattern Walker",
-            "type": "armor",
-            "class": "monk",
-            "stats": {
-                "STR": 0,
-                "INT": 0,
-                "WIS": -5,
-                "CON": 4,
-                "DEX": 0
-            }
-        },
-        {
-            "name": "Stone Cross",
-            "type": "weapon",
-            "class": "priest",
-            "stats": {
-                "STR": 10,
-                "INT": -5,
-                "WIS": -5,
-                "CON": 0,
-                "DEX": 0
-            }
-        },
-        {
-            "name": "Combat Medallion",
-            "type": "ring",
-            "class": "warrior",
-            "stats": {
-                "STR": 1,
-                "INT": 0,
-                "WIS": 0,
-                "CON": 0,
-                "DEX": 0
-            }
-        },
-        {
-            "name": "Enchanted Holy Diana",
-            "type": "weapon",
-            "class": "priest",
-            "stats": {
-                "STR": 0,
-                "INT": 2,
-                "WIS": 2,
-                "CON": 0,
-                "DEX": 0
-            }
-        },
-        {
-            "name": "Enchanted Holy Saber",
-            "type": "weapon",
-            "class": "priest",
-            "stats": {
-                "STR": 0,
-                "INT": 2,
-                "WIS": 2,
-                "CON": 0,
-                "DEX": 0
-            }
-        },
-        {
-            "name": "Enchanted Hy-Brasyl Kalkuri",
-            "type": "weapon",
-            "class": "monk",
-            "stats": {
-                "STR": 2,
-                "INT": 0,
-                "WIS": 0,
-                "CON": 2,
-                "DEX": 0
-            }
-        },
-        {
-            "name": "Magical Spellbook",
-            "type": "ring",
-            "class": "wizard",
-            "stats": {
-                "STR": 0,
-                "INT": 1,
-                "WIS": 0,
-                "CON": 0,
-                "DEX": 0
-            }
-        },
-        {
-            "name": "Martial Scroll",
-            "type": "ring",
-            "class": "monk",
-            "stats": {
-                "STR": 0,
-                "INT": 0,
-                "WIS": 0,
-                "CON": 1,
-                "DEX": 0
-            }
-        },
-        {
-            "name": "Sacred Spellbook",
-            "type": "ring",
-            "class": "priest",
-            "stats": {
-                "STR": 0,
-                "INT": 0,
-                "WIS": 1,
-                "CON": 0,
-                "DEX": 0
-            }
-        },
-        {
-            "name": "Skeleton Keys",
-            "type": "ring",
-            "class": "rogue",
-            "stats": {
-                "STR": 0,
-                "INT": 0,
-                "WIS": 0,
-                "CON": 0,
-                "DEX": 1
-            }
-        }
-    ]
+  "items": [
+    {
+      "name": "Mythril Boots",
+      "type": "boot",
+      "class": "all",
+      "stats": {
+        "STR": 0,
+        "INT": 0,
+        "WIS": 1,
+        "CON": 0,
+        "DEX": 10
+      },
+      "level": 99
+    },
+    {
+      "name": "Hy-Brasyl Boots",
+      "type": "boot",
+      "class": "all",
+      "stats": {
+        "STR": 1,
+        "INT": 0,
+        "WIS": 0,
+        "CON": 0,
+        "DEX": 10
+      },
+      "level": 99
+    },
+    {
+      "name": "Hy-Brasyl Belt",
+      "type": "belt",
+      "class": "all",
+      "stats": {
+        "STR": 0,
+        "INT": 0,
+        "WIS": 1,
+        "CON": 1,
+        "DEX": 0
+      },
+      "level": 11
+    },
+    {
+      "name": "Enchanted Magus Hades",
+      "type": "weapon",
+      "class": "wizard",
+      "stats": {
+        "STR": 0,
+        "INT": 2,
+        "WIS": 2,
+        "CON": 0,
+        "DEX": 0
+      },
+      "level": 99
+    },
+    {
+      "name": "Enchanted Magus Saber",
+      "type": "weapon",
+      "class": "wizard",
+      "stats": {
+        "STR": 0,
+        "INT": 2,
+        "WIS": 2,
+        "CON": 0,
+        "DEX": 0
+      },
+      "level": 99
+    },
+    {
+      "name": "Blessed Two-Handed Hy-Brasyl Escalon",
+      "type": "weapon",
+      "class": "warrior",
+      "stats": {
+        "STR": 1,
+        "INT": 0,
+        "WIS": 1,
+        "CON": 0,
+        "DEX": 0
+      },
+      "level": 99
+    },
+    {
+      "name": "Cursed Two-Handed Hy-Brasyl Escalon",
+      "type": "weapon",
+      "class": "warrior",
+      "stats": {
+        "STR": 1,
+        "INT": 1,
+        "WIS": 0,
+        "CON": 0,
+        "DEX": 0
+      },
+      "level": 99
+    },
+    {
+      "name": "Enchanted Hy-Brasyl Escalon",
+      "type": "weapon",
+      "class": "warrior",
+      "stats": {
+        "STR": 2,
+        "INT": 0,
+        "WIS": 2,
+        "CON": 0,
+        "DEX": 0
+      },
+      "level": 99
+    },
+    {
+      "name": "Enchanted Two-Handed Hy-Brasyl Escalon",
+      "type": "weapon",
+      "class": "warrior",
+      "stats": {
+        "STR": 2,
+        "INT": 0,
+        "WIS": 0,
+        "CON": 0,
+        "DEX": 2
+      },
+      "level": 99
+    },
+    {
+      "name": "Mystic Two-Handed Hy-Brasyl Escalon",
+      "type": "weapon",
+      "class": "warrior",
+      "stats": {
+        "STR": 1,
+        "INT": 1,
+        "WIS": 0,
+        "CON": 0,
+        "DEX": 0
+      },
+      "level": 99
+    },
+    {
+      "name": "Rat King's Dagger",
+      "type": "weapon",
+      "class": "rogue",
+      "stats": {
+        "STR": 1,
+        "INT": 0,
+        "WIS": 0,
+        "CON": 0,
+        "DEX": 2
+      },
+      "level": 97
+    },
+    {
+      "name": "Blessed Hy-Brasyl Azoth",
+      "type": "weapon",
+      "class": "rogue",
+      "stats": {
+        "STR": 0,
+        "INT": 0,
+        "WIS": 1,
+        "CON": 0,
+        "DEX": 1
+      },
+      "level": 99
+    },
+    {
+      "name": "Cursed Hy-Brasyl Azoth",
+      "type": "weapon",
+      "class": "rogue",
+      "stats": {
+        "STR": 0,
+        "INT": 1,
+        "WIS": 0,
+        "CON": 0,
+        "DEX": 1
+      },
+      "level": 99
+    },
+    {
+      "name": "Enchanted Hy-Brasyl Azoth",
+      "type": "weapon",
+      "class": "rogue",
+      "stats": {
+        "STR": 2,
+        "INT": 0,
+        "WIS": 0,
+        "CON": 0,
+        "DEX": 2
+      },
+      "level": 99
+    },
+    {
+      "name": "Mystic Hy-Brasyl Azoth",
+      "type": "weapon",
+      "class": "rogue",
+      "stats": {
+        "STR": 0,
+        "INT": 1,
+        "WIS": 0,
+        "CON": 0,
+        "DEX": 1
+      },
+      "level": 99
+    },
+    {
+      "name": "Beryl Earrings",
+      "type": "earring",
+      "class": "all",
+      "stats": {
+        "STR": 0,
+        "INT": 1,
+        "WIS": 0,
+        "CON": 0,
+        "DEX": 0
+      },
+      "level": 8
+    },
+    {
+      "name": "Coral Earrings",
+      "type": "earring",
+      "class": "all",
+      "stats": {
+        "STR": 0,
+        "INT": 2,
+        "WIS": 0,
+        "CON": 0,
+        "DEX": 0
+      },
+      "level": 8
+    },
+    {
+      "name": "Gold Earrings",
+      "type": "earring",
+      "class": "all",
+      "stats": {
+        "STR": 2,
+        "INT": 0,
+        "WIS": 0,
+        "CON": 0,
+        "DEX": 0
+      },
+      "level": 8
+    },
+    {
+      "name": "Silver Earrings",
+      "type": "earring",
+      "class": "all",
+      "stats": {
+        "STR": 1,
+        "INT": 0,
+        "WIS": 0,
+        "CON": 0,
+        "DEX": 0
+      },
+      "level": 8
+    },
+    {
+      "name": "Ruby Earrings",
+      "type": "earring",
+      "class": "all",
+      "stats": {
+        "STR": 1,
+        "INT": 0,
+        "WIS": 0,
+        "CON": 1,
+        "DEX": 0
+      },
+      "level": 41
+    },
+    {
+      "name": "Basic Pearl Earrings",
+      "type": "earring",
+      "class": "all",
+      "stats": {
+        "STR": 0,
+        "INT": 1,
+        "WIS": 1,
+        "CON": 0,
+        "DEX": 0
+      },
+      "level": 97
+    },
+    {
+      "name": "Crystal Fantasy Earrings",
+      "type": "earring",
+      "class": "all",
+      "stats": {
+        "STR": 1,
+        "INT": 1,
+        "WIS": 1,
+        "CON": 1,
+        "DEX": 1
+      },
+      "level": 99
+    },
+    {
+      "name": "Cail Wooden Shield",
+      "type": "shield",
+      "class": "all",
+      "stats": {
+        "STR": 0,
+        "INT": 0,
+        "WIS": 0,
+        "CON": 1,
+        "DEX": 0
+      },
+      "level": 3
+    },
+    {
+      "name": "Luathas Wooden Shield",
+      "type": "shield",
+      "class": "all",
+      "stats": {
+        "STR": 0,
+        "INT": 1,
+        "WIS": 0,
+        "CON": 0,
+        "DEX": 0
+      },
+      "level": 3
+    },
+    {
+      "name": "Glioca Wooden Shield",
+      "type": "shield",
+      "class": "all",
+      "stats": {
+        "STR": 0,
+        "INT": 0,
+        "WIS": 1,
+        "CON": 0,
+        "DEX": 0
+      },
+      "level": 3
+    },
+    {
+      "name": "Ceannlaidir Wooden Shield",
+      "type": "shield",
+      "class": "all",
+      "stats": {
+        "STR": 1,
+        "INT": 0,
+        "WIS": 0,
+        "CON": 0,
+        "DEX": 0
+      },
+      "level": 3
+    },
+    {
+      "name": "Fiosachd Wooden Shield",
+      "type": "shield",
+      "class": "all",
+      "stats": {
+        "STR": 0,
+        "INT": 0,
+        "WIS": 0,
+        "CON": 0,
+        "DEX": 1
+      },
+      "level": 3
+    },
+    {
+      "name": "Cail Leather Gauntlet",
+      "type": "gauntlet",
+      "class": "all",
+      "stats": {
+        "STR": 0,
+        "INT": 0,
+        "WIS": 0,
+        "CON": 1,
+        "DEX": 0
+      },
+      "level": 9
+    },
+    {
+      "name": "Cail Iron Gauntlet",
+      "type": "gauntlet",
+      "class": "all",
+      "stats": {
+        "STR": 0,
+        "INT": 0,
+        "WIS": 0,
+        "CON": 1,
+        "DEX": 0
+      },
+      "level": 33
+    },
+    {
+      "name": "Cail Mythril Gauntlet",
+      "type": "gauntlet",
+      "class": "all",
+      "stats": {
+        "STR": 0,
+        "INT": 0,
+        "WIS": 0,
+        "CON": 1,
+        "DEX": 0
+      },
+      "level": 63
+    },
+    {
+      "name": "Cail Hy-brasyl Gauntlet",
+      "type": "gauntlet",
+      "class": "all",
+      "stats": {
+        "STR": 0,
+        "INT": 0,
+        "WIS": 0,
+        "CON": 1,
+        "DEX": 0
+      },
+      "level": 95
+    },
+    {
+      "name": "Cail Leather Greaves",
+      "type": "greaves",
+      "class": "all",
+      "stats": {
+        "STR": 0,
+        "INT": 0,
+        "WIS": 0,
+        "CON": 1,
+        "DEX": 0
+      },
+      "level": 6
+    },
+    {
+      "name": "Cail Iron Greaves",
+      "type": "greaves",
+      "class": "all",
+      "stats": {
+        "STR": 0,
+        "INT": 0,
+        "WIS": 0,
+        "CON": 1,
+        "DEX": 0
+      },
+      "level": 20
+    },
+    {
+      "name": "Cail Mythril Greaves",
+      "type": "greaves",
+      "class": "all",
+      "stats": {
+        "STR": 0,
+        "INT": 0,
+        "WIS": 0,
+        "CON": 1,
+        "DEX": 0
+      },
+      "level": 59
+    },
+    {
+      "name": "Cail Hy-brasyl Greaves",
+      "type": "greaves",
+      "class": "all",
+      "stats": {
+        "STR": 0,
+        "INT": 0,
+        "WIS": 0,
+        "CON": 1,
+        "DEX": 0
+      },
+      "level": 93
+    },
+    {
+      "name": "Cail Leather Shield",
+      "type": "shield",
+      "class": "all",
+      "stats": {
+        "STR": 0,
+        "INT": 0,
+        "WIS": 0,
+        "CON": 1,
+        "DEX": 0
+      },
+      "level": 15
+    },
+    {
+      "name": "Cail Iron Shield",
+      "type": "shield",
+      "class": "all",
+      "stats": {
+        "STR": 0,
+        "INT": 0,
+        "WIS": 0,
+        "CON": 1,
+        "DEX": 0
+      },
+      "level": 45
+    },
+    {
+      "name": "Cail Mythril Shield",
+      "type": "shield",
+      "class": "all",
+      "stats": {
+        "STR": 0,
+        "INT": 0,
+        "WIS": 0,
+        "CON": 1,
+        "DEX": 0
+      },
+      "level": 61
+    },
+    {
+      "name": "Cail Hy-brasyl Shield",
+      "type": "shield",
+      "class": "all",
+      "stats": {
+        "STR": 0,
+        "INT": 0,
+        "WIS": 0,
+        "CON": 1,
+        "DEX": 0
+      },
+      "level": 77
+    },
+    {
+      "name": "Cail Boots",
+      "type": "boot",
+      "class": "all",
+      "stats": {
+        "STR": 0,
+        "INT": 0,
+        "WIS": 0,
+        "CON": 1,
+        "DEX": 0
+      },
+      "level": 1
+    },
+    {
+      "name": "Cail Cured Boots",
+      "type": "boot",
+      "class": "all",
+      "stats": {
+        "STR": 0,
+        "INT": 0,
+        "WIS": 0,
+        "CON": 1,
+        "DEX": 1
+      },
+      "level": 24
+    },
+    {
+      "name": "Cail Shagreen Boots",
+      "type": "boot",
+      "class": "all",
+      "stats": {
+        "STR": 0,
+        "INT": 0,
+        "WIS": 0,
+        "CON": 1,
+        "DEX": 2
+      },
+      "level": 33
+    },
+    {
+      "name": "Cail Cordovan Boots",
+      "type": "boot",
+      "class": "all",
+      "stats": {
+        "STR": 0,
+        "INT": 0,
+        "WIS": 0,
+        "CON": 1,
+        "DEX": 3
+      },
+      "level": 50
+    },
+    {
+      "name": "Cail Saffian Boots",
+      "type": "boot",
+      "class": "all",
+      "stats": {
+        "STR": 0,
+        "INT": 0,
+        "WIS": 0,
+        "CON": 1,
+        "DEX": 4
+      },
+      "level": 66
+    },
+    {
+      "name": "Cail Magma Boots",
+      "type": "boot",
+      "class": "all",
+      "stats": {
+        "STR": 0,
+        "INT": 0,
+        "WIS": 0,
+        "CON": 1,
+        "DEX": 5
+      },
+      "level": 82
+    },
+    {
+      "name": "Cail Enchanted Boots",
+      "type": "boot",
+      "class": "all",
+      "stats": {
+        "STR": 0,
+        "INT": 0,
+        "WIS": 0,
+        "CON": 1,
+        "DEX": 6
+      },
+      "level": 96
+    },
+    {
+      "name": "Cail Silver Earring",
+      "type": "earring",
+      "class": "all",
+      "stats": {
+        "STR": 1,
+        "INT": 0,
+        "WIS": 0,
+        "CON": 1,
+        "DEX": 0
+      },
+      "level": 8
+    },
+    {
+      "name": "Cail Gold Earring",
+      "type": "earring",
+      "class": "all",
+      "stats": {
+        "STR": 2,
+        "INT": 0,
+        "WIS": 0,
+        "CON": 1,
+        "DEX": 0
+      },
+      "level": 8
+    },
+    {
+      "name": "Cail Ruby Earring",
+      "type": "earring",
+      "class": "all",
+      "stats": {
+        "STR": 0,
+        "INT": 1,
+        "WIS": 1,
+        "CON": 1,
+        "DEX": 0
+      },
+      "level": 41
+    },
+    {
+      "name": "Cail Coral Earring",
+      "type": "earring",
+      "class": "all",
+      "stats": {
+        "STR": 0,
+        "INT": 2,
+        "WIS": 0,
+        "CON": 1,
+        "DEX": 0
+      },
+      "level": 8
+    },
+    {
+      "name": "Cail Beryl Earring",
+      "type": "earring",
+      "class": "all",
+      "stats": {
+        "STR": 0,
+        "INT": 1,
+        "WIS": 0,
+        "CON": 1,
+        "DEX": 0
+      },
+      "level": 8
+    },
+    {
+      "name": "Luathas Leather Gauntlet",
+      "type": "gauntlet",
+      "class": "all",
+      "stats": {
+        "STR": 0,
+        "INT": 1,
+        "WIS": 0,
+        "CON": 0,
+        "DEX": 0
+      },
+      "level": 9
+    },
+    {
+      "name": "Luathas Iron Gauntlet",
+      "type": "gauntlet",
+      "class": "all",
+      "stats": {
+        "STR": 0,
+        "INT": 1,
+        "WIS": 0,
+        "CON": 0,
+        "DEX": 0
+      },
+      "level": 33
+    },
+    {
+      "name": "Luathas Mythril Gauntlet",
+      "type": "gauntlet",
+      "class": "all",
+      "stats": {
+        "STR": 0,
+        "INT": 1,
+        "WIS": 0,
+        "CON": 0,
+        "DEX": 0
+      },
+      "level": 63
+    },
+    {
+      "name": "Luathas Hy-brasyl Gauntlet",
+      "type": "gauntlet",
+      "class": "all",
+      "stats": {
+        "STR": 0,
+        "INT": 1,
+        "WIS": 0,
+        "CON": 0,
+        "DEX": 0
+      },
+      "level": 95
+    },
+    {
+      "name": "Luathas Leather Greaves",
+      "type": "greaves",
+      "class": "all",
+      "stats": {
+        "STR": 0,
+        "INT": 1,
+        "WIS": 0,
+        "CON": 0,
+        "DEX": 0
+      },
+      "level": 6
+    },
+    {
+      "name": "Luathas Iron Greaves",
+      "type": "greaves",
+      "class": "all",
+      "stats": {
+        "STR": 0,
+        "INT": 1,
+        "WIS": 0,
+        "CON": 0,
+        "DEX": 0
+      },
+      "level": 20
+    },
+    {
+      "name": "Luathas Mythril Greaves",
+      "type": "greaves",
+      "class": "all",
+      "stats": {
+        "STR": 0,
+        "INT": 1,
+        "WIS": 0,
+        "CON": 0,
+        "DEX": 0
+      },
+      "level": 59
+    },
+    {
+      "name": "Luathas Hy-brasyl Greaves",
+      "type": "greaves",
+      "class": "all",
+      "stats": {
+        "STR": 0,
+        "INT": 1,
+        "WIS": 0,
+        "CON": 0,
+        "DEX": 0
+      },
+      "level": 93
+    },
+    {
+      "name": "Luathas Leather Shield",
+      "type": "shield",
+      "class": "all",
+      "stats": {
+        "STR": 0,
+        "INT": 1,
+        "WIS": 0,
+        "CON": 0,
+        "DEX": 0
+      },
+      "level": 15
+    },
+    {
+      "name": "Luathas Iron Shield",
+      "type": "shield",
+      "class": "all",
+      "stats": {
+        "STR": 0,
+        "INT": 1,
+        "WIS": 0,
+        "CON": 0,
+        "DEX": 0
+      },
+      "level": 45
+    },
+    {
+      "name": "Luathas Mythril Shield",
+      "type": "shield",
+      "class": "all",
+      "stats": {
+        "STR": 0,
+        "INT": 1,
+        "WIS": 0,
+        "CON": 0,
+        "DEX": 0
+      },
+      "level": 61
+    },
+    {
+      "name": "Luathas Hy-brasyl Shield",
+      "type": "shield",
+      "class": "all",
+      "stats": {
+        "STR": 0,
+        "INT": 1,
+        "WIS": 0,
+        "CON": 0,
+        "DEX": 0
+      },
+      "level": 77
+    },
+    {
+      "name": "Luathas Boots",
+      "type": "boot",
+      "class": "all",
+      "stats": {
+        "STR": 0,
+        "INT": 1,
+        "WIS": 0,
+        "CON": 0,
+        "DEX": 0
+      },
+      "level": 1
+    },
+    {
+      "name": "Luathas Cured Boots",
+      "type": "boot",
+      "class": "all",
+      "stats": {
+        "STR": 0,
+        "INT": 1,
+        "WIS": 0,
+        "CON": 0,
+        "DEX": 1
+      },
+      "level": 24
+    },
+    {
+      "name": "Luathas Shagreen Boots",
+      "type": "boot",
+      "class": "all",
+      "stats": {
+        "STR": 0,
+        "INT": 1,
+        "WIS": 0,
+        "CON": 0,
+        "DEX": 2
+      },
+      "level": 33
+    },
+    {
+      "name": "Luathas Cordovan Boots",
+      "type": "boot",
+      "class": "all",
+      "stats": {
+        "STR": 0,
+        "INT": 1,
+        "WIS": 0,
+        "CON": 0,
+        "DEX": 3
+      },
+      "level": 50
+    },
+    {
+      "name": "Luathas Saffian Boots",
+      "type": "boot",
+      "class": "all",
+      "stats": {
+        "STR": 0,
+        "INT": 1,
+        "WIS": 0,
+        "CON": 0,
+        "DEX": 4
+      },
+      "level": 66
+    },
+    {
+      "name": "Luathas Magma Boots",
+      "type": "boot",
+      "class": "all",
+      "stats": {
+        "STR": 0,
+        "INT": 1,
+        "WIS": 0,
+        "CON": 0,
+        "DEX": 5
+      },
+      "level": 82
+    },
+    {
+      "name": "Luathas Enchanted Boots",
+      "type": "boot",
+      "class": "all",
+      "stats": {
+        "STR": 0,
+        "INT": 1,
+        "WIS": 0,
+        "CON": 0,
+        "DEX": 6
+      },
+      "level": 96
+    },
+    {
+      "name": "Luathas Silver Earring",
+      "type": "earring",
+      "class": "all",
+      "stats": {
+        "STR": 1,
+        "INT": 1,
+        "WIS": 0,
+        "CON": 0,
+        "DEX": 0
+      },
+      "level": 8
+    },
+    {
+      "name": "Luathas Gold Earring",
+      "type": "earring",
+      "class": "all",
+      "stats": {
+        "STR": 2,
+        "INT": 1,
+        "WIS": 0,
+        "CON": 0,
+        "DEX": 0
+      },
+      "level": 8
+    },
+    {
+      "name": "Luathas Ruby Earring",
+      "type": "earring",
+      "class": "all",
+      "stats": {
+        "STR": 0,
+        "INT": 2,
+        "WIS": 1,
+        "CON": 0,
+        "DEX": 0
+      },
+      "level": 41
+    },
+    {
+      "name": "Luathas Coral Earring",
+      "type": "earring",
+      "class": "all",
+      "stats": {
+        "STR": 0,
+        "INT": 3,
+        "WIS": 0,
+        "CON": 0,
+        "DEX": 0
+      },
+      "level": 8
+    },
+    {
+      "name": "Luathas Beryl Earring",
+      "type": "earring",
+      "class": "all",
+      "stats": {
+        "STR": 0,
+        "INT": 2,
+        "WIS": 0,
+        "CON": 0,
+        "DEX": 0
+      },
+      "level": 8
+    },
+    {
+      "name": "Glioca Leather Gauntlet",
+      "type": "gauntlet",
+      "class": "all",
+      "stats": {
+        "STR": 0,
+        "INT": 0,
+        "WIS": 1,
+        "CON": 0,
+        "DEX": 0
+      },
+      "level": 9
+    },
+    {
+      "name": "Glioca Iron Gauntlet",
+      "type": "gauntlet",
+      "class": "all",
+      "stats": {
+        "STR": 0,
+        "INT": 0,
+        "WIS": 1,
+        "CON": 0,
+        "DEX": 0
+      },
+      "level": 33
+    },
+    {
+      "name": "Glioca Mythril Gauntlet",
+      "type": "gauntlet",
+      "class": "all",
+      "stats": {
+        "STR": 0,
+        "INT": 0,
+        "WIS": 1,
+        "CON": 0,
+        "DEX": 0
+      },
+      "level": 63
+    },
+    {
+      "name": "Glioca Hy-brasyl Gauntlet",
+      "type": "gauntlet",
+      "class": "all",
+      "stats": {
+        "STR": 0,
+        "INT": 0,
+        "WIS": 1,
+        "CON": 0,
+        "DEX": 0
+      },
+      "level": 95
+    },
+    {
+      "name": "Glioca Leather Greaves",
+      "type": "greaves",
+      "class": "all",
+      "stats": {
+        "STR": 0,
+        "INT": 0,
+        "WIS": 1,
+        "CON": 0,
+        "DEX": 0
+      },
+      "level": 6
+    },
+    {
+      "name": "Glioca Iron Greaves",
+      "type": "greaves",
+      "class": "all",
+      "stats": {
+        "STR": 0,
+        "INT": 0,
+        "WIS": 1,
+        "CON": 0,
+        "DEX": 0
+      },
+      "level": 20
+    },
+    {
+      "name": "Glioca Mythril Greaves",
+      "type": "greaves",
+      "class": "all",
+      "stats": {
+        "STR": 0,
+        "INT": 0,
+        "WIS": 1,
+        "CON": 0,
+        "DEX": 0
+      },
+      "level": 59
+    },
+    {
+      "name": "Glioca Hy-brasyl Greaves",
+      "type": "greaves",
+      "class": "all",
+      "stats": {
+        "STR": 0,
+        "INT": 0,
+        "WIS": 1,
+        "CON": 0,
+        "DEX": 0
+      },
+      "level": 93
+    },
+    {
+      "name": "Glioca Leather Shield",
+      "type": "shield",
+      "class": "all",
+      "stats": {
+        "STR": 0,
+        "INT": 0,
+        "WIS": 1,
+        "CON": 0,
+        "DEX": 0
+      },
+      "level": 15
+    },
+    {
+      "name": "Glioca Iron Shield",
+      "type": "shield",
+      "class": "all",
+      "stats": {
+        "STR": 0,
+        "INT": 0,
+        "WIS": 1,
+        "CON": 0,
+        "DEX": 0
+      },
+      "level": 45
+    },
+    {
+      "name": "Glioca Mythril Shield",
+      "type": "shield",
+      "class": "all",
+      "stats": {
+        "STR": 0,
+        "INT": 0,
+        "WIS": 1,
+        "CON": 0,
+        "DEX": 0
+      },
+      "level": 61
+    },
+    {
+      "name": "Glioca Hy-brasyl Shield",
+      "type": "shield",
+      "class": "all",
+      "stats": {
+        "STR": 0,
+        "INT": 0,
+        "WIS": 1,
+        "CON": 0,
+        "DEX": 0
+      },
+      "level": 77
+    },
+    {
+      "name": "Glioca Boots",
+      "type": "boot",
+      "class": "all",
+      "stats": {
+        "STR": 0,
+        "INT": 0,
+        "WIS": 1,
+        "CON": 0,
+        "DEX": 0
+      },
+      "level": 1
+    },
+    {
+      "name": "Glioca Cured Boots",
+      "type": "boot",
+      "class": "all",
+      "stats": {
+        "STR": 0,
+        "INT": 0,
+        "WIS": 1,
+        "CON": 0,
+        "DEX": 1
+      },
+      "level": 24
+    },
+    {
+      "name": "Glioca Shagreen Boots",
+      "type": "boot",
+      "class": "all",
+      "stats": {
+        "STR": 0,
+        "INT": 0,
+        "WIS": 1,
+        "CON": 0,
+        "DEX": 2
+      },
+      "level": 33
+    },
+    {
+      "name": "Glioca Cordovan Boots",
+      "type": "boot",
+      "class": "all",
+      "stats": {
+        "STR": 0,
+        "INT": 0,
+        "WIS": 1,
+        "CON": 0,
+        "DEX": 3
+      },
+      "level": 50
+    },
+    {
+      "name": "Glioca Saffian Boots",
+      "type": "boot",
+      "class": "all",
+      "stats": {
+        "STR": 0,
+        "INT": 0,
+        "WIS": 1,
+        "CON": 0,
+        "DEX": 4
+      },
+      "level": 66
+    },
+    {
+      "name": "Glioca Magma Boots",
+      "type": "boot",
+      "class": "all",
+      "stats": {
+        "STR": 0,
+        "INT": 0,
+        "WIS": 1,
+        "CON": 0,
+        "DEX": 5
+      },
+      "level": 82
+    },
+    {
+      "name": "Glioca Enchanted Boots",
+      "type": "boot",
+      "class": "all",
+      "stats": {
+        "STR": 0,
+        "INT": 0,
+        "WIS": 1,
+        "CON": 0,
+        "DEX": 6
+      },
+      "level": 96
+    },
+    {
+      "name": "Glioca Silver Earring",
+      "type": "earring",
+      "class": "all",
+      "stats": {
+        "STR": 1,
+        "INT": 0,
+        "WIS": 1,
+        "CON": 0,
+        "DEX": 0
+      },
+      "level": 8
+    },
+    {
+      "name": "Glioca Gold Earring",
+      "type": "earring",
+      "class": "all",
+      "stats": {
+        "STR": 2,
+        "INT": 0,
+        "WIS": 1,
+        "CON": 0,
+        "DEX": 0
+      },
+      "level": 8
+    },
+    {
+      "name": "Glioca Ruby Earring",
+      "type": "earring",
+      "class": "all",
+      "stats": {
+        "STR": 0,
+        "INT": 1,
+        "WIS": 2,
+        "CON": 0,
+        "DEX": 0
+      },
+      "level": 41
+    },
+    {
+      "name": "Glioca Coral Earring",
+      "type": "earring",
+      "class": "all",
+      "stats": {
+        "STR": 0,
+        "INT": 2,
+        "WIS": 1,
+        "CON": 0,
+        "DEX": 0
+      },
+      "level": 8
+    },
+    {
+      "name": "Glioca Beryl Earring",
+      "type": "earring",
+      "class": "all",
+      "stats": {
+        "STR": 0,
+        "INT": 1,
+        "WIS": 1,
+        "CON": 0,
+        "DEX": 0
+      },
+      "level": 8
+    },
+    {
+      "name": "Ceannlaidir Leather Gauntlet",
+      "type": "gauntlet",
+      "class": "all",
+      "stats": {
+        "STR": 1,
+        "INT": 0,
+        "WIS": 0,
+        "CON": 0,
+        "DEX": 0
+      },
+      "level": 9
+    },
+    {
+      "name": "Ceannlaidir Iron Gauntlet",
+      "type": "gauntlet",
+      "class": "all",
+      "stats": {
+        "STR": 1,
+        "INT": 0,
+        "WIS": 0,
+        "CON": 0,
+        "DEX": 0
+      },
+      "level": 33
+    },
+    {
+      "name": "Ceannlaidir Mythril Gauntlet",
+      "type": "gauntlet",
+      "class": "all",
+      "stats": {
+        "STR": 1,
+        "INT": 0,
+        "WIS": 0,
+        "CON": 0,
+        "DEX": 0
+      },
+      "level": 63
+    },
+    {
+      "name": "Ceannlaidir Hy-brasyl Gauntlet",
+      "type": "gauntlet",
+      "class": "all",
+      "stats": {
+        "STR": 1,
+        "INT": 0,
+        "WIS": 0,
+        "CON": 0,
+        "DEX": 0
+      },
+      "level": 95
+    },
+    {
+      "name": "Ceannlaidir Leather Greaves",
+      "type": "greaves",
+      "class": "all",
+      "stats": {
+        "STR": 1,
+        "INT": 0,
+        "WIS": 0,
+        "CON": 0,
+        "DEX": 0
+      },
+      "level": 6
+    },
+    {
+      "name": "Ceannlaidir Iron Greaves",
+      "type": "greaves",
+      "class": "all",
+      "stats": {
+        "STR": 1,
+        "INT": 0,
+        "WIS": 0,
+        "CON": 0,
+        "DEX": 0
+      },
+      "level": 20
+    },
+    {
+      "name": "Ceannlaidir Mythril Greaves",
+      "type": "greaves",
+      "class": "all",
+      "stats": {
+        "STR": 1,
+        "INT": 0,
+        "WIS": 0,
+        "CON": 0,
+        "DEX": 0
+      },
+      "level": 59
+    },
+    {
+      "name": "Ceannlaidir Hy-brasyl Greaves",
+      "type": "greaves",
+      "class": "all",
+      "stats": {
+        "STR": 1,
+        "INT": 0,
+        "WIS": 0,
+        "CON": 0,
+        "DEX": 0
+      },
+      "level": 93
+    },
+    {
+      "name": "Ceannlaidir Leather Shield",
+      "type": "shield",
+      "class": "all",
+      "stats": {
+        "STR": 1,
+        "INT": 0,
+        "WIS": 0,
+        "CON": 0,
+        "DEX": 0
+      },
+      "level": 15
+    },
+    {
+      "name": "Ceannlaidir Iron Shield",
+      "type": "shield",
+      "class": "all",
+      "stats": {
+        "STR": 1,
+        "INT": 0,
+        "WIS": 0,
+        "CON": 0,
+        "DEX": 0
+      },
+      "level": 45
+    },
+    {
+      "name": "Ceannlaidir Mythril Shield",
+      "type": "shield",
+      "class": "all",
+      "stats": {
+        "STR": 1,
+        "INT": 0,
+        "WIS": 0,
+        "CON": 0,
+        "DEX": 0
+      },
+      "level": 61
+    },
+    {
+      "name": "Ceannlaidir Hy-brasyl Shield",
+      "type": "shield",
+      "class": "all",
+      "stats": {
+        "STR": 1,
+        "INT": 0,
+        "WIS": 0,
+        "CON": 0,
+        "DEX": 0
+      },
+      "level": 77
+    },
+    {
+      "name": "Ceannlaidir Boots",
+      "type": "boot",
+      "class": "all",
+      "stats": {
+        "STR": 1,
+        "INT": 0,
+        "WIS": 0,
+        "CON": 0,
+        "DEX": 0
+      },
+      "level": 1
+    },
+    {
+      "name": "Ceannlaidir Cured Boots",
+      "type": "boot",
+      "class": "all",
+      "stats": {
+        "STR": 1,
+        "INT": 0,
+        "WIS": 0,
+        "CON": 0,
+        "DEX": 1
+      },
+      "level": 24
+    },
+    {
+      "name": "Ceannlaidir Shagreen Boots",
+      "type": "boot",
+      "class": "all",
+      "stats": {
+        "STR": 1,
+        "INT": 0,
+        "WIS": 0,
+        "CON": 0,
+        "DEX": 2
+      },
+      "level": 33
+    },
+    {
+      "name": "Ceannlaidir Cordovan Boots",
+      "type": "boot",
+      "class": "all",
+      "stats": {
+        "STR": 1,
+        "INT": 0,
+        "WIS": 0,
+        "CON": 0,
+        "DEX": 3
+      },
+      "level": 50
+    },
+    {
+      "name": "Ceannlaidir Saffian Boots",
+      "type": "boot",
+      "class": "all",
+      "stats": {
+        "STR": 1,
+        "INT": 0,
+        "WIS": 0,
+        "CON": 0,
+        "DEX": 4
+      },
+      "level": 66
+    },
+    {
+      "name": "Ceannlaidir Magma Boots",
+      "type": "boot",
+      "class": "all",
+      "stats": {
+        "STR": 1,
+        "INT": 0,
+        "WIS": 0,
+        "CON": 0,
+        "DEX": 5
+      },
+      "level": 82
+    },
+    {
+      "name": "Ceannlaidir Enchanted Boots",
+      "type": "boot",
+      "class": "all",
+      "stats": {
+        "STR": 1,
+        "INT": 0,
+        "WIS": 0,
+        "CON": 0,
+        "DEX": 6
+      },
+      "level": 96
+    },
+    {
+      "name": "Ceannlaidir Silver Earring",
+      "type": "earring",
+      "class": "all",
+      "stats": {
+        "STR": 2,
+        "INT": 0,
+        "WIS": 0,
+        "CON": 0,
+        "DEX": 0
+      },
+      "level": 8
+    },
+    {
+      "name": "Ceannlaidir Gold Earring",
+      "type": "earring",
+      "class": "all",
+      "stats": {
+        "STR": 3,
+        "INT": 0,
+        "WIS": 0,
+        "CON": 0,
+        "DEX": 0
+      },
+      "level": 8
+    },
+    {
+      "name": "Ceannlaidir Ruby Earring",
+      "type": "earring",
+      "class": "all",
+      "stats": {
+        "STR": 1,
+        "INT": 1,
+        "WIS": 1,
+        "CON": 0,
+        "DEX": 0
+      },
+      "level": 41
+    },
+    {
+      "name": "Ceannlaidir Coral Earring",
+      "type": "earring",
+      "class": "all",
+      "stats": {
+        "STR": 1,
+        "INT": 2,
+        "WIS": 0,
+        "CON": 0,
+        "DEX": 0
+      },
+      "level": 8
+    },
+    {
+      "name": "Ceannlaidir Beryl Earring",
+      "type": "earring",
+      "class": "all",
+      "stats": {
+        "STR": 1,
+        "INT": 1,
+        "WIS": 0,
+        "CON": 0,
+        "DEX": 0
+      },
+      "level": 8
+    },
+    {
+      "name": "Fiosachd Leather Gauntlet",
+      "type": "gauntlet",
+      "class": "all",
+      "stats": {
+        "STR": 0,
+        "INT": 0,
+        "WIS": 0,
+        "CON": 0,
+        "DEX": 1
+      },
+      "level": 9
+    },
+    {
+      "name": "Fiosachd Iron Gauntlet",
+      "type": "gauntlet",
+      "class": "all",
+      "stats": {
+        "STR": 0,
+        "INT": 0,
+        "WIS": 0,
+        "CON": 0,
+        "DEX": 1
+      },
+      "level": 33
+    },
+    {
+      "name": "Fiosachd Mythril Gauntlet",
+      "type": "gauntlet",
+      "class": "all",
+      "stats": {
+        "STR": 0,
+        "INT": 0,
+        "WIS": 0,
+        "CON": 0,
+        "DEX": 1
+      },
+      "level": 63
+    },
+    {
+      "name": "Fiosachd Hy-brasyl Gauntlet",
+      "type": "gauntlet",
+      "class": "all",
+      "stats": {
+        "STR": 0,
+        "INT": 0,
+        "WIS": 0,
+        "CON": 0,
+        "DEX": 1
+      },
+      "level": 95
+    },
+    {
+      "name": "Fiosachd Leather Greaves",
+      "type": "greaves",
+      "class": "all",
+      "stats": {
+        "STR": 0,
+        "INT": 0,
+        "WIS": 0,
+        "CON": 0,
+        "DEX": 1
+      },
+      "level": 6
+    },
+    {
+      "name": "Fiosachd Iron Greaves",
+      "type": "greaves",
+      "class": "all",
+      "stats": {
+        "STR": 0,
+        "INT": 0,
+        "WIS": 0,
+        "CON": 0,
+        "DEX": 1
+      },
+      "level": 20
+    },
+    {
+      "name": "Fiosachd Mythril Greaves",
+      "type": "greaves",
+      "class": "all",
+      "stats": {
+        "STR": 0,
+        "INT": 0,
+        "WIS": 0,
+        "CON": 0,
+        "DEX": 1
+      },
+      "level": 59
+    },
+    {
+      "name": "Fiosachd Hy-brasyl Greaves",
+      "type": "greaves",
+      "class": "all",
+      "stats": {
+        "STR": 0,
+        "INT": 0,
+        "WIS": 0,
+        "CON": 0,
+        "DEX": 1
+      },
+      "level": 93
+    },
+    {
+      "name": "Fiosachd Leather Shield",
+      "type": "shield",
+      "class": "all",
+      "stats": {
+        "STR": 0,
+        "INT": 0,
+        "WIS": 0,
+        "CON": 0,
+        "DEX": 1
+      },
+      "level": 15
+    },
+    {
+      "name": "Fiosachd Iron Shield",
+      "type": "shield",
+      "class": "all",
+      "stats": {
+        "STR": 0,
+        "INT": 0,
+        "WIS": 0,
+        "CON": 0,
+        "DEX": 1
+      },
+      "level": 45
+    },
+    {
+      "name": "Fiosachd Mythril Shield",
+      "type": "shield",
+      "class": "all",
+      "stats": {
+        "STR": 0,
+        "INT": 0,
+        "WIS": 0,
+        "CON": 0,
+        "DEX": 1
+      },
+      "level": 61
+    },
+    {
+      "name": "Fiosachd Hy-brasyl Shield",
+      "type": "shield",
+      "class": "all",
+      "stats": {
+        "STR": 0,
+        "INT": 0,
+        "WIS": 0,
+        "CON": 0,
+        "DEX": 1
+      },
+      "level": 77
+    },
+    {
+      "name": "Fiosachd Boots",
+      "type": "boot",
+      "class": "all",
+      "stats": {
+        "STR": 0,
+        "INT": 0,
+        "WIS": 0,
+        "CON": 0,
+        "DEX": 1
+      },
+      "level": 1
+    },
+    {
+      "name": "Fiosachd Cured Boots",
+      "type": "boot",
+      "class": "all",
+      "stats": {
+        "STR": 0,
+        "INT": 0,
+        "WIS": 0,
+        "CON": 0,
+        "DEX": 2
+      },
+      "level": 24
+    },
+    {
+      "name": "Fiosachd Shagreen Boots",
+      "type": "boot",
+      "class": "all",
+      "stats": {
+        "STR": 0,
+        "INT": 0,
+        "WIS": 0,
+        "CON": 0,
+        "DEX": 3
+      },
+      "level": 33
+    },
+    {
+      "name": "Fiosachd Cordovan Boots",
+      "type": "boot",
+      "class": "all",
+      "stats": {
+        "STR": 0,
+        "INT": 0,
+        "WIS": 0,
+        "CON": 0,
+        "DEX": 4
+      },
+      "level": 50
+    },
+    {
+      "name": "Fiosachd Saffian Boots",
+      "type": "boot",
+      "class": "all",
+      "stats": {
+        "STR": 0,
+        "INT": 0,
+        "WIS": 0,
+        "CON": 0,
+        "DEX": 5
+      },
+      "level": 66
+    },
+    {
+      "name": "Fiosachd Magma Boots",
+      "type": "boot",
+      "class": "all",
+      "stats": {
+        "STR": 0,
+        "INT": 0,
+        "WIS": 0,
+        "CON": 0,
+        "DEX": 6
+      },
+      "level": 82
+    },
+    {
+      "name": "Fiosachd Enchanted Boots",
+      "type": "boot",
+      "class": "all",
+      "stats": {
+        "STR": 0,
+        "INT": 0,
+        "WIS": 0,
+        "CON": 0,
+        "DEX": 7
+      },
+      "level": 96
+    },
+    {
+      "name": "Fiosachd Silver Earring",
+      "type": "earring",
+      "class": "all",
+      "stats": {
+        "STR": 1,
+        "INT": 0,
+        "WIS": 0,
+        "CON": 0,
+        "DEX": 1
+      },
+      "level": 8
+    },
+    {
+      "name": "Fiosachd Gold Earring",
+      "type": "earring",
+      "class": "all",
+      "stats": {
+        "STR": 2,
+        "INT": 0,
+        "WIS": 0,
+        "CON": 0,
+        "DEX": 1
+      },
+      "level": 8
+    },
+    {
+      "name": "Fiosachd Ruby Earring",
+      "type": "earring",
+      "class": "all",
+      "stats": {
+        "STR": 0,
+        "INT": 1,
+        "WIS": 1,
+        "CON": 0,
+        "DEX": 1
+      },
+      "level": 41
+    },
+    {
+      "name": "Fiosachd Coral Earring",
+      "type": "earring",
+      "class": "all",
+      "stats": {
+        "STR": 0,
+        "INT": 2,
+        "WIS": 0,
+        "CON": 0,
+        "DEX": 1
+      },
+      "level": 8
+    },
+    {
+      "name": "Fiosachd Beryl Earring",
+      "type": "earring",
+      "class": "all",
+      "stats": {
+        "STR": 0,
+        "INT": 1,
+        "WIS": 0,
+        "CON": 0,
+        "DEX": 1
+      },
+      "level": 8
+    },
+    {
+      "name": "Cail Ruby Ring",
+      "type": "ring",
+      "class": "all",
+      "stats": {
+        "STR": 0,
+        "INT": 0,
+        "WIS": 0,
+        "CON": 1,
+        "DEX": 0
+      },
+      "level": 6
+    },
+    {
+      "name": "Cail Lapis Ring",
+      "type": "ring",
+      "class": "all",
+      "stats": {
+        "STR": 0,
+        "INT": 0,
+        "WIS": 0,
+        "CON": 1,
+        "DEX": 0
+      },
+      "level": 8
+    },
+    {
+      "name": "Cail Grave Ring",
+      "type": "ring",
+      "class": "all",
+      "stats": {
+        "STR": 0,
+        "INT": 0,
+        "WIS": 0,
+        "CON": 1,
+        "DEX": 0
+      },
+      "level": 9
+    },
+    {
+      "name": "Cail Amethyst Ring",
+      "type": "ring",
+      "class": "all",
+      "stats": {
+        "STR": 0,
+        "INT": 0,
+        "WIS": 0,
+        "CON": 1,
+        "DEX": 0
+      },
+      "level": 12
+    },
+    {
+      "name": "Cail Jade Ring",
+      "type": "ring",
+      "class": "all",
+      "stats": {
+        "STR": 0,
+        "INT": 0,
+        "WIS": 0,
+        "CON": 1,
+        "DEX": 0
+      },
+      "level": 16
+    },
+    {
+      "name": "Luathas Ruby Ring",
+      "type": "ring",
+      "class": "all",
+      "stats": {
+        "STR": 0,
+        "INT": 1,
+        "WIS": 0,
+        "CON": 0,
+        "DEX": 0
+      },
+      "level": 6
+    },
+    {
+      "name": "Luathas Lapis Ring",
+      "type": "ring",
+      "class": "all",
+      "stats": {
+        "STR": 0,
+        "INT": 1,
+        "WIS": 0,
+        "CON": 0,
+        "DEX": 0
+      },
+      "level": 8
+    },
+    {
+      "name": "Luathas Grave Ring",
+      "type": "ring",
+      "class": "all",
+      "stats": {
+        "STR": 0,
+        "INT": 1,
+        "WIS": 0,
+        "CON": 0,
+        "DEX": 0
+      },
+      "level": 9
+    },
+    {
+      "name": "Luathas Amethyst Ring",
+      "type": "ring",
+      "class": "all",
+      "stats": {
+        "STR": 0,
+        "INT": 1,
+        "WIS": 0,
+        "CON": 0,
+        "DEX": 0
+      },
+      "level": 12
+    },
+    {
+      "name": "Luathas Jade Ring",
+      "type": "ring",
+      "class": "all",
+      "stats": {
+        "STR": 0,
+        "INT": 1,
+        "WIS": 0,
+        "CON": 0,
+        "DEX": 0
+      },
+      "level": 16
+    },
+    {
+      "name": "Glioca Ruby Ring",
+      "type": "ring",
+      "class": "all",
+      "stats": {
+        "STR": 0,
+        "INT": 0,
+        "WIS": 1,
+        "CON": 0,
+        "DEX": 0
+      },
+      "level": 6
+    },
+    {
+      "name": "Glioca Lapis Ring",
+      "type": "ring",
+      "class": "all",
+      "stats": {
+        "STR": 0,
+        "INT": 0,
+        "WIS": 1,
+        "CON": 0,
+        "DEX": 0
+      },
+      "level": 8
+    },
+    {
+      "name": "Glioca Grave Ring",
+      "type": "ring",
+      "class": "all",
+      "stats": {
+        "STR": 0,
+        "INT": 0,
+        "WIS": 1,
+        "CON": 0,
+        "DEX": 0
+      },
+      "level": 9
+    },
+    {
+      "name": "Glioca Amethyst Ring",
+      "type": "ring",
+      "class": "all",
+      "stats": {
+        "STR": 0,
+        "INT": 0,
+        "WIS": 1,
+        "CON": 0,
+        "DEX": 0
+      },
+      "level": 12
+    },
+    {
+      "name": "Glioca Jade Ring",
+      "type": "ring",
+      "class": "all",
+      "stats": {
+        "STR": 0,
+        "INT": 0,
+        "WIS": 1,
+        "CON": 0,
+        "DEX": 0
+      },
+      "level": 16
+    },
+    {
+      "name": "Ceannlaidir Ruby Ring",
+      "type": "ring",
+      "class": "all",
+      "stats": {
+        "STR": 1,
+        "INT": 0,
+        "WIS": 0,
+        "CON": 0,
+        "DEX": 0
+      },
+      "level": 6
+    },
+    {
+      "name": "Ceannlaidir Lapis Ring",
+      "type": "ring",
+      "class": "all",
+      "stats": {
+        "STR": 1,
+        "INT": 0,
+        "WIS": 0,
+        "CON": 0,
+        "DEX": 0
+      },
+      "level": 8
+    },
+    {
+      "name": "Ceannlaidir Grave Ring",
+      "type": "ring",
+      "class": "all",
+      "stats": {
+        "STR": 1,
+        "INT": 0,
+        "WIS": 0,
+        "CON": 0,
+        "DEX": 0
+      },
+      "level": 9
+    },
+    {
+      "name": "Ceannlaidir Amethyst Ring",
+      "type": "ring",
+      "class": "all",
+      "stats": {
+        "STR": 1,
+        "INT": 0,
+        "WIS": 0,
+        "CON": 0,
+        "DEX": 0
+      },
+      "level": 12
+    },
+    {
+      "name": "Ceannlaidir Jade Ring",
+      "type": "ring",
+      "class": "all",
+      "stats": {
+        "STR": 1,
+        "INT": 0,
+        "WIS": 0,
+        "CON": 0,
+        "DEX": 0
+      },
+      "level": 16
+    },
+    {
+      "name": "Fiosachd Ruby Ring",
+      "type": "ring",
+      "class": "all",
+      "stats": {
+        "STR": 0,
+        "INT": 0,
+        "WIS": 0,
+        "CON": 0,
+        "DEX": 1
+      },
+      "level": 6
+    },
+    {
+      "name": "Fiosachd Lapis Ring",
+      "type": "ring",
+      "class": "all",
+      "stats": {
+        "STR": 0,
+        "INT": 0,
+        "WIS": 0,
+        "CON": 0,
+        "DEX": 1
+      },
+      "level": 8
+    },
+    {
+      "name": "Fiosachd Grave Ring",
+      "type": "ring",
+      "class": "all",
+      "stats": {
+        "STR": 0,
+        "INT": 0,
+        "WIS": 0,
+        "CON": 0,
+        "DEX": 1
+      },
+      "level": 9
+    },
+    {
+      "name": "Fiosachd Amethyst Ring",
+      "type": "ring",
+      "class": "all",
+      "stats": {
+        "STR": 0,
+        "INT": 0,
+        "WIS": 0,
+        "CON": 0,
+        "DEX": 1
+      },
+      "level": 12
+    },
+    {
+      "name": "Fiosachd Jade Ring",
+      "type": "ring",
+      "class": "all",
+      "stats": {
+        "STR": 0,
+        "INT": 0,
+        "WIS": 0,
+        "CON": 0,
+        "DEX": 1
+      },
+      "level": 16
+    },
+    {
+      "name": "Mythril Belt",
+      "type": "belt",
+      "class": "all",
+      "stats": {
+        "STR": 0,
+        "INT": 0,
+        "WIS": 0,
+        "CON": 1,
+        "DEX": 0
+      },
+      "level": 11
+    },
+    {
+      "name": "Leather Belt",
+      "type": "belt",
+      "class": "all",
+      "stats": {
+        "STR": 0,
+        "INT": 0,
+        "WIS": 1,
+        "CON": 0,
+        "DEX": 0
+      },
+      "level": 12
+    },
+    {
+      "name": "Carnun Plate",
+      "type": "armor",
+      "class": "warrior",
+      "stats": {
+        "STR": 4,
+        "INT": 0,
+        "WIS": -5,
+        "CON": 0,
+        "DEX": 0
+      },
+      "level": 80
+    },
+    {
+      "name": "Holy Disciple Gown",
+      "type": "armor",
+      "class": "priest",
+      "stats": {
+        "STR": 0,
+        "INT": 0,
+        "WIS": 4,
+        "CON": -5,
+        "DEX": 0
+      },
+      "level": 80
+    },
+    {
+      "name": "Holy Disciple Robes",
+      "type": "armor",
+      "class": "priest",
+      "stats": {
+        "STR": 0,
+        "INT": 0,
+        "WIS": 4,
+        "CON": -5,
+        "DEX": 0
+      },
+      "level": 80
+    },
+    {
+      "name": "Magus Disciple Gown",
+      "type": "armor",
+      "class": "wizard",
+      "stats": {
+        "STR": 0,
+        "INT": 4,
+        "WIS": 0,
+        "CON": -5,
+        "DEX": 0
+      },
+      "level": 80
+    },
+    {
+      "name": "Magus Disciple Robes",
+      "type": "armor",
+      "class": "wizard",
+      "stats": {
+        "STR": 0,
+        "INT": 4,
+        "WIS": 0,
+        "CON": -5,
+        "DEX": 0
+      },
+      "level": 80
+    },
+    {
+      "name": "Marauder Hide",
+      "type": "armor",
+      "class": "rogue",
+      "stats": {
+        "STR": 0,
+        "INT": -5,
+        "WIS": 0,
+        "CON": 0,
+        "DEX": 4
+      },
+      "level": 80
+    },
+    {
+      "name": "Pattern Walker",
+      "type": "armor",
+      "class": "monk",
+      "stats": {
+        "STR": 0,
+        "INT": 0,
+        "WIS": -5,
+        "CON": 4,
+        "DEX": 0
+      },
+      "level": 80
+    },
+    {
+      "name": "Stone Cross",
+      "type": "weapon",
+      "class": "priest",
+      "stats": {
+        "STR": 10,
+        "INT": -5,
+        "WIS": -5,
+        "CON": 0,
+        "DEX": 0
+      },
+      "level": 97
+    },
+    {
+      "name": "Combat Medallion",
+      "type": "ring",
+      "class": "warrior",
+      "stats": {
+        "STR": 1,
+        "INT": 0,
+        "WIS": 0,
+        "CON": 0,
+        "DEX": 0
+      },
+      "level": 99
+    },
+    {
+      "name": "Enchanted Holy Diana",
+      "type": "weapon",
+      "class": "priest",
+      "stats": {
+        "STR": 0,
+        "INT": 2,
+        "WIS": 2,
+        "CON": 0,
+        "DEX": 0
+      },
+      "level": 99
+    },
+    {
+      "name": "Enchanted Holy Saber",
+      "type": "weapon",
+      "class": "priest",
+      "stats": {
+        "STR": 0,
+        "INT": 2,
+        "WIS": 2,
+        "CON": 0,
+        "DEX": 0
+      },
+      "level": 99
+    },
+    {
+      "name": "Enchanted Hy-Brasyl Kalkuri",
+      "type": "weapon",
+      "class": "monk",
+      "stats": {
+        "STR": 2,
+        "INT": 0,
+        "WIS": 0,
+        "CON": 2,
+        "DEX": 0
+      },
+      "level": 99
+    },
+    {
+      "name": "Magical Spellbook",
+      "type": "ring",
+      "class": "wizard",
+      "stats": {
+        "STR": 0,
+        "INT": 1,
+        "WIS": 0,
+        "CON": 0,
+        "DEX": 0
+      },
+      "level": 99
+    },
+    {
+      "name": "Martial Scroll",
+      "type": "ring",
+      "class": "monk",
+      "stats": {
+        "STR": 0,
+        "INT": 0,
+        "WIS": 0,
+        "CON": 1,
+        "DEX": 0
+      },
+      "level": 99
+    },
+    {
+      "name": "Sacred Spellbook",
+      "type": "ring",
+      "class": "priest",
+      "stats": {
+        "STR": 0,
+        "INT": 0,
+        "WIS": 1,
+        "CON": 0,
+        "DEX": 0
+      },
+      "level": 99
+    },
+    {
+      "name": "Skeleton Keys",
+      "type": "ring",
+      "class": "rogue",
+      "stats": {
+        "STR": 0,
+        "INT": 0,
+        "WIS": 0,
+        "CON": 0,
+        "DEX": 1
+      },
+      "level": 99
+    },
+    {
+      "name": "Cured Boots",
+      "type": "boot",
+      "class": "all",
+      "stats": {
+        "STR": 0,
+        "INT": 0,
+        "WIS": 0,
+        "CON": 0,
+        "DEX": 1
+      },
+      "level": 24
+    },
+    {
+      "name": "Shagreen Boots",
+      "type": "boot",
+      "class": "all",
+      "stats": {
+        "STR": 0,
+        "INT": 0,
+        "WIS": 0,
+        "CON": 0,
+        "DEX": 2
+      },
+      "level": 33
+    },
+    {
+      "name": "Cordovan Boots",
+      "type": "boot",
+      "class": "all",
+      "stats": {
+        "STR": 0,
+        "INT": 0,
+        "WIS": 0,
+        "CON": 0,
+        "DEX": 3
+      },
+      "level": 50
+    },
+    {
+      "name": "Saffian Boots",
+      "type": "boot",
+      "class": "all",
+      "stats": {
+        "STR": 0,
+        "INT": 0,
+        "WIS": 0,
+        "CON": 0,
+        "DEX": 4
+      },
+      "level": 66
+    },
+    {
+      "name": "Carnun Plate",
+      "type": "armor",
+      "class": "Warrior",
+      "stats": {
+        "STR": 4,
+        "INT": 0,
+        "WIS": -5,
+        "CON": 0,
+        "DEX": 0
+      },
+      "level": 80
+    },
+    {
+      "name": "Holy Disciple Gown",
+      "type": "armor",
+      "class": "Priest",
+      "stats": {
+        "STR": 0,
+        "INT": 0,
+        "WIS": 4,
+        "CON": -5,
+        "DEX": 0
+      },
+      "level": 80
+    },
+    {
+      "name": "Holy Disciple Robes",
+      "type": "armor",
+      "class": "Priest",
+      "stats": {
+        "STR": 0,
+        "INT": 0,
+        "WIS": 4,
+        "CON": -5,
+        "DEX": 0
+      },
+      "level": 80
+    },
+    {
+      "name": "Magus Disciple Gown",
+      "type": "armor",
+      "class": "Wizard",
+      "stats": {
+        "STR": 0,
+        "INT": 4,
+        "WIS": 0,
+        "CON": -5,
+        "DEX": 0
+      },
+      "level": 80
+    },
+    {
+      "name": "Magus Disciple Robes",
+      "type": "armor",
+      "class": "Wizard",
+      "stats": {
+        "STR": 0,
+        "INT": 4,
+        "WIS": 0,
+        "CON": -5,
+        "DEX": 0
+      },
+      "level": 80
+    },
+    {
+      "name": "Marauder Hide",
+      "type": "armor",
+      "class": "Rogue",
+      "stats": {
+        "STR": 0,
+        "INT": -5,
+        "WIS": 0,
+        "CON": 0,
+        "DEX": 4
+      },
+      "level": 80
+    },
+    {
+      "name": "Pattern Walker",
+      "type": "armor",
+      "class": "Monk",
+      "stats": {
+        "STR": 0,
+        "INT": 0,
+        "WIS": -5,
+        "CON": 4,
+        "DEX": 0
+      },
+      "level": 80
+    },
+    {
+      "name": "Magma Boots",
+      "type": "boot",
+      "class": "all",
+      "stats": {
+        "STR": 0,
+        "INT": 0,
+        "WIS": 0,
+        "CON": 0,
+        "DEX": 5
+      },
+      "level": 82
+    },
+    {
+      "name": "Enchanted Boots",
+      "type": "boot",
+      "class": "all",
+      "stats": {
+        "STR": 0,
+        "INT": 0,
+        "WIS": 0,
+        "CON": 0,
+        "DEX": 6
+      },
+      "level": 96
+    },
+    {
+      "name": "Rat King's Dagger",
+      "type": "weapon",
+      "class": "Rogue",
+      "stats": {
+        "STR": 1,
+        "INT": 0,
+        "WIS": 0,
+        "CON": 0,
+        "DEX": 2
+      },
+      "level": 97
+    },
+    {
+      "name": "Stone Cross",
+      "type": "weapon",
+      "class": "Priest",
+      "stats": {
+        "STR": 10,
+        "INT": -5,
+        "WIS": -5,
+        "CON": 0,
+        "DEX": 0
+      },
+      "level": 97
+    },
+    {
+      "name": "Blessed Hy-Brasyl Azoth",
+      "type": "weapon",
+      "class": "Rogue",
+      "stats": {
+        "STR": 0,
+        "INT": 0,
+        "WIS": 1,
+        "CON": 0,
+        "DEX": 1
+      },
+      "level": 99
+    },
+    {
+      "name": "Blessed Two-Handed Hy-Brasyl Escalon",
+      "type": "weapon",
+      "class": "Warrior",
+      "stats": {
+        "STR": 1,
+        "INT": 0,
+        "WIS": 1,
+        "CON": 0,
+        "DEX": 0
+      },
+      "level": 99
+    },
+    {
+      "name": "Combat Medallion",
+      "type": "ring",
+      "class": "Warrior",
+      "stats": {
+        "STR": 1,
+        "INT": 0,
+        "WIS": 0,
+        "CON": 0,
+        "DEX": 0
+      },
+      "level": 99
+    },
+    {
+      "name": "Cursed Hy-Brasyl Azoth",
+      "type": "weapon",
+      "class": "Rogue",
+      "stats": {
+        "STR": 0,
+        "INT": 1,
+        "WIS": 0,
+        "CON": 0,
+        "DEX": 1
+      },
+      "level": 99
+    },
+    {
+      "name": "Cursed Two-Handed Hy-Brasyl Escalon",
+      "type": "weapon",
+      "class": "Warrior",
+      "stats": {
+        "STR": 1,
+        "INT": 1,
+        "WIS": 0,
+        "CON": 0,
+        "DEX": 0
+      },
+      "level": 99
+    },
+    {
+      "name": "Enchanted Holy Diana",
+      "type": "weapon",
+      "class": "Priest",
+      "stats": {
+        "STR": 0,
+        "INT": 2,
+        "WIS": 2,
+        "CON": 0,
+        "DEX": 0
+      },
+      "level": 99
+    },
+    {
+      "name": "Enchanted Holy Saber",
+      "type": "weapon",
+      "class": "Priest",
+      "stats": {
+        "STR": 0,
+        "INT": 2,
+        "WIS": 2,
+        "CON": 0,
+        "DEX": 0
+      },
+      "level": 99
+    },
+    {
+      "name": "Enchanted Hy-Brasyl Azoth",
+      "type": "weapon",
+      "class": "Rogue",
+      "stats": {
+        "STR": 2,
+        "INT": 0,
+        "WIS": 0,
+        "CON": 0,
+        "DEX": 2
+      },
+      "level": 99
+    },
+    {
+      "name": "Enchanted Hy-Brasyl Escalon",
+      "type": "weapon",
+      "class": "Warrior",
+      "stats": {
+        "STR": 2,
+        "INT": 0,
+        "WIS": 2,
+        "CON": 0,
+        "DEX": 0
+      },
+      "level": 99
+    },
+    {
+      "name": "Enchanted Hy-Brasyl Kalkuri",
+      "type": "weapon",
+      "class": "Monk",
+      "stats": {
+        "STR": 2,
+        "INT": 0,
+        "WIS": 0,
+        "CON": 2,
+        "DEX": 0
+      },
+      "level": 99
+    },
+    {
+      "name": "Enchanted Magus Hades",
+      "type": "weapon",
+      "class": "Wizard",
+      "stats": {
+        "STR": 0,
+        "INT": 2,
+        "WIS": 2,
+        "CON": 0,
+        "DEX": 0
+      },
+      "level": 99
+    },
+    {
+      "name": "Enchanted Magus Saber",
+      "type": "weapon",
+      "class": "Wizard",
+      "stats": {
+        "STR": 0,
+        "INT": 2,
+        "WIS": 2,
+        "CON": 0,
+        "DEX": 0
+      },
+      "level": 99
+    },
+    {
+      "name": "Enchanted Two-Handed Hy-Brasyl Escalon",
+      "type": "weapon",
+      "class": "Warrior",
+      "stats": {
+        "STR": 2,
+        "INT": 0,
+        "WIS": 0,
+        "CON": 0,
+        "DEX": 2
+      },
+      "level": 99
+    },
+    {
+      "name": "Magical Spellbook",
+      "type": "ring",
+      "class": "Wizard",
+      "stats": {
+        "STR": 0,
+        "INT": 1,
+        "WIS": 0,
+        "CON": 0,
+        "DEX": 0
+      },
+      "level": 99
+    },
+    {
+      "name": "Martial Scroll",
+      "type": "ring",
+      "class": "Monk",
+      "stats": {
+        "STR": 0,
+        "INT": 0,
+        "WIS": 0,
+        "CON": 1,
+        "DEX": 0
+      },
+      "level": 99
+    },
+    {
+      "name": "Mystic Hy-Brasyl Azoth",
+      "type": "weapon",
+      "class": "Rogue",
+      "stats": {
+        "STR": 0,
+        "INT": 1,
+        "WIS": 0,
+        "CON": 0,
+        "DEX": 1
+      },
+      "level": 99
+    },
+    {
+      "name": "Mystic Two-Handed Hy-Brasyl Escalon",
+      "type": "weapon",
+      "class": "Warrior",
+      "stats": {
+        "STR": 1,
+        "INT": 1,
+        "WIS": 0,
+        "CON": 0,
+        "DEX": 0
+      },
+      "level": 99
+    },
+    {
+      "name": "Ruby Boots",
+      "type": "boot",
+      "class": "Monk",
+      "stats": {
+        "STR": 2,
+        "INT": 0,
+        "WIS": 0,
+        "CON": 2,
+        "DEX": 10
+      },
+      "level": 99
+    },
+    {
+      "name": "Sacred Spellbook",
+      "type": "ring",
+      "class": "Priest",
+      "stats": {
+        "STR": 0,
+        "INT": 0,
+        "WIS": 1,
+        "CON": 0,
+        "DEX": 0
+      },
+      "level": 99
+    },
+    {
+      "name": "Skeleton Keys",
+      "type": "ring",
+      "class": "Rogue",
+      "stats": {
+        "STR": 0,
+        "INT": 0,
+        "WIS": 0,
+        "CON": 0,
+        "DEX": 1
+      },
+      "level": 99
+    }
+  ]
 }

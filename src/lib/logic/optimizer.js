@@ -22,8 +22,10 @@
  * @typedef {Object} OptimizationResult
  * @property {boolean} success
  * @property {Item[]} items
+ * @property {Stats} finalBaseStats
  * @property {Stats} finalStats
  * @property {Stats} pointsAllocated
+ * @property {Stats} missingStats
  * @property {string[]} warnings
  */
 
@@ -33,7 +35,6 @@ const PTS_PER_LEVEL = 2;
 /**
  * Validates if the allocated stats match the level availability.
  * Formula: Sum(BaseStats) + AvailablePoints == (Level - 1) * 2 + 15
- * @param {number} level
  * @param {Stats} baseStats
  * @param {number} availablePoints
  * @returns {boolean}
@@ -190,6 +191,7 @@ export function optimize(currentBaseStats, desiredStats, availableItems, availab
     // Check remaining deficits
     const { deficits: finalDeficits, total: finalDeficitTotal } = getDeficits(currentStats);
     let pointsAllocated = { STR: 0, INT: 0, WIS: 0, CON: 0, DEX: 0 };
+    let missingStats = { STR: 0, INT: 0, WIS: 0, CON: 0, DEX: 0 };
 
     // Distribute points greedy?
     // We just need to check if Total(Deficits) <= AvailablePoints?
@@ -213,16 +215,24 @@ export function optimize(currentBaseStats, desiredStats, availableItems, availab
                 const remainingMissing = need - pointsToSpend;
                 pointsToSpend = 0;
                 success = false;
-                warnings.push(`Missing ${remainingMissing} points for ${stat}`);
+                missingStats[stat] = remainingMissing;
+                currentStats[stat] += remainingMissing;
             }
         }
+    }
+
+    let finalBaseStats = {};
+    for (const stat of ['STR', 'INT', 'WIS', 'CON', 'DEX']) {
+        finalBaseStats[stat] = currentBaseStats[stat] + pointsAllocated[stat] + missingStats[stat];
     }
 
     return {
         success,
         items: equippedItems,
+        finalBaseStats,
         finalStats: currentStats,
         pointsAllocated,
+        missingStats,
         warnings
     };
 }
