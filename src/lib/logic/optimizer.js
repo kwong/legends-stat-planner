@@ -31,6 +31,7 @@
 
 const LEVEL_1_BASE = 15; // 3 * 5
 const PTS_PER_LEVEL = 2;
+const STATS = ['STR', 'INT', 'WIS', 'CON', 'DEX'];
 
 /**
  * Validates if the allocated stats match the level availability.
@@ -44,7 +45,6 @@ export function validateStats(level, baseStats, availablePoints) {
     const expectedTotal = (level - 1) * PTS_PER_LEVEL + LEVEL_1_BASE;
 
     if (level >= 99) {
-        // User request: "level >= 99, sum > formula"
         return (totalAllocated + availablePoints) > expectedTotal;
     }
 
@@ -52,7 +52,39 @@ export function validateStats(level, baseStats, availablePoints) {
 }
 
 /**
+ * Compute the total stat deficit against desiredStats given a base stats object.
+ * @param {Stats} stats
+ * @param {Stats} desired
+ * @returns {number}
+ */
+function totalDeficit(stats, desired) {
+    let total = 0;
+    for (const k of STATS) {
+        const diff = desired[k] - stats[k];
+        if (diff > 0) total += diff;
+    }
+    return total;
+}
+
+/**
+ * Compute per-stat deficits.
+ */
+function getDeficits(stats, desired) {
+    const d = {};
+    let total = 0;
+    for (const k of STATS) {
+        const diff = desired[k] - stats[k];
+        d[k] = diff > 0 ? diff : 0;
+        total += d[k];
+    }
+    return { deficits: d, total };
+}
+
+/**
  * Optimizes equipment and point allocation.
+ * Uses Phase 1 (greedy) + Phase 2 (coordinate descent) to find
+ * a near-optimal item set that minimises total stat deficit.
+ *
  * @param {Stats} currentBaseStats
  * @param {Stats} desiredStats
  * @param {Item[]} availableItems
@@ -65,144 +97,150 @@ export function validateStats(level, baseStats, availablePoints) {
 export function optimize(currentBaseStats, desiredStats, availableItems, availablePoints, heroClass, level, lockedItems = []) {
     // 1. Filter items by class and level
     const candidates = availableItems.filter(item => {
-        // Class check: 'all' or match specific class
         const classMatch = item.class.toLowerCase() === 'all' || item.class.toLowerCase() === heroClass.toLowerCase();
-        // Level check: item level <= hero level. Handle 'Master' as special (e.g. 99+ or just high)
-        // For simplicity, let's treat 'Master' as requiring level 99 for now, or 1 if not specified.
         let reqLevel = 1;
         if (typeof item.level === 'number') reqLevel = item.level;
-        else if (item.level === 'Master') reqLevel = 99; // Placeholder
+        else if (item.level === 'Master') reqLevel = 99;
         else if (isValidNumber(item.level)) reqLevel = parseInt(item.level);
-
         return classMatch && level >= reqLevel;
     });
 
-    // 2. Define Slots
-    // 1x helm, 1x earring, 1x necklace, 1x armor, 1x weapon, 2x rings, 1x boot, 1x shield, 2x gauntlets, 2x greaves, 1x belt
+    // 2. Define slot counts
     const slots = {
-        'helm': 1,
-        'earring': 1,
-        'necklace': 1,
-        'armor': 1,
-        'weapon': 1,
-        'ring': 2,
-        'boot': 1,
-        'shield': 1,
-        'gauntlet': 2,
-        'greaves': 1,
-        'belt': 1
+        'helm': 1, 'earring': 1, 'necklace': 1, 'armor': 1, 'weapon': 1,
+        'ring': 2, 'boot': 1, 'shield': 1, 'gauntlet': 2, 'greaves': 1, 'belt': 1
     };
 
     let equippedItems = [];
-    let currentStats = { ...currentBaseStats };
-    let pointsToSpend = availablePoints;
 
-    // 2.1 Handle Locked Items
+    // "baseStats" during optimisation = currentBaseStats + locked item stats
+    // We track this separately so Phase 1/2 can build stats incrementally.
+    const lockedStats = { ...currentBaseStats };
+
+    // 2.1 Process locked items first
     for (const item of lockedItems) {
         if (slots[item.type] > 0) {
             slots[item.type]--;
-            // Add stats
-            for (const stat in item.stats) {
-                currentStats[stat] = (currentStats[stat] || 0) + (item.stats[stat] || 0);
+            for (const stat of STATS) {
+                lockedStats[stat] += (item.stats[stat] || 0);
             }
-            // Add to equipped
             equippedItems.push({ ...item, isLocked: true });
         }
     }
 
-    // 3. Greedy Approach (Simplified for prototype)
-    // Find items that help with the biggest deficit.
-    // Since this is a complex knapsack-like problem, we will use a heuristic:
-    // Sort items by "total relevant stat gain" (stats that we actually need).
-
-    // Helper to calc deficit
-    const getDeficits = (curr) => {
-        const d = {};
-        let total = 0;
-        for (const k of ['STR', 'INT', 'WIS', 'CON', 'DEX']) {
-            const diff = desiredStats[k] - curr[k];
-            d[k] = diff > 0 ? diff : 0;
-            total += d[k];
+    // Build per-slot candidate arrays for open (non-locked) slots
+    // openSlots[i] = array of candidate items for that slot instance
+    const openSlots = [];
+    for (const [slotType, count] of Object.entries(slots)) {
+        const slotCandidates = candidates.filter(i => i.type.toLowerCase() === slotType.toLowerCase());
+        for (let i = 0; i < count; i++) {
+            openSlots.push(slotCandidates);
         }
-        return { deficits: d, total };
+    }
+    const numSlots = openSlots.length;
+
+    /**
+     * Compute total deficit given lockedStats plus an array of chosen items.
+     * O(numSlots * 5) — fast.
+     */
+    const deficitForChoices = (choices) => {
+        const stats = { ...lockedStats };
+        for (const item of choices) {
+            if (!item) continue;
+            for (const stat of STATS) stats[stat] += (item.stats[stat] || 0);
+        }
+        return totalDeficit(stats, desiredStats);
     };
 
-    // Very silly greedy allocator for items:
-    // Foreach slot type...
-    for (const [slotType, count] of Object.entries(slots)) {
-        const slotItems = candidates.filter(i => i.type.toLowerCase() === slotType.toLowerCase());
+    // --- Phase 1: Greedy initialisation ---
+    // Fill each slot sequentially with the item that most reduces remaining deficit.
+    const chosenItems = new Array(numSlots).fill(null);
+    const runningStats = { ...lockedStats };
 
-        for (let i = 0; i < count; i++) {
-            // Find best item for this slot
-            // Score = sum of stats that reduce deficit
-            let bestItem = null;
-            let bestScore = 0; // Was -1, changed to 0 to only pick items that help (score > 0)
+    for (let si = 0; si < numSlots; si++) {
+        let bestItem = null;
+        let bestDeficit = totalDeficit(runningStats, desiredStats); // baseline: empty slot
 
-            const { deficits } = getDeficits(currentStats);
+        for (const item of openSlots[si]) {
+            // Compute deficit if we add this item
+            let d = 0;
+            for (const stat of STATS) {
+                const have = runningStats[stat] + (item.stats[stat] || 0);
+                const need = desiredStats[stat];
+                if (have < need) d += need - have;
+            }
+            if (d < bestDeficit) {
+                bestDeficit = d;
+                bestItem = item;
+            }
+        }
 
-            for (const item of slotItems) {
-                // Don't equip same item twice if unique? 
-                // Assuming generic items can be duped, specifically named unique items maybe not?
-                // For now allow dupes.
+        chosenItems[si] = bestItem;
+        if (bestItem) {
+            for (const stat of STATS) runningStats[stat] += (bestItem.stats[stat] || 0);
+        }
+    }
 
-                let score = 0;
-                // Total stats no longer used as tie-breaker per user request
-                // let totalStats = 0; 
+    // --- Phase 2: Coordinate descent (iterative refinement) ---
+    // Re-optimise one slot at a time, holding all others fixed.
+    // Each pass can only lower or maintain total deficit → guaranteed convergence.
+    const MAX_ITER = 10;
+    for (let iter = 0; iter < MAX_ITER; iter++) {
+        let improved = false;
 
-                for (const stat of ['STR', 'INT', 'WIS', 'CON', 'DEX']) {
-                    const gain = item.stats[stat] || 0;
-                    // totalStats += gain;
-                    // If we need this stat, it's valuable.
-                    if (deficits[stat] > 0) {
-                        score += gain * 100; // Weight deficit reduction much higher
-                    }
+        for (let si = 0; si < numSlots; si++) {
+            // Stats from locked items + every OTHER open slot
+            const statsOthers = { ...lockedStats };
+            for (let j = 0; j < numSlots; j++) {
+                if (j !== si && chosenItems[j]) {
+                    for (const stat of STATS) statsOthers[stat] += (chosenItems[j].stats[stat] || 0);
                 }
+            }
 
-                // Add total stats as tie-breaker/fallback -- DISABLED
-                // score += totalStats;
+            // Best option: start with empty slot as baseline
+            let bestDeficit = totalDeficit(statsOthers, desiredStats);
+            let bestItem = null;
 
-                if (score > bestScore) {
-                    bestScore = score;
+            for (const item of openSlots[si]) {
+                let d = 0;
+                for (const stat of STATS) {
+                    const have = statsOthers[stat] + (item.stats[stat] || 0);
+                    const need = desiredStats[stat];
+                    if (have < need) d += need - have;
+                }
+                if (d < bestDeficit) {
+                    bestDeficit = d;
                     bestItem = item;
                 }
             }
 
-            if (bestItem) {
-                // Update current stats
-                for (const stat of ['STR', 'INT', 'WIS', 'CON', 'DEX']) {
-                    currentStats[stat] += (bestItem.stats[stat] || 0);
-                }
-
-                // Calculate remaining deficit total for display
-                const { deficits: remainingDeficits, total: remainingDeficitTotal } = getDeficits(currentStats);
-
-                // Clone item to attach transient data without mutating the source
-                const itemWithMeta = {
-                    ...bestItem,
-                    remainingDeficitTotal: remainingDeficitTotal,
-                    remainingDeficits
-                };
-                equippedItems.push(itemWithMeta);
+            if (bestItem !== chosenItems[si]) {
+                chosenItems[si] = bestItem;
+                improved = true;
             }
         }
+
+        if (!improved) break; // converged
     }
 
-    // 4. Fill with points
-    // Check remaining deficits
-    const { deficits: finalDeficits, total: finalDeficitTotal } = getDeficits(currentStats);
+    // Assemble final equipped items and compute final stats
+    for (const item of chosenItems) {
+        if (item) equippedItems.push({ ...item });
+    }
+
+    let currentStats = { ...currentBaseStats };
+    for (const item of equippedItems) {
+        for (const stat of STATS) currentStats[stat] += (item.stats[stat] || 0);
+    }
+
+    // 4. Allocate available stat points to remaining deficits
+    const { deficits: finalDeficits } = getDeficits(currentStats, desiredStats);
     let pointsAllocated = { STR: 0, INT: 0, WIS: 0, CON: 0, DEX: 0 };
     let missingStats = { STR: 0, INT: 0, WIS: 0, CON: 0, DEX: 0 };
-
-    // Distribute points greedy?
-    // We just need to check if Total(Deficits) <= AvailablePoints?
-    // Not exactly, because points are fungible.
-    // Yes, if we have X points, we can reduce deficits by X total.
-
+    let pointsToSpend = availablePoints;
     let success = true;
-    let warnings = [];
 
-    // Allocate points
-    for (const stat of ['STR', 'INT', 'WIS', 'CON', 'DEX']) {
+    for (const stat of STATS) {
         const need = finalDeficits[stat];
         if (need > 0) {
             if (pointsToSpend >= need) {
@@ -212,17 +250,17 @@ export function optimize(currentBaseStats, desiredStats, availableItems, availab
             } else {
                 pointsAllocated[stat] = pointsToSpend;
                 currentStats[stat] += pointsToSpend;
-                const remainingMissing = need - pointsToSpend;
+                const remaining = need - pointsToSpend;
                 pointsToSpend = 0;
                 success = false;
-                missingStats[stat] = remainingMissing;
-                currentStats[stat] += remainingMissing;
+                missingStats[stat] = remaining;
+                currentStats[stat] += remaining;
             }
         }
     }
 
-    let finalBaseStats = {};
-    for (const stat of ['STR', 'INT', 'WIS', 'CON', 'DEX']) {
+    const finalBaseStats = {};
+    for (const stat of STATS) {
         finalBaseStats[stat] = currentBaseStats[stat] + pointsAllocated[stat] + missingStats[stat];
     }
 
@@ -233,7 +271,7 @@ export function optimize(currentBaseStats, desiredStats, availableItems, availab
         finalStats: currentStats,
         pointsAllocated,
         missingStats,
-        warnings
+        warnings: []
     };
 }
 
