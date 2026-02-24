@@ -11,7 +11,7 @@
         "CON": 0,
         "DEX": 10
       },
-      "level": 99
+      "level": "Master"
     },
     {
       "name": "Hy-Brasyl Boots",
@@ -24,7 +24,7 @@
         "CON": 0,
         "DEX": 10
       },
-      "level": 99
+      "level": "Master"
     },
     {
       "name": "Hy-Brasyl Belt",
@@ -50,7 +50,7 @@
         "CON": 0,
         "DEX": 0
       },
-      "level": 99
+      "level": "Master"
     },
     {
       "name": "Enchanted Magus Saber",
@@ -63,7 +63,7 @@
         "CON": 0,
         "DEX": 0
       },
-      "level": 99
+      "level": "Master"
     },
     {
       "name": "Blessed Two-Handed Hy-Brasyl Escalon",
@@ -76,7 +76,7 @@
         "CON": 0,
         "DEX": 0
       },
-      "level": 99
+      "level": "Master"
     },
     {
       "name": "Cursed Two-Handed Hy-Brasyl Escalon",
@@ -89,7 +89,7 @@
         "CON": 0,
         "DEX": 0
       },
-      "level": 99
+      "level": "Master"
     },
     {
       "name": "Enchanted Hy-Brasyl Escalon",
@@ -102,7 +102,7 @@
         "CON": 0,
         "DEX": 0
       },
-      "level": 99
+      "level": "Master"
     },
     {
       "name": "Enchanted Two-Handed Hy-Brasyl Escalon",
@@ -115,7 +115,7 @@
         "CON": 0,
         "DEX": 2
       },
-      "level": 99
+      "level": "Master"
     },
     {
       "name": "Mystic Two-Handed Hy-Brasyl Escalon",
@@ -128,7 +128,7 @@
         "CON": 0,
         "DEX": 0
       },
-      "level": 99
+      "level": "Master"
     },
     {
       "name": "Rat King's Dagger",
@@ -154,7 +154,7 @@
         "CON": 0,
         "DEX": 1
       },
-      "level": 99
+      "level": "Master"
     },
     {
       "name": "Cursed Hy-Brasyl Azoth",
@@ -167,7 +167,7 @@
         "CON": 0,
         "DEX": 1
       },
-      "level": 99
+      "level": "Master"
     },
     {
       "name": "Enchanted Hy-Brasyl Azoth",
@@ -180,7 +180,7 @@
         "CON": 0,
         "DEX": 2
       },
-      "level": 99
+      "level": "Master"
     },
     {
       "name": "Mystic Hy-Brasyl Azoth",
@@ -193,7 +193,7 @@
         "CON": 0,
         "DEX": 1
       },
-      "level": 99
+      "level": "Master"
     },
     {
       "name": "Beryl Earrings",
@@ -284,7 +284,7 @@
         "CON": 1,
         "DEX": 1
       },
-      "level": 99
+      "level": "Master"
     },
     {
       "name": "Cail Wooden Shield",
@@ -2390,7 +2390,7 @@
         "CON": 0,
         "DEX": 0
       },
-      "level": 99
+      "level": "Master"
     },
     {
       "name": "Enchanted Holy Saber",
@@ -2403,7 +2403,7 @@
         "CON": 0,
         "DEX": 0
       },
-      "level": 99
+      "level": "Master"
     },
     {
       "name": "Enchanted Hy-Brasyl Kalkuri",
@@ -2416,7 +2416,7 @@
         "CON": 2,
         "DEX": 0
       },
-      "level": 99
+      "level": "Master"
     },
     {
       "name": "Magical Spellbook",
@@ -2559,7 +2559,7 @@
         "CON": 2,
         "DEX": 10
       },
-      "level": 99
+      "level": "Master"
     }
   ]
 }
