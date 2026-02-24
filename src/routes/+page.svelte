@@ -1,5 +1,5 @@
 <script>
-    import { optimize, validateStats } from '$lib/logic/optimizer';
+    import { optimize, validateStats, statCost } from '$lib/logic/optimizer';
     import itemData from '$lib/data/items.json';
     import { onMount } from 'svelte';
 
@@ -477,13 +477,20 @@
                     {#if !result.success}
                         <div>
                             <h3 class="text-lg font-medium text-slate-300 mb-3">Additional Stat Points Required</h3>
-                            <div class="grid grid-cols-5 gap-2">
+                            <div class="grid grid-cols-5 gap-2 mb-3">
                                 {#each Object.entries(result.missingStats) as [stat, pts]}
                                     <div class="bg-slate-700 p-2 rounded text-center {pts > 0 ? 'border border-red-900/50' : ''}">
                                         <div class="text-xs text-slate-400">{stat}</div>
                                         <div class="text-xl font-bold {pts > 0 ? 'text-red-400' : 'text-slate-500'}">+{pts}</div>
+                                        {#if pts > 0}
+                                            <div class="text-xs text-slate-500 mt-0.5">{statCost(stat, heroClass) / 1_000_000}M/pt</div>
+                                        {/if}
                                     </div>
                                 {/each}
+                            </div>
+                            <div class="bg-red-950/40 border border-red-800/40 rounded p-3 flex items-center justify-between">
+                                <span class="text-sm text-slate-400">Total EXP required</span>
+                                <span class="font-bold text-red-400">{(Object.entries(result.missingStats).reduce((sum, [stat, pts]) => sum + pts * statCost(stat, heroClass), 0) / 1_000_000).toLocaleString()}M EXP</span>
                             </div>
                         </div>
                     {:else}

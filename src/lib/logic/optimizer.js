@@ -44,7 +44,7 @@ const PRIMARY_STATS = {
 const PRIMARY_COST = 2_000_000;
 const NON_PRIMARY_COST = 10_000_000;
 
-function statCost(stat, heroClass) {
+export function statCost(stat, heroClass) {
     const primary = PRIMARY_STATS[heroClass?.toLowerCase()] || [];
     return primary.includes(stat) ? PRIMARY_COST : NON_PRIMARY_COST;
 }
