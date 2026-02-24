@@ -6,6 +6,7 @@
     let level = $state(1);
     let heroClass = $state('warrior');
     let availablePoints = $state(0);
+    let isMaster = $state(false);
     
     // Base stats (user's current allocation)
     let currentStats = $state({
@@ -45,7 +46,8 @@
                 availablePoints = data.availablePoints ?? 0;
                 if (data.currentStats) currentStats = data.currentStats;
                 if (data.desiredStats) desiredStats = data.desiredStats;
-                if (data.lockedItems) lockedItems = data.lockedItems; // Load locked items
+                if (data.lockedItems) lockedItems = data.lockedItems;
+                if (data.isMaster !== undefined) isMaster = data.isMaster;
             } catch (e) {
                 console.error('Failed to load state', e);
             }
@@ -62,7 +64,8 @@
                 availablePoints,
                 currentStats,
                 desiredStats,
-                lockedItems // Save locked items
+                lockedItems, // Save locked items
+                isMaster
             };
             localStorage.setItem('legends-planner-state', JSON.stringify(state));
         }
@@ -227,7 +230,7 @@
 <!-- Modals -->
 {#if isPickerOpen}
 <div class="fixed inset-0 z-50 flex items-center justify-center bg-black/80 p-4" onclick={() => isPickerOpen = false} role="button" tabindex="0" onkeydown={e => e.key === 'Escape' && (isPickerOpen = false)}>
-    <div class="bg-slate-800 border border-slate-600 rounded-lg w-full max-w-2xl max-h-[80vh] flex flex-col shadow-2xl" onclick={e => e.stopPropagation()} role="button" tabindex="0" onkeydown={() => {}}>
+    <div class="bg-slate-800 border border-slate-600 rounded-lg w-full max-w-2xl xl:max-w-3xl max-h-[80vh] flex flex-col shadow-2xl" onclick={e => e.stopPropagation()} role="button" tabindex="0" onkeydown={() => {}}>
         <div class="p-4 border-b border-slate-700 flex justify-between items-center">
             <h3 class="text-xl font-bold text-white capitalize">Select {pickerSlotType}</h3>
             <button class="text-slate-400 hover:text-white" onclick={() => isPickerOpen = false}>✕</button>
@@ -270,18 +273,18 @@
 </div>
 {/if}
 
-<div class="min-h-screen bg-slate-950 text-slate-200 p-4 md:p-8 font-sans selection:bg-amber-500/30">
-    <header class="max-w-6xl mx-auto mb-8 text-center">
+<div class="min-h-screen bg-slate-950 text-slate-200 p-4 md:p-6 xl:p-8 font-sans selection:bg-amber-500/30">
+    <header class="max-w-screen-2xl mx-auto mb-8 text-center">
         <h1 class="text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-amber-400 to-orange-500 mb-2">
             Legends Stat Planner
         </h1>
         <p class="text-slate-400">Optimize your build for Legends: Age of Chaos</p>
     </header>
 
-    <main class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
+    <main class="max-w-screen-2xl mx-auto grid grid-cols-1 md:grid-cols-2 2xl:grid-cols-[420px_1fr] gap-6 xl:gap-8 items-start">
         
         <!-- INPUT SECTION -->
-        <section class="bg-slate-800 rounded-xl p-6 shadow-lg border border-slate-700">
+        <section class="bg-slate-800 rounded-xl p-6 shadow-lg border border-slate-700 md:sticky md:top-6">
             <h2 class="text-2xl font-semibold mb-6 text-amber-400 border-b border-slate-700 pb-2">Character Config</h2>
             
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
@@ -289,6 +292,13 @@
                 <div class="form-control">
                     <label class="label text-sm text-slate-400 mb-1" for="level">Level (1-99+)</label>
                     <input type="number" id="level" min="1" class="input bg-slate-700 border-slate-600 text-white rounded p-2 w-full focus:ring-2 focus:ring-amber-500 outline-none" bind:value={level} />
+                    {#if level >= 99}
+                        <label class="flex items-center gap-2 mt-2 cursor-pointer select-none group">
+                            <input type="checkbox" class="w-4 h-4 rounded accent-amber-500" bind:checked={isMaster} />
+                            <span class="text-sm {isMaster ? 'text-amber-400 font-medium' : 'text-slate-400 group-hover:text-slate-300'}">Master</span>
+                            {#if isMaster}<span class="text-xs text-amber-600">★</span>{/if}
+                        </label>
+                    {/if}
                 </div>
                 
                 <!-- Class -->
@@ -363,7 +373,7 @@
 
 
         <!-- Results -->
-        <section class="bg-slate-800 rounded-xl p-6 shadow-lg border border-slate-700 min-h-[400px]">
+        <section class="bg-slate-800 rounded-xl p-6 shadow-lg border border-slate-700 min-h-[400px] md:col-span-1 2xl:col-span-1">
                                             <div class="flex justify-between items-center mb-6 border-b border-slate-700 pb-2">
                 <h2 class="text-2xl font-semibold text-emerald-400">Optimization Result</h2>
                 {#if lockedItems.length > 0}
@@ -385,73 +395,76 @@
                     Configure your character and click Calculate.
                 </div>
             {:else}
-                <div class="space-y-6 animate-in fade-in duration-500">
+                <div class="space-y-6 animate-in fade-in duration-500 xl:grid xl:grid-cols-[1fr_auto] xl:gap-8 xl:space-y-0 xl:items-start">
 
-                    {#if result.success}
-                        <div class="bg-green-900/30 border border-green-500 text-green-200 p-4 rounded mb-6">
-                            Success! You can reach your desired stats.
-                        </div>
-                    {/if}
+                    <!-- Left column: equipment table + success banner -->
+                    <div class="xl:min-w-0">
+                        {#if result.success}
+                            <div class="bg-green-900/30 border border-green-500 text-green-200 p-3 rounded mb-4 text-sm">
+                                ✓ You can reach your desired stats.
+                            </div>
+                        {/if}
 
-                    <div>
                         <h3 class="text-lg font-medium text-slate-300 mb-3">Recommended Equipment</h3>
                         {#if result.items.length === 0}
                             <p class="text-slate-500 text-sm">No items needed or found.</p>
                         {:else}
                             <div class="overflow-x-auto">
-                                <table class="w-full text-left border-collapse">
+                                <table class="w-full text-left border-collapse text-sm">
                                     <thead>
                                         <tr class="text-gray-400 border-b border-gray-600">
                                             <th class="py-2 px-2">Slot</th>
-                                            <th class="py-2 px-2">Level</th>
+                                            <th class="py-2 px-2">Lvl</th>
                                             <th class="py-2 px-2">Item</th>
                                             <th class="py-2 px-2">Stats</th>
-                                            <th class="py-2 px-2 w-20"></th>
+                                            <th class="py-2 px-2 w-16"></th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         {#each result.items as item}
                                             <tr class="border-b border-gray-700/50 hover:bg-gray-700/30 transition-colors {item.isLocked ? 'bg-amber-900/10' : ''}">
-                                                <td class="py-3 px-2 capitalize text-gray-400 text-sm">
+                                                <td class="py-2.5 px-2 capitalize text-gray-400 whitespace-nowrap">
                                                     {item.type}
                                                     {#if item.isLocked}
                                                         <span class="ml-1 inline-block text-amber-500" title="Locked">
-                                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-3 h-3">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-3 h-3 inline">
                                                               <path fill-rule="evenodd" d="M10 1a4.5 4.5 0 00-4.5 4.5V9H5a2 2 0 00-2 2v6a2 2 0 002 2h10a2 2 0 002-2v-6a2 2 0 00-2-2h-.5V5.5A4.5 4.5 0 0010 1zm3 8V5.5a3 3 0 10-6 0V9h6z" clip-rule="evenodd" />
                                                             </svg>
                                                         </span>
                                                     {/if}
                                                 </td>
-                                                <td class="py-3 px-2 text-sm text-slate-400">{item.level || 1}</td>
-                                                <td class="py-3 px-2 font-medium text-white">{item.name}</td>
-                                                <td class="py-3 px-2 text-sm text-gray-300">
+                                                <td class="py-2.5 px-2 text-slate-400 whitespace-nowrap">{item.level || 1}</td>
+                                                <td class="py-2.5 px-2 font-medium text-white">{item.name}</td>
+                                                <td class="py-2.5 px-2 text-gray-300 whitespace-nowrap">
                                                     {#each Object.entries(item.stats) as [k, v]}
                                                         {#if v !== 0}
-                                                            <span class="mr-2 {v > 0 ? 'text-emerald-400' : 'text-red-400'}">{k}:{v}</span>
+                                                            <span class="mr-2 {v > 0 ? 'text-emerald-400' : 'text-red-400'}">{k}:{v > 0 ? '+' : ''}{v}</span>
                                                         {/if}
                                                     {/each}
                                                 </td>
-                                                <td class="py-3 px-2 flex gap-1 justify-end">
-                                                    {#if item.isLocked}
+                                                <td class="py-2.5 px-2">
+                                                    <div class="flex gap-1 justify-end">
+                                                        {#if item.isLocked}
+                                                            <button 
+                                                                class="p-1.5 bg-red-900/40 hover:bg-red-900/60 text-red-300 rounded border border-red-800/50 transition-colors"
+                                                                onclick={() => unlockItem(item)}
+                                                                title="Unlock this slot"
+                                                            >
+                                                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
+                                                                  <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 10.5V6.75a4.5 4.5 0 119 0v3.75M3.75 21.75h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H3.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z" />
+                                                                </svg>
+                                                            </button>
+                                                        {/if}
                                                         <button 
-                                                            class="p-1.5 bg-red-900/40 hover:bg-red-900/60 text-red-300 rounded border border-red-800/50 transition-colors"
-                                                            onclick={() => unlockItem(item)}
-                                                            title="Unlock this slot"
+                                                            class="p-1.5 bg-slate-700 hover:bg-slate-600 text-slate-300 rounded transition-colors"
+                                                            onclick={() => startSwap(item)}
+                                                            title="Swap item"
                                                         >
                                                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
-                                                              <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 10.5V6.75a4.5 4.5 0 119 0v3.75M3.75 21.75h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H3.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z" />
+                                                              <path stroke-linecap="round" stroke-linejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182m0-4.991v4.99" />
                                                             </svg>
                                                         </button>
-                                                    {/if}
-                                                    <button 
-                                                        class="p-1.5 bg-slate-700 hover:bg-slate-600 text-slate-300 rounded transition-colors"
-                                                        onclick={() => startSwap(item)}
-                                                        title="Swap item"
-                                                    >
-                                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
-                                                          <path stroke-linecap="round" stroke-linejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182m0-4.991v4.99" />
-                                                        </svg>
-                                                    </button>
+                                                    </div>
                                                 </td>
                                             </tr>
                                         {/each}
@@ -461,69 +474,85 @@
                         {/if}
                     </div>
 
-                    <!-- Points -->
-                    <div>
-                        <h3 class="text-lg font-medium text-slate-300 mb-3">Stat Point Allocation</h3>
-                        <div class="grid grid-cols-5 gap-2">
-                            {#each Object.entries(result.pointsAllocated) as [stat, pts]}
-                                <div class="bg-slate-700 p-2 rounded text-center">
-                                    <div class="text-xs text-slate-400">{stat}</div>
-                                    <div class="text-xl font-bold {pts > 0 ? 'text-amber-400' : 'text-slate-500'}">+{pts}</div>
-                                </div>
-                            {/each}
-                        </div>
-                    </div>
+                    <!-- Right column: stat panels -->
+                    <div class="xl:w-64 2xl:w-72 flex-shrink-0 space-y-4">
 
-                    {#if !result.success}
+                        <!-- Points Allocation -->
                         <div>
-                            <h3 class="text-lg font-medium text-slate-300 mb-3">Additional Stat Points Required</h3>
-                            <div class="grid grid-cols-5 gap-2 mb-3">
-                                {#each Object.entries(result.missingStats) as [stat, pts]}
-                                    <div class="bg-slate-700 p-2 rounded text-center {pts > 0 ? 'border border-red-900/50' : ''}">
-                                        <div class="text-xs text-slate-400">{stat}</div>
-                                        <div class="text-xl font-bold {pts > 0 ? 'text-red-400' : 'text-slate-500'}">+{pts}</div>
-                                        {#if pts > 0}
-                                            <div class="text-xs text-slate-500 mt-0.5">{statCost(stat, heroClass) / 1_000_000}M/pt</div>
-                                        {/if}
+                            <h3 class="text-sm font-medium text-slate-400 mb-2 uppercase tracking-wider">Stat Points Allocated</h3>
+                            <div class="grid grid-cols-5 xl:grid-cols-1 gap-2">
+                                {#each Object.entries(result.pointsAllocated) as [stat, pts]}
+                                    <div class="bg-slate-700 p-2 rounded xl:flex xl:items-center xl:justify-between text-center xl:text-left">
+                                        <span class="text-xs text-slate-400 xl:font-medium">{stat}</span>
+                                        <span class="block xl:inline text-lg xl:text-base font-bold {pts > 0 ? 'text-amber-400' : 'text-slate-500'}">+{pts}</span>
                                     </div>
                                 {/each}
                             </div>
-                            <div class="bg-red-950/40 border border-red-800/40 rounded p-3 flex items-center justify-between">
-                                <span class="text-sm text-slate-400">Total EXP required</span>
-                                <span class="font-bold text-red-400">{(Object.entries(result.missingStats).reduce((sum, [stat, pts]) => sum + pts * statCost(stat, heroClass), 0) / 1_000_000).toLocaleString()}M EXP</span>
+                        </div>
+
+                        {#if !result.success}
+                            <!-- Missing Stats -->
+                            <div>
+                                <h3 class="text-sm font-medium text-slate-400 mb-2 uppercase tracking-wider">Still Needed</h3>
+                                <div class="grid grid-cols-5 xl:grid-cols-1 gap-2 mb-3">
+                                    {#each Object.entries(result.missingStats) as [stat, pts]}
+                                        <div class="bg-slate-700 p-2 rounded xl:flex xl:items-center xl:justify-between text-center xl:text-left {pts > 0 ? 'border border-red-900/50' : ''}">
+                                            <div>
+                                                <span class="text-xs text-slate-400 xl:font-medium">{stat}</span>
+                                                {#if pts > 0 && isMaster}
+                                                    <div class="text-[10px] text-slate-500">{statCost(stat, heroClass) / 1_000_000}M/pt</div>
+                                                {/if}
+                                            </div>
+                                            <span class="block xl:inline text-lg xl:text-base font-bold {pts > 0 ? 'text-red-400' : 'text-slate-500'}">+{pts}</span>
+                                        </div>
+                                    {/each}
+                                </div>
+                                {#if isMaster}
+                                    <div class="bg-red-950/40 border border-red-800/40 rounded p-3 flex items-center justify-between">
+                                        <span class="text-xs text-slate-400">EXP needed</span>
+                                        <span class="font-bold text-red-400 text-sm">{(Object.entries(result.missingStats).reduce((sum, [stat, pts]) => sum + pts * statCost(stat, heroClass), 0) / 1_000_000).toLocaleString()}M</span>
+                                    </div>
+                                {:else}
+                                    <div class="bg-slate-700/60 border border-slate-600 rounded p-3 flex items-center gap-2">
+                                        <span class="text-amber-500 text-sm">★</span>
+                                        <span class="text-xs text-slate-400">Purchasing additional stat points requires <span class="text-amber-400 font-medium">Master</span> status</span>
+                                    </div>
+                                {/if}
+                            </div>
+                        {:else}
+                            <div class="bg-emerald-900/30 border border-emerald-500/50 p-3 rounded text-center">
+                                <span class="text-emerald-400 font-medium text-sm">All targets met!</span>
+                            </div>
+                        {/if}
+
+
+                        <!-- Final Base Stats -->
+                        <div class="bg-slate-900 p-3 rounded border border-slate-700">
+                            <h3 class="text-xs font-medium text-slate-400 mb-2 uppercase tracking-wider">Final base stats</h3>
+                            <div class="grid grid-cols-5 xl:grid-cols-1 gap-1">
+                                {#each Object.entries(result.finalBaseStats) as [stat, val]}
+                                    <div class="xl:flex xl:items-center xl:justify-between text-center xl:text-left">
+                                        <span class="block text-slate-500 text-xs">{stat}</span>
+                                        <span class="font-bold text-white text-sm">{val}</span>
+                                    </div>
+                                {/each}
                             </div>
                         </div>
-                    {:else}
-                        <div class="bg-emerald-900/30 border border-emerald-500/50 p-4 rounded text-center">
-                            <span class="text-emerald-400 font-medium">Target stats achieved! No additional stat points required.</span>
+
+                        <!-- Final Stats with Items -->
+                        <div class="bg-slate-900 p-3 rounded border border-slate-700">
+                            <h3 class="text-xs font-medium text-slate-400 mb-2 uppercase tracking-wider">Final stats (w/ items)</h3>
+                            <div class="grid grid-cols-5 xl:grid-cols-1 gap-1">
+                                {#each Object.entries(result.finalStats) as [stat, val]}
+                                    <div class="xl:flex xl:items-center xl:justify-between text-center xl:text-left">
+                                        <span class="block text-slate-500 text-xs">{stat}</span>
+                                        <span class="font-bold text-white text-sm">{val}</span>
+                                    </div>
+                                {/each}
+                            </div>
                         </div>
-                    {/if}
 
-                    <!-- Final Stats -->
-                    <div class="bg-slate-900 p-4 rounded border border-slate-700">
-                         <h3 class="text-sm font-medium text-slate-400 mb-2 uppercase tracking-wider">Final stat points</h3>
-                         <div class="flex justify-between text-sm">
-                            {#each Object.entries(result.finalBaseStats) as [stat, val]}
-                                <div class="text-center">
-                                    <span class="block text-slate-500 text-xs">{stat}</span>
-                                    <span class="font-bold text-white">{val}</span>
-                                </div>
-                            {/each}
-                         </div>
-                    </div>
-
-                    <!-- Final Total Stats (with items) -->
-                    <div class="bg-slate-900 p-4 rounded border border-slate-700">
-                         <h3 class="text-sm font-medium text-slate-400 mb-2 uppercase tracking-wider">Final stat points (with items)</h3>
-                         <div class="flex justify-between text-sm">
-                            {#each Object.entries(result.finalStats) as [stat, val]}
-                                <div class="text-center">
-                                    <span class="block text-slate-500 text-xs">{stat}</span>
-                                    <span class="font-bold text-white">{val}</span>
-                                </div>
-                            {/each}
-                         </div>
-                    </div>
+                    </div><!-- end right column -->
 
                 </div>
             {/if}
