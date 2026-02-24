@@ -94,7 +94,8 @@
             availablePoints, 
             heroClass, 
             level,
-            lockedItems // New parameter
+            isMaster,
+            lockedItems
         );
     }
     
@@ -410,72 +411,69 @@
                             </div>
                         {/if}
 
-                        <h3 class="text-lg font-medium text-slate-300 mb-3">Recommended Equipment</h3>
+                        <h3 class="text-lg font-medium text-slate-300 mb-2">Recommended Equipment</h3>
                         {#if result.items.length === 0}
                             <p class="text-slate-500 text-sm">No items needed or found.</p>
                         {:else}
-                            <div class="overflow-x-auto">
-                                <table class="w-full text-left border-collapse text-sm">
-                                    <thead>
-                                        <tr class="text-gray-400 border-b border-gray-600">
-                                            <th class="py-2 px-2">Slot</th>
-                                            <th class="py-2 px-2">Lvl</th>
-                                            <th class="py-2 px-2">Item</th>
-                                            <th class="py-2 px-2">Stats</th>
-                                            <th class="py-2 px-2 w-16"></th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        {#each result.items as item}
-                                            <tr class="border-b border-gray-700/50 hover:bg-gray-700/30 transition-colors {item.isLocked ? 'bg-amber-900/10' : ''}">
-                                                <td class="py-2.5 px-2 capitalize text-gray-400 whitespace-nowrap">
-                                                    {item.type}
-                                                    {#if item.isLocked}
-                                                        <span class="ml-1 inline-block text-amber-500" title="Locked">
-                                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-3 h-3 inline">
-                                                              <path fill-rule="evenodd" d="M10 1a4.5 4.5 0 00-4.5 4.5V9H5a2 2 0 00-2 2v6a2 2 0 002 2h10a2 2 0 002-2v-6a2 2 0 00-2-2h-.5V5.5A4.5 4.5 0 0010 1zm3 8V5.5a3 3 0 10-6 0V9h6z" clip-rule="evenodd" />
-                                                            </svg>
+                            <ul class="divide-y divide-slate-700/60">
+                                {#each result.items as item}
+                                    <li class="flex items-center gap-3 py-2.5 px-2 rounded transition-colors hover:bg-slate-700/30 {item.isLocked ? 'bg-amber-900/10' : ''}">
+                                        <!-- Slot badge -->
+                                        <div class="w-16 flex-shrink-0 text-center">
+                                            <span class="inline-block text-[10px] font-semibold uppercase tracking-wide bg-slate-700 text-slate-400 rounded px-1.5 py-0.5 leading-tight capitalize">
+                                                {item.type}
+                                            </span>
+                                        </div>
+
+                                        <!-- Item name + metadata -->
+                                        <div class="flex-1 min-w-0">
+                                            <div class="flex items-center gap-1.5 flex-wrap">
+                                                <span class="font-medium text-white text-sm leading-snug">{item.name}</span>
+                                                {#if item.isLocked}
+                                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-3 h-3 text-amber-500 flex-shrink-0" title="Locked">
+                                                      <path fill-rule="evenodd" d="M10 1a4.5 4.5 0 00-4.5 4.5V9H5a2 2 0 00-2 2v6a2 2 0 002 2h10a2 2 0 002-2v-6a2 2 0 00-2-2h-.5V5.5A4.5 4.5 0 0010 1zm3 8V5.5a3 3 0 10-6 0V9h6z" clip-rule="evenodd" />
+                                                    </svg>
+                                                {/if}
+                                            </div>
+                                            <!-- Stat pills + level row -->
+                                            <div class="flex items-center flex-wrap gap-1 mt-1">
+                                                <span class="text-[10px] text-slate-500 mr-1">Lv{item.level || 1}</span>
+                                                {#each Object.entries(item.stats) as [k, v]}
+                                                    {#if v !== 0}
+                                                        <span class="inline-flex items-center text-[11px] font-mono px-1.5 py-0.5 rounded {v > 0 ? 'bg-emerald-900/40 text-emerald-300' : 'bg-red-900/40 text-red-300'}">
+                                                            {k}{v > 0 ? '+' : ''}{v}
                                                         </span>
                                                     {/if}
-                                                </td>
-                                                <td class="py-2.5 px-2 text-slate-400 whitespace-nowrap">{item.level || 1}</td>
-                                                <td class="py-2.5 px-2 font-medium text-white">{item.name}</td>
-                                                <td class="py-2.5 px-2 text-gray-300 whitespace-nowrap">
-                                                    {#each Object.entries(item.stats) as [k, v]}
-                                                        {#if v !== 0}
-                                                            <span class="mr-2 {v > 0 ? 'text-emerald-400' : 'text-red-400'}">{k}:{v > 0 ? '+' : ''}{v}</span>
-                                                        {/if}
-                                                    {/each}
-                                                </td>
-                                                <td class="py-2.5 px-2">
-                                                    <div class="flex gap-1 justify-end">
-                                                        {#if item.isLocked}
-                                                            <button 
-                                                                class="p-1.5 bg-red-900/40 hover:bg-red-900/60 text-red-300 rounded border border-red-800/50 transition-colors"
-                                                                onclick={() => unlockItem(item)}
-                                                                title="Unlock this slot"
-                                                            >
-                                                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
-                                                                  <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 10.5V6.75a4.5 4.5 0 119 0v3.75M3.75 21.75h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H3.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z" />
-                                                                </svg>
-                                                            </button>
-                                                        {/if}
-                                                        <button 
-                                                            class="p-1.5 bg-slate-700 hover:bg-slate-600 text-slate-300 rounded transition-colors"
-                                                            onclick={() => startSwap(item)}
-                                                            title="Swap item"
-                                                        >
-                                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
-                                                              <path stroke-linecap="round" stroke-linejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182m0-4.991v4.99" />
-                                                            </svg>
-                                                        </button>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                        {/each}
-                                    </tbody>
-                                </table>
-                            </div>
+                                                {/each}
+                                            </div>
+                                        </div>
+
+                                        <!-- Action buttons -->
+                                        <div class="flex gap-1 flex-shrink-0">
+                                            {#if item.isLocked}
+                                                <button 
+                                                    class="p-1.5 bg-red-900/40 hover:bg-red-900/60 text-red-300 rounded border border-red-800/50 transition-colors"
+                                                    onclick={() => unlockItem(item)}
+                                                    title="Unlock this slot"
+                                                >
+                                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-3.5 h-3.5">
+                                                      <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 10.5V6.75a4.5 4.5 0 119 0v3.75M3.75 21.75h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H3.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z" />
+                                                    </svg>
+                                                </button>
+                                            {/if}
+                                            <button 
+                                                class="p-1.5 bg-slate-700 hover:bg-slate-600 text-slate-300 rounded transition-colors"
+                                                onclick={() => startSwap(item)}
+                                                title="Swap item"
+                                            >
+                                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-3.5 h-3.5">
+                                                  <path stroke-linecap="round" stroke-linejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182m0-4.991v4.99" />
+                                                </svg>
+                                            </button>
+                                        </div>
+                                    </li>
+                                {/each}
+                            </ul>
                         {/if}
                     </div>
 

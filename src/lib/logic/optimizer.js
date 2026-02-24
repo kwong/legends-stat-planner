@@ -154,16 +154,17 @@ function deficitWithItem(baseStats, item, desired) {
  * @param {number} availablePoints
  * @param {string} heroClass
  * @param {number} level
+ * @param {boolean} [isMaster=false]
  * @param {Item[]} [lockedItems=[]]
  * @returns {OptimizationResult}
  */
-export function optimize(currentBaseStats, desiredStats, availableItems, availablePoints, heroClass, level, lockedItems = []) {
+export function optimize(currentBaseStats, desiredStats, availableItems, availablePoints, heroClass, level, isMaster = false, lockedItems = []) {
     // 1. Filter items by class and level
     const candidates = availableItems.filter(item => {
         const classMatch = item.class.toLowerCase() === 'all' || item.class.toLowerCase() === heroClass.toLowerCase();
+        if (item.level === 'Master') return classMatch && isMaster;
         let reqLevel = 1;
         if (typeof item.level === 'number') reqLevel = item.level;
-        else if (item.level === 'Master') reqLevel = 99;
         else if (isValidNumber(item.level)) reqLevel = parseInt(item.level);
         return classMatch && level >= reqLevel;
     });
