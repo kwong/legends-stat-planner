@@ -166,10 +166,10 @@ function deficitWithItem(baseStats, item, desired) {
  * @param {string} heroClass
  * @param {number} level
  * @param {boolean} [isMaster=false]
- * @param {Item[]} [lockedItems=[]]
+ * @param {Item[]} [userItems=[]]
  * @returns {OptimizationResult}
  */
-export function optimize(currentBaseStats, desiredStats, availableItems, availablePoints, heroClass, level, isMaster = false, lockedItems = []) {
+export function optimize(currentBaseStats, desiredStats, availableItems, availablePoints, heroClass, level, isMaster = false, userItems = []) {
     // 1. Filter items by class and level
     const candidates = availableItems.filter(item => {
         const classMatch = item.class.toLowerCase() === 'all' || item.class.toLowerCase() === heroClass.toLowerCase();
@@ -188,22 +188,22 @@ export function optimize(currentBaseStats, desiredStats, availableItems, availab
 
     let equippedItems = [];
 
-    // "baseStats" during optimisation = currentBaseStats + locked item stats
+    // "baseStats" during optimisation = currentBaseStats + user-specified item stats
     // We track this separately so Phase 1/2 can build stats incrementally.
-    const lockedStats = { ...currentBaseStats };
+    const baseWithUserItems = { ...currentBaseStats };
 
-    // 2.1 Process locked items first
-    for (const item of lockedItems) {
+    // 2.1 Process user-specified items first
+    for (const item of userItems) {
         if (slots[item.type] > 0) {
             slots[item.type]--;
             for (const stat of STATS) {
-                lockedStats[stat] += (item.stats[stat] || 0);
+                baseWithUserItems[stat] += (item.stats[stat] || 0);
             }
-            equippedItems.push({ ...item, isLocked: true });
+            equippedItems.push({ ...item, isUserSpecified: true });
         }
     }
 
-    // Build per-slot candidate arrays for open (non-locked) slots
+    // Build per-slot candidate arrays for open (non-user-specified) slots
     // openSlots[i] = array of candidate items for that slot instance
     const openSlots = [];
     for (const [slotType, count] of Object.entries(slots)) {
@@ -215,11 +215,11 @@ export function optimize(currentBaseStats, desiredStats, availableItems, availab
     const numSlots = openSlots.length;
 
     /**
-     * Compute total deficit given lockedStats plus an array of chosen items.
+     * Compute total deficit given baseWithUserItems plus an array of chosen items.
      * O(numSlots * 5) — fast.
      */
     const deficitForChoices = (choices) => {
-        const stats = { ...lockedStats };
+        const stats = { ...baseWithUserItems };
         for (const item of choices) {
             if (!item) continue;
             for (const stat of STATS) stats[stat] += (item.stats[stat] || 0);
@@ -248,7 +248,7 @@ export function optimize(currentBaseStats, desiredStats, availableItems, availab
 
     // --- Phase 1: Greedy initialisation ---
     const chosenItems = new Array(numSlots).fill(null);
-    const runningStats = { ...lockedStats };
+    const runningStats = { ...baseWithUserItems };
 
     for (let si = 0; si < numSlots; si++) {
         let bestItem = null;
@@ -276,7 +276,7 @@ export function optimize(currentBaseStats, desiredStats, availableItems, availab
         let improved = false;
 
         for (let si = 0; si < numSlots; si++) {
-            const statsOthers = { ...lockedStats };
+            const statsOthers = { ...baseWithUserItems };
             for (let j = 0; j < numSlots; j++) {
                 if (j !== si && chosenItems[j]) {
                     for (const stat of STATS) statsOthers[stat] += (chosenItems[j].stats[stat] || 0);

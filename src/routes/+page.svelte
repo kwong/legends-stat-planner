@@ -379,7 +379,12 @@
                                 {badStat[0]} exceeds cap ({statMaxValue(badStat[0], heroClass)} max)
                             {:else if level >= 99}
                                 {#if !isMaster}
-                                    Stats exceed non-master cap (211pts) — check <span class="text-amber-500 dark:text-amber-400">Master</span> if applicable
+                                    {@const total = Object.values(currentStats).reduce((a, b) => a + b, 0) + availablePoints}
+                                    {#if total > 211}
+                                        Stats exceed non-master cap (211pts) — check <span class="text-amber-500 dark:text-amber-400">Master</span> if applicable
+                                    {:else}
+                                        Sum must equal 211
+                                    {/if}
                                 {:else}
                                     Sum must be ≥ 211
                                 {/if}
