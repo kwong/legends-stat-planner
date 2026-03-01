@@ -227,7 +227,8 @@ export function optimize(currentBaseStats, desiredStats, availableItems, availab
         return totalDeficit(stats, desiredStats);
     };
 
-    // Compute per-stat deficits for a given stats object
+    // Compute per-stat deficits (clamped at 0; surplus is not penalised).
+    // Uses the same logic as getDeficits but streamlined for inner loop usage.
     const perStatDeficit = (stats) => {
         const d = {};
         for (const stat of STATS) {
@@ -246,29 +247,59 @@ export function optimize(currentBaseStats, desiredStats, availableItems, availab
     };
 
 
-    // --- Phase 1: Greedy initialisation ---
-    const chosenItems = new Array(numSlots).fill(null);
-    const runningStats = { ...baseWithUserItems };
+    // --- Phase 1: Beam Search initialisation ---
+    const BEAM_WIDTH = 100;
+
+    // Helper to score a given set of stats
+    // Returns [missingExp, spentExp, totalRawStats]
+    const scoreDeficit = (stats) => {
+        const d = perStatDeficit(stats);
+        const [missingExp, spentExp] = expScore(d, availablePoints, heroClass);
+        const totalStats = STATS.reduce((sum, stat) => sum + stats[stat], 0);
+        return [missingExp, spentExp, totalStats];
+    };
+
+    // state = { items: array of equipped items so far, stats: running total stats }
+    let beam = [{ items: [], stats: { ...baseWithUserItems } }];
 
     for (let si = 0; si < numSlots; si++) {
-        let bestItem = null;
-        let bestDef = perStatDeficit(runningStats);
+        const nextCandidates = [];
 
-        for (const item of openSlots[si]) {
-            const withItem = { ...runningStats };
-            for (const stat of STATS) withItem[stat] += (item.stats[stat] || 0);
-            const d = perStatDeficit(withItem);
-            if (isBetter(d, bestDef)) {
-                bestDef = d;
-                bestItem = item;
+        for (const state of beam) {
+            // Option 1: leave slot empty
+            nextCandidates.push({
+                items: [...state.items, null],
+                stats: { ...state.stats }
+            });
+
+            // Option 2: equip an item
+            for (const item of openSlots[si]) {
+                const newStats = { ...state.stats };
+                for (const stat of STATS) newStats[stat] += (item.stats[stat] || 0);
+                nextCandidates.push({
+                    items: [...state.items, item],
+                    stats: newStats
+                });
             }
         }
 
-        chosenItems[si] = bestItem;
-        if (bestItem) {
-            for (const stat of STATS) runningStats[stat] += (bestItem.stats[stat] || 0);
-        }
+        // Sort candidates by lowest missing EXP, then lowest spent EXP, then highest raw stats
+        nextCandidates.sort((a, b) => {
+            const [mA, pA, tA] = scoreDeficit(a.stats);
+            const [mB, pB, tB] = scoreDeficit(b.stats);
+
+            if (mA !== mB) return mA - mB;
+            if (pA !== pB) return pA - pB;
+            return tB - tA; // prefer HIGHER raw stats as last tie-breaker
+        });
+
+        // Prune down to BEAM_WIDTH uniqueness isn't strictly necessary but helpful
+        beam = nextCandidates.slice(0, BEAM_WIDTH);
     }
+
+    // Extract the best configuration from the beam
+    const bestState = beam[0];
+    const chosenItems = [...bestState.items];
 
     // --- Phase 2: Coordinate descent ---
     const MAX_ITER = 10;
@@ -284,14 +315,17 @@ export function optimize(currentBaseStats, desiredStats, availableItems, availab
             }
 
             let bestItem = null;
-            let bestDef = perStatDeficit(statsOthers); // baseline: empty slot
+            let bestStats = { ...statsOthers }; // baseline: empty slot
 
             for (const item of openSlots[si]) {
                 const withItem = { ...statsOthers };
                 for (const stat of STATS) withItem[stat] += (item.stats[stat] || 0);
-                const d = perStatDeficit(withItem);
-                if (isBetter(d, bestDef)) {
-                    bestDef = d;
+
+                const [mA, pA, tA] = scoreDeficit(withItem);
+                const [mB, pB, tB] = scoreDeficit(bestStats);
+
+                if (mA < mB || (mA === mB && pA < pB) || (mA === mB && pA === pB && tA > tB)) {
+                    bestStats = withItem;
                     bestItem = item;
                 }
             }
@@ -314,6 +348,10 @@ export function optimize(currentBaseStats, desiredStats, availableItems, availab
     for (const item of equippedItems) {
         for (const stat of STATS) currentStats[stat] += (item.stats[stat] || 0);
     }
+
+    // DEBUG 
+    // console.log("currentStats before points (w/ items):", currentStats);
+    // console.log("desiredStats:", desiredStats);
 
     // 4. Allocate available stat points to remaining deficits
     const { deficits: finalDeficits } = getDeficits(currentStats, desiredStats);

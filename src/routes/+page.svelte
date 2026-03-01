@@ -95,7 +95,7 @@
     let isPtsValid = $derived(availablePoints >= 0);
     let isTargetStatsValid = $derived(Object.keys(desiredStats).every(stat => desiredStats[stat] >= currentStats[stat]));
     
-    let isValid = $derived(isBaseStatsValid && isLevelValid && isPtsValid && isTargetStatsValid);
+    let isValid = $derived(isBaseStatsValid && isLevelValid && isPtsValid);
 
     function handleCalculate() {
         const stats = { STR: currentStats.STR, INT: currentStats.INT, WIS: currentStats.WIS, CON: currentStats.CON, DEX: currentStats.DEX };
@@ -226,11 +226,6 @@
                 }
                 const tempCurrent = data.currentStats || currentStats;
                 const tempDesired = data.desiredStats || desiredStats;
-                for (const stat of ['STR', 'INT', 'WIS', 'CON', 'DEX']) {
-                    if (tempDesired[stat] < tempCurrent[stat]) {
-                        throw new Error("Target stats must not be lower than base stats.");
-                    }
-                }
 
                 level = data.level ?? 1;
                 heroClass = data.heroClass ?? 'warrior';
@@ -250,10 +245,20 @@
         event.target.value = '';
     }
     
-    // Auto-run calculate when userItems changes
+    // Auto-run calculate when config changes, but debounce it to avoid UI lag 
+    // since the Beam Search optimizer can be computationally expensive on every keystroke.
+    let debounceTimer;
     $effect(() => {
+        // Deep stringify tracks nested changes in state structs
+        const _trigger = JSON.stringify({
+            level, heroClass, availablePoints, currentStats, desiredStats, userItems, isMaster
+        });
+
         if (loaded) {
-            handleCalculate();
+            clearTimeout(debounceTimer);
+            debounceTimer = setTimeout(() => {
+                handleCalculate();
+            }, 200); // 200ms debounce
         }
     });
 
@@ -415,8 +420,6 @@
                                 Level must be between 1 and 99
                             {:else if !isPtsValid}
                                 Available stat points must be zero or above
-                            {:else if !isTargetStatsValid}
-                                Target stats must not be lower than base stats
                             {:else if Object.entries(currentStats).some(([s, v]) => v > statMaxValue(s, heroClass))}
                                 {@const badStat = Object.entries(currentStats).find(([s, v]) => v > statMaxValue(s, heroClass))}
                                 {badStat[0]} exceeds cap ({statMaxValue(badStat[0], heroClass)} max)
