@@ -90,7 +90,12 @@
 
     
     // Reactively validate
-    let isValid = $derived(validateStats(level, currentStats, availablePoints, isMaster, heroClass));
+    let isBaseStatsValid = $derived(validateStats(level, currentStats, availablePoints, isMaster, heroClass));
+    let isLevelValid = $derived(level >= 1 && level <= 99);
+    let isPtsValid = $derived(availablePoints >= 0);
+    let isTargetStatsValid = $derived(Object.keys(desiredStats).every(stat => desiredStats[stat] >= currentStats[stat]));
+    
+    let isValid = $derived(isBaseStatsValid && isLevelValid && isPtsValid && isTargetStatsValid);
 
     function handleCalculate() {
         const stats = { STR: currentStats.STR, INT: currentStats.INT, WIS: currentStats.WIS, CON: currentStats.CON, DEX: currentStats.DEX };
@@ -212,6 +217,21 @@
         reader.onload = (e) => {
             try {
                 const data = JSON.parse(e.target.result);
+                
+                if (data.level !== undefined && (data.level < 1 || data.level > 99)) {
+                    throw new Error("Level must be between 1 and 99.");
+                }
+                if (data.availablePoints !== undefined && data.availablePoints < 0) {
+                    throw new Error("Available stat points must be zero or above.");
+                }
+                const tempCurrent = data.currentStats || currentStats;
+                const tempDesired = data.desiredStats || desiredStats;
+                for (const stat of ['STR', 'INT', 'WIS', 'CON', 'DEX']) {
+                    if (tempDesired[stat] < tempCurrent[stat]) {
+                        throw new Error("Target stats must not be lower than base stats.");
+                    }
+                }
+
                 level = data.level ?? 1;
                 heroClass = data.heroClass ?? 'warrior';
                 availablePoints = data.availablePoints ?? 0;
@@ -221,7 +241,8 @@
                 userItems = data.userItems ?? data.lockedItems ?? [];
                 handleCalculate();
             } catch (err) {
-                alert('Failed to import plan: invalid JSON file.');
+                const msg = err instanceof SyntaxError ? 'invalid JSON file.' : err.message;
+                alert(`Failed to import plan: ${msg}`);
                 console.error(err);
             }
         };
@@ -342,8 +363,8 @@
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
                 <!-- Level -->
                 <div class="form-control">
-                    <label class="label text-sm text-slate-500 dark:text-slate-400 mb-1" for="level">Level (1-99+)</label>
-                    <input type="number" id="level" min="1" class="input bg-slate-100 dark:bg-slate-700 border border-slate-300 dark:border-slate-600 text-slate-800 dark:text-white rounded p-2 w-full focus:ring-2 focus:ring-amber-500 outline-none transition-colors" bind:value={level} />
+                    <label class="label text-sm text-slate-500 dark:text-slate-400 mb-1" for="level">Level (1-99)</label>
+                    <input type="number" id="level" min="1" max="99" class="input bg-slate-100 dark:bg-slate-700 border border-slate-300 dark:border-slate-600 text-slate-800 dark:text-white rounded p-2 w-full focus:ring-2 focus:ring-amber-500 outline-none transition-colors" bind:value={level} />
                     {#if level >= 99}
                         <label class="flex items-center gap-2 mt-2 cursor-pointer select-none group">
                             <input type="checkbox" class="w-4 h-4 rounded accent-amber-500" bind:checked={isMaster} />
@@ -390,7 +411,13 @@
                         <span class="text-green-500 dark:text-green-400 font-bold">OK</span>
                     {:else}
                         <span class="text-orange-500 dark:text-orange-400 font-bold">
-                            {#if Object.entries(currentStats).some(([s, v]) => v > statMaxValue(s, heroClass))}
+                            {#if !isLevelValid}
+                                Level must be between 1 and 99
+                            {:else if !isPtsValid}
+                                Available stat points must be zero or above
+                            {:else if !isTargetStatsValid}
+                                Target stats must not be lower than base stats
+                            {:else if Object.entries(currentStats).some(([s, v]) => v > statMaxValue(s, heroClass))}
                                 {@const badStat = Object.entries(currentStats).find(([s, v]) => v > statMaxValue(s, heroClass))}
                                 {badStat[0]} exceeds cap ({statMaxValue(badStat[0], heroClass)} max)
                             {:else if level >= 99}
