@@ -76,6 +76,15 @@
                 darkMode
             };
             localStorage.setItem('legends-planner-state', JSON.stringify(state));
+            
+            // Sync dark mode class strictly to the HTML element
+            if (typeof document !== 'undefined') {
+                if (darkMode) {
+                    document.documentElement.classList.add('dark');
+                } else {
+                    document.documentElement.classList.remove('dark');
+                }
+            }
         }
     });
 
@@ -289,12 +298,19 @@
 
 <input bind:this={fileInput} type="file" accept=".json,application/json" class="hidden" onchange={handleImport} />
 
-<div class="{darkMode ? 'dark' : ''} min-h-screen bg-slate-100 dark:bg-slate-950 text-slate-700 dark:text-slate-200 p-4 md:p-6 xl:p-8 font-sans selection:bg-amber-500/30 transition-colors duration-200">
+<div class="min-h-screen bg-slate-100 dark:bg-slate-950 text-slate-700 dark:text-slate-200 p-4 md:p-6 xl:p-8 selection:bg-emerald-900/30 transition-colors duration-200">
     <header class="max-w-screen-2xl mx-auto mb-8 text-center relative">
-        <h1 class="text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-amber-500 to-orange-500 dark:from-amber-400 dark:to-orange-500 mb-2">
+        <h1 class="text-4xl mb-3" style="font-family: var(--font-display); color: var(--c-moss); letter-spacing: 0.02em;">
             Legends Stat Planner
         </h1>
-        <p class="text-slate-500 dark:text-slate-400">Optimize your build for Legends: Age of Chaos</p>
+        <p style="color: var(--c-muted);">Optimize your build for Legends: Age of Chaos</p>
+        <!-- Celtic interlace divider -->
+        <div class="mt-4 flex justify-center" aria-hidden="true">
+            <svg width="480" height="18" viewBox="0 0 480 18" fill="none" xmlns="http://www.w3.org/2000/svg" style="opacity:0.45; max-width:100%;">
+                <path d="M0 9 C30 2,60 16,90 9 C120 2,150 16,180 9 C210 2,240 16,270 9 C300 2,330 16,360 9 C390 2,420 16,450 9 C465 5.5,480 9,480 9" stroke="#6aab7e" stroke-width="1.5" fill="none"/>
+                <path d="M0 9 C30 16,60 2,90 9 C120 16,150 2,180 9 C210 16,240 2,270 9 C300 16,330 2,360 9 C390 16,420 2,450 9 C465 12.5,480 9,480 9" stroke="#6aab7e" stroke-width="1.5" fill="none"/>
+            </svg>
+        </div>
 
         <!-- Dark/Light toggle -->
         <button

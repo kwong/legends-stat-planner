@@ -1,3 +1,193 @@
 @import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Uncial+Antiqua&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&display=swap');
 
 @custom-variant dark (&:where(.dark, .dark *));
+
+/* ─── Celtic Dark Ages Palette ─────────────────────────────── */
+:root {
+  --c-bg:        #0d120f;
+  --c-surface:   #141a16;
+  --c-surface-2: #1a221d;
+  --c-border:    rgba(106, 171, 126, 0.18);
+  --c-border-h:  rgba(106, 171, 126, 0.40);
+
+  --c-moss:      #6aab7e;   /* primary accent */
+  --c-teal:      #4a8a7a;   /* secondary accent */
+  --c-linen:     #d4cfc5;   /* body text */
+  --c-muted:     #8a9e90;   /* subdued text */
+
+  --c-success:   #4a7a5a;
+  --c-danger:    #8b3a3a;
+  --c-warning:   #8a6a2a;
+
+  --font-display: 'Uncial Antiqua', serif;
+  --font-body:    'EB Garamond', Georgia, serif;
+}
+
+/* ─── Base Overrides ────────────────────────────────────────── */
+body {
+  font-family: var(--font-body);
+  font-size: 1.0625rem; /* EB Garamond reads best slightly larger */
+  color: var(--c-linen);
+  /* Subtle vignette — darkens the corners like viewing by firelight */
+  background-image: radial-gradient(
+    ellipse at 50% 0%,
+    transparent 60%,
+    rgba(0,0,0,0.55) 100%
+  );
+}
+
+/* ─── Focus glow ────────────────────────────────────────────── */
+input:focus,
+select:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(106, 171, 126, 0.35),
+              inset 0 1px 3px rgba(0,0,0,0.4);
+}
+/* ─── Celtic Dark Mode Remap ────────────────────────────────── */
+.dark\:bg-slate-950:where(.dark,.dark *) { background-color: var(--c-bg) !important; }
+.dark\:bg-slate-900:where(.dark,.dark *) { background-color: #0f1712 !important; }
+.dark\:bg-slate-800:where(.dark,.dark *) { background-color: var(--c-surface) !important; }
+.dark\:bg-slate-700:where(.dark,.dark *) { background-color: var(--c-surface-2) !important; }
+.dark\:bg-slate-700\/60:where(.dark,.dark *) { background-color: rgba(26,34,29,.6) !important; }
+.dark\:bg-amber-900\/10:where(.dark,.dark *) { background-color: rgba(26,40,30,.1) !important; }
+.dark\:bg-emerald-900\/30:where(.dark,.dark *) { background-color: rgba(26,50,35,.3) !important; }
+.dark\:bg-green-900\/30:where(.dark,.dark *) { background-color: rgba(26,50,35,.3) !important; }
+.dark\:bg-red-900\/30:where(.dark,.dark *) { background-color: rgba(50,20,20,.3) !important; }
+.dark\:bg-red-900\/40:where(.dark,.dark *) { background-color: rgba(50,20,20,.4) !important; }
+.dark\:bg-red-900\/60:where(.dark,.dark *) { background-color: rgba(50,20,20,.6) !important; }
+.dark\:bg-red-950\/40:where(.dark,.dark *) { background-color: rgba(30,10,10,.4) !important; }
+.dark\:text-white:where(.dark,.dark *) { color: var(--c-linen) !important; }
+.dark\:text-slate-200:where(.dark,.dark *) { color: var(--c-linen) !important; }
+.dark\:text-slate-300:where(.dark,.dark *) { color: #bcb8ae !important; }
+.dark\:text-slate-400:where(.dark,.dark *) { color: var(--c-muted) !important; }
+.dark\:text-slate-500:where(.dark,.dark *) { color: #6b7f72 !important; }
+.dark\:text-amber-400:where(.dark,.dark *) { color: var(--c-moss) !important; }
+.dark\:text-amber-500:where(.dark,.dark *) { color: var(--c-moss) !important; }
+.dark\:text-amber-600:where(.dark,.dark *) { color: #5a9469 !important; }
+.dark\:from-amber-400:where(.dark,.dark *) { --tw-gradient-from: var(--c-moss) !important; }
+.dark\:to-orange-500:where(.dark,.dark *) { --tw-gradient-to: var(--c-teal) !important; }
+.dark\:text-emerald-400:where(.dark,.dark *) { color: var(--c-moss) !important; }
+.dark\:text-green-400:where(.dark,.dark *) { color: var(--c-moss) !important; }
+.dark\:text-green-200:where(.dark,.dark *) { color: #9dc9b0 !important; }
+.dark\:text-red-400:where(.dark,.dark *) { color: #b05252 !important; }
+.dark\:text-red-300:where(.dark,.dark *) { color: #c06060 !important; }
+.dark\:border-slate-700:where(.dark,.dark *) { border-color: var(--c-border) !important; }
+.dark\:border-slate-600:where(.dark,.dark *) { border-color: var(--c-border) !important; }
+.dark\:border-green-500:where(.dark,.dark *) { border-color: rgba(74,122,90,.55) !important; }
+.dark\:border-emerald-500\/50:where(.dark,.dark *) { border-color: rgba(74,122,90,.5) !important; }
+.dark\:border-red-800\/40:where(.dark,.dark *) { border-color: rgba(100,45,45,.4) !important; }
+.dark\:border-red-800\/50:where(.dark,.dark *) { border-color: rgba(100,45,45,.5) !important; }
+.dark\:border-red-900\/50:where(.dark,.dark *) { border-color: rgba(100,45,45,.5) !important; }
+.dark\:hover\:bg-slate-700:where(.dark,.dark *):hover { background-color: var(--c-surface-2) !important; }
+.dark\:hover\:bg-slate-600:where(.dark,.dark *):hover { background-color: rgba(36,52,42,1) !important; }
+.dark\:hover\:text-white:where(.dark,.dark *):hover { color: var(--c-linen) !important; }
+.dark\:hover\:text-slate-300:where(.dark,.dark *):hover { color: #bcb8ae !important; }
+.dark\:focus\:border-amber-500:where(.dark,.dark *):focus { border-color: var(--c-moss) !important; }
+.dark\:divide-slate-700\/60 > * + * { border-color: var(--c-border) !important; }
+.accent-amber-500 { accent-color: var(--c-moss); }
+
+/* ─── Celtic Form Elements ─────────────────────────────────── */
+.dark input[type="text"],
+.dark input[type="number"],
+.dark select {
+  background-color: var(--c-bg) !important;
+  border-color: rgba(106, 171, 126, 0.25) !important;
+  color: var(--c-linen) !important;
+}
+.dark label.label,
+.dark .text-xs:has(+ input) {
+  font-variant: small-caps;
+  color: var(--c-teal) !important;
+  letter-spacing: 0.05em;
+  font-size: 0.8rem;
+}
+/* ─── Celtic Light Mode Remap ───────────────────────────────── */
+/* Override specific light-mode Tailwind utilities to the daytime manuscript palette.
+   We target elements NOT inside .dark to apply these off-white/ink styles. */
+
+:root {
+  --c-light-bg:      #f4f0e6;
+  --c-light-surface: #ffffff;
+  --c-light-border:  rgba(44, 38, 33, 0.15);
+  --c-light-text:    #2c2621;
+  --c-light-muted:   #756a5c;
+  --c-light-moss:    #4a7a5a;
+  --c-light-teal:    #3a6a5a;
+  --c-light-danger:  #9b2c2c;
+}
+
+html:not(.dark) body {
+  background-color: var(--c-light-bg);
+  background-image: none; /* remove vignette for daylight */
+  color: var(--c-light-text);
+}
+
+/* Backgrounds */
+html:not(.dark) .bg-slate-100 { background-color: var(--c-light-bg) !important; }
+html:not(.dark) .bg-white     { background-color: var(--c-light-surface) !important; box-shadow: 0 4px 12px rgba(44,38,33,0.08); }
+html:not(.dark) .bg-slate-50  { background-color: #fbf9f6 !important; }
+html:not(.dark) .bg-slate-200 { background-color: #e8e2d5 !important; }
+
+/* Status Backgrounds */
+html:not(.dark) .bg-green-100   { background-color: rgba(74,122,90,0.15) !important; }
+html:not(.dark) .bg-emerald-50  { background-color: rgba(74,122,90,0.1) !important; }
+html:not(.dark) .bg-emerald-100 { background-color: rgba(74,122,90,0.2) !important; }
+html:not(.dark) .bg-red-50      { background-color: rgba(155,44,44,0.05) !important; }
+html:not(.dark) .bg-red-100     { background-color: rgba(155,44,44,0.1) !important; }
+html:not(.dark) .bg-amber-50    { background-color: rgba(74,122,90,0.08) !important; } /* user items highlight -> moss */
+
+/* Text */
+html:not(.dark) .text-slate-700 { color: var(--c-light-text) !important; }
+html:not(.dark) .text-slate-800 { color: var(--c-light-text) !important; }
+html:not(.dark) .text-slate-600 { color: var(--c-light-text) !important; }
+html:not(.dark) .text-slate-500 { color: var(--c-light-muted) !important; }
+html:not(.dark) .text-slate-400 { color: #8e8477 !important; }
+
+/* Accents */
+html:not(.dark) .text-amber-500 { color: var(--c-light-moss) !important; }
+html:not(.dark) .text-amber-600 { color: var(--c-light-moss) !important; }
+html:not(.dark) .text-emerald-600 { color: var(--c-light-moss) !important; }
+html:not(.dark) .text-green-700 { color: var(--c-light-moss) !important; }
+html:not(.dark) .text-red-500   { color: var(--c-light-danger) !important; }
+html:not(.dark) .text-red-600   { color: var(--c-light-danger) !important; }
+
+/* Borders */
+html:not(.dark) .border-slate-200 { border-color: var(--c-light-border) !important; }
+html:not(.dark) .border-slate-300 { border-color: rgba(44,38,33,0.25) !important; }
+html:not(.dark) .border-green-400 { border-color: rgba(74,122,90,0.4) !important; }
+html:not(.dark) .border-emerald-400 { border-color: rgba(74,122,90,0.4) !important; }
+html:not(.dark) .border-red-200   { border-color: rgba(155,44,44,0.2) !important; }
+html:not(.dark) .border-red-300   { border-color: rgba(155,44,44,0.3) !important; }
+html:not(.dark) .divide-slate-200 > * + * { border-color: var(--c-light-border) !important; }
+
+/* Hover */
+html:not(.dark) .hover\:bg-slate-200:hover { background-color: #e8e2d5 !important; }
+html:not(.dark) .hover\:bg-slate-100:hover { background-color: #f0ebe0 !important; }
+html:not(.dark) .hover\:bg-slate-50:hover  { background-color: #fbf9f6 !important; }
+
+/* Form Elements Light Mode */
+html:not(.dark) input[type="text"],
+html:not(.dark) input[type="number"],
+html:not(.dark) select {
+  background-color: #ebe5d8 !important; /* recessed parchment */
+  border-color: rgba(44,38,33,0.2) !important;
+  color: var(--c-light-text) !important;
+  box-shadow: inset 0 2px 4px rgba(44,38,33,0.05);
+}
+
+html:not(.dark) input:focus,
+html:not(.dark) select:focus {
+  box-shadow: 0 0 0 2px rgba(74,122,90, 0.25),
+              inset 0 2px 4px rgba(44,38,33,0.05);
+  border-color: var(--c-light-moss) !important;
+}
+
+html:not(.dark) label.label,
+html:not(.dark) .text-xs:has(+ input) {
+  font-variant: small-caps;
+  color: var(--c-light-teal) !important;
+  letter-spacing: 0.05em;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
